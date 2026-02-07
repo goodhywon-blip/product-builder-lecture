@@ -73,6 +73,10 @@ h1 {
     flex-wrap: wrap;
 }
 
+lotto-ball {
+    display: inline-block;
+}
+
 #generate-btn {
     background-color: var(--accent-color);
     color: var(--accent-contrast);
