@@ -78,16 +78,21 @@ h1 {
     margin-bottom: 30px;
 }
 
-.lotto-numbers {
+.lotto-sets {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 16px;
+    gap: 18px;
     margin-bottom: 30px;
+}
+
+.lotto-set {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 16px;
     padding: 0;
     list-style: none;
 }
 
-.lotto-numbers li {
+.lotto-set li {
     background-color: var(--chip-bg);
     border-radius: 18px;
     padding: 18px 0;
@@ -156,7 +161,7 @@ h1 {
         font-size: 2em;
     }
 
-    .lotto-numbers {
+    .lotto-set {
         gap: 10px;
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }

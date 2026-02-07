@@ -1,6 +1,6 @@
 
 const generateBtn = document.getElementById('generate-btn');
-const lottoNumbersContainer = document.getElementById('lotto-numbers');
+const lottoSetsContainer = document.getElementById('lotto-sets');
 const themeToggle = document.getElementById('theme-toggle');
 const root = document.documentElement;
 
@@ -23,7 +23,7 @@ themeToggle.addEventListener('click', () => {
 
 function generateLottoNumbers() {
     const numbers = new Set();
-    while (numbers.size < 5) {
+    while (numbers.size < 6) {
         const randomNumber = Math.floor(Math.random() * 45) + 1;
         numbers.add(randomNumber);
     }
@@ -31,13 +31,18 @@ function generateLottoNumbers() {
 }
 
 function displayLottoNumbers() {
-    lottoNumbersContainer.innerHTML = '';
-    const numbers = generateLottoNumbers();
-    numbers.forEach(number => {
-        const item = document.createElement('li');
-        item.textContent = number;
-        lottoNumbersContainer.appendChild(item);
-    });
+    lottoSetsContainer.innerHTML = '';
+    for (let i = 0; i < 5; i += 1) {
+        const numbers = generateLottoNumbers();
+        const setList = document.createElement('ul');
+        setList.className = 'lotto-set';
+        numbers.forEach(number => {
+            const item = document.createElement('li');
+            item.textContent = number;
+            setList.appendChild(item);
+        });
+        lottoSetsContainer.appendChild(setList);
+    }
 }
 
 generateBtn.addEventListener('click', displayLottoNumbers);
