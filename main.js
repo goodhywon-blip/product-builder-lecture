@@ -11,8 +11,8 @@ class LottoBall extends HTMLElement {
                 width: 60px;
                 height: 60px;
                 border-radius: 50%;
-                background-color: var(--accent-color);
-                color: white;
+                background-color: var(--ball-color);
+                color: var(--accent-contrast);
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -35,6 +35,25 @@ customElements.define('lotto-ball', LottoBall);
 
 const generateBtn = document.getElementById('generate-btn');
 const lottoNumbersContainer = document.getElementById('lotto-numbers');
+const themeToggle = document.getElementById('theme-toggle');
+const root = document.documentElement;
+
+function setTheme(theme) {
+    root.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+    const isDark = theme === 'dark';
+    themeToggle.setAttribute('aria-pressed', String(isDark));
+    themeToggle.textContent = isDark ? 'Light mode' : 'Dark mode';
+}
+
+const storedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+setTheme(storedTheme || (prefersDark ? 'dark' : 'light'));
+
+themeToggle.addEventListener('click', () => {
+    const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+});
 
 function generateLottoNumbers() {
     const numbers = new Set();
