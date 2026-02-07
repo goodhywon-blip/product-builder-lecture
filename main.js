@@ -1,6 +1,6 @@
 
 const generateBtn = document.getElementById('generate-btn');
-const lottoSetsContainer = document.getElementById('lotto-sets');
+const menuSetsContainer = document.getElementById('menu-sets');
 const themeToggle = document.getElementById('theme-toggle');
 const root = document.documentElement;
 
@@ -21,31 +21,66 @@ themeToggle.addEventListener('click', () => {
     setTheme(nextTheme);
 });
 
-function generateLottoNumbers() {
-    const numbers = new Set();
-    while (numbers.size < 6) {
-        const randomNumber = Math.floor(Math.random() * 45) + 1;
-        numbers.add(randomNumber);
+const menuPool = [
+    { name: 'Kimchi Fried Rice', tags: ['Korean', 'Quick', 'Spicy'] },
+    { name: 'Soy Garlic Chicken', tags: ['Korean', 'Crispy'] },
+    { name: 'Bibimbap Bowl', tags: ['Korean', 'Balanced'] },
+    { name: 'Tteokbokki & Fish Cake', tags: ['Street', 'Spicy'] },
+    { name: 'Miso Ramen', tags: ['Japanese', 'Warm'] },
+    { name: 'Sushi Set', tags: ['Japanese', 'Light'] },
+    { name: 'Beef Pho', tags: ['Vietnamese', 'Broth'] },
+    { name: 'Banh Mi Sandwich', tags: ['Vietnamese', 'Quick'] },
+    { name: 'Pad Thai', tags: ['Thai', 'Sweet-Savory'] },
+    { name: 'Green Curry & Rice', tags: ['Thai', 'Coconut'] },
+    { name: 'Margherita Pizza', tags: ['Italian', 'Cheesy'] },
+    { name: 'Pasta Aglio e Olio', tags: ['Italian', 'Simple'] },
+    { name: 'Bulgogi Lettuce Wraps', tags: ['Korean', 'Grill'] },
+    { name: 'Salmon Poke Bowl', tags: ['Hawaiian', 'Fresh'] },
+    { name: 'Chicken Caesar Salad', tags: ['Light', 'Classic'] },
+    { name: 'Steak & Veggies', tags: ['Hearty', 'Protein'] },
+    { name: 'Tofu Stir-Fry', tags: ['Vegetarian', 'Quick'] },
+    { name: 'Mushroom Risotto', tags: ['Italian', 'Comfort'] },
+    { name: 'Shrimp Tacos', tags: ['Mexican', 'Zesty'] },
+    { name: 'Burrito Bowl', tags: ['Mexican', 'Filling'] }
+];
+
+function getRandomMenus(count) {
+    const picks = new Set();
+    while (picks.size < count) {
+        const index = Math.floor(Math.random() * menuPool.length);
+        picks.add(menuPool[index]);
     }
-    return Array.from(numbers).sort((a, b) => a - b);
+    return Array.from(picks);
 }
 
-function displayLottoNumbers() {
-    lottoSetsContainer.innerHTML = '';
-    for (let i = 0; i < 5; i += 1) {
-        const numbers = generateLottoNumbers();
-        const setList = document.createElement('ul');
-        setList.className = 'lotto-set';
-        numbers.forEach(number => {
-            const item = document.createElement('li');
-            item.textContent = number;
-            setList.appendChild(item);
+function displayMenus() {
+    menuSetsContainer.innerHTML = '';
+    const menus = getRandomMenus(5);
+    menus.forEach(menu => {
+        const card = document.createElement('div');
+        card.className = 'menu-card';
+
+        const title = document.createElement('p');
+        title.className = 'menu-title';
+        title.textContent = menu.name;
+
+        const meta = document.createElement('div');
+        meta.className = 'menu-meta';
+
+        menu.tags.forEach(tag => {
+            const tagEl = document.createElement('span');
+            tagEl.className = 'menu-tag';
+            tagEl.textContent = tag;
+            meta.appendChild(tagEl);
         });
-        lottoSetsContainer.appendChild(setList);
-    }
+
+        card.appendChild(title);
+        card.appendChild(meta);
+        menuSetsContainer.appendChild(card);
+    });
 }
 
-generateBtn.addEventListener('click', displayLottoNumbers);
+generateBtn.addEventListener('click', displayMenus);
 
 // Initial generation
-displayLottoNumbers();
+displayMenus();
