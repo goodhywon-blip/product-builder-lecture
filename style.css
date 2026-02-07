@@ -1,1 +1,82 @@
-/* Add styles here */
+
+:root {
+    --primary-color: #f0f0f0;
+    --secondary-color: #333;
+    --accent-color: #ff7f50;
+    --background-color: #f9f9f9;
+    --font-family: 'Helvetica Neue', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    background-image: subtle-noise-texture.png;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background-color: var(--primary-color);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: var(--secondary-color);
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.lotto-numbers {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+#generate-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+#generate-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .lotto-numbers {
+        gap: 10px;
+    }
+
+    #generate-btn {
+        padding: 12px 24px;
+        font-size: 1em;
+    }
+}
