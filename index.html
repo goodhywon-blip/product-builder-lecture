@@ -10,13 +10,17 @@
 <body>
     <main class="container">
         <header class="topbar">
-            <h1>Lotto Number Generator</h1>
+            <div>
+                <p class="eyebrow">Lucky draw</p>
+                <h1>Five-Number Lotto</h1>
+                <p class="subtitle">Press the button to generate a fresh set of five numbers.</p>
+            </div>
             <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
                 Dark mode
             </button>
         </header>
-        <div class="lotto-numbers" id="lotto-numbers"></div>
-        <button id="generate-btn">Generate Numbers</button>
+        <ul class="lotto-numbers" id="lotto-numbers" aria-live="polite"></ul>
+        <button id="generate-btn">Generate 5 Numbers</button>
     </main>
     <script src="main.js"></script>
 </body>
