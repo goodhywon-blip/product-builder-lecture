@@ -19,7 +19,18 @@
                 Dark mode
             </button>
         </header>
-        <div class="menu-sets" id="menu-sets" aria-live="polite"></div>
+        <div class="menu-display">
+            <div class="menu-sets" id="menu-sets" aria-live="polite"></div>
+            <section class="menu-art-card" aria-live="polite">
+                <div class="menu-art-header">
+                    <p class="menu-art-label">Selected Menu</p>
+                    <h2 id="menu-art-title">Pick a menu</h2>
+                </div>
+                <canvas id="menu-art-canvas" width="320" height="240" aria-label="Illustration of the selected menu"></canvas>
+                <div class="menu-art-tags" id="menu-art-tags"></div>
+                <p class="menu-art-note" id="menu-art-note">Select a menu to see its illustrated plate.</p>
+            </section>
+        </div>
         <button id="generate-btn">Recommend 5 Menus</button>
     </main>
     <script src="main.js"></script>
