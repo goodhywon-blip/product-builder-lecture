@@ -132,7 +132,13 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
   border:1px solid var(--border);background:#fff;border-radius:16px;padding:12px 12px;
   display:flex;align-items:center;justify-content:space-between;gap:12px;
 }
-.hangul{font-size:28px;font-weight:900;letter-spacing:.02em;line-height:1.1;}
+.hangul{
+  font-size:28px;
+  font-weight:800;
+  letter-spacing:.02em;
+  line-height:1.1;
+  font-family: "궁서체", "Gungsuh", "GungsuhChe", "궁서", serif;
+}
 .meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px;color:var(--muted);font-size:12px;}
 .mini-badge{
   display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;

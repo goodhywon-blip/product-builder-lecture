@@ -17,7 +17,7 @@
         <div class="mark" aria-hidden="true"></div>
         <div>
           <h1>Name → Hangul</h1>
-          <p>English name → natural Hangul spelling · browser-only</p>
+          <p>English name → natural Hangul spelling</p>
         </div>
       </div>
       <div class="top-actions">
@@ -29,10 +29,9 @@
 
     <nav class="nav reveal delay-1" aria-label="Page">
       <a href="#tool">Tool</a>
-      <a href="#how">How it works</a>
-      <a href="#examples">Examples</a>
+      <a href="#tool">Convert</a>
       <a href="#community">Community</a>
-      <a href="#faq">FAQ</a>
+      <a href="#about">About</a>
       <a href="#privacy">Privacy</a>
       <a href="#contact">Contact</a>
       <a href="privacy.html">Privacy Policy</a>
@@ -43,16 +42,15 @@
     <section class="hero reveal delay-2">
       <h2 class="headline">Write your name in Hangul</h2>
       <p class="subhead">
-        Dictionary-first for accuracy. If something looks wrong, save a correction once —
-        your browser will remember it. This site is designed for English speakers who want
-        a clean, readable Hangul spelling for personal or creative use.
+        A calm, culture-forward tool to turn English names into elegant Hangul. Try it, tweak it,
+        and share your best spelling with the community.
       </p>
     </section>
 
     <section id="tool" class="grid">
       <section class="card reveal delay-3">
         <div class="inner">
-          <div class="badge">English-only · No server · No AI tokens</div>
+          <div class="badge">English-only · Community reviewed</div>
 
           <div class="row">
             <div class="field" role="group" aria-label="Name input">
@@ -60,12 +58,13 @@
               <input id="nameInput" placeholder="e.g., Jacob / Jason / Michael" autocomplete="off" />
             </div>
             <button class="btn primary" id="convertBtn">Convert</button>
+            <button class="btn" id="randomBtn" type="button">Surprise me</button>
           </div>
 
           <div class="results" id="results"></div>
 
           <div class="hint">
-            Tip: click <b>Fix</b> to pre-fill the community suggestion form.
+            Tip: click <b>Submit suggestion</b> to propose a better spelling.
           </div>
         </div>
       </section>
@@ -93,115 +92,28 @@
       <div class="community-list" id="communityList"></div>
     </section>
 
-    <section id="how" class="section reveal delay-3">
+    <section id="about" class="section reveal delay-3">
       <div class="section-head">
-        <h3>How it works</h3>
-        <span>Accuracy first</span>
+        <h3>About</h3>
+        <span>Korean-first feel</span>
       </div>
       <p class="text">
-        The converter follows a simple priority order to reduce weird spellings. First it checks a
-        built-in dictionary of common names. If no match exists, it applies a rule-based fallback
-        that approximates English pronunciation into Hangul syllables. You can override any result
-        by saving a custom spelling, which always wins.
+        We blend a curated dictionary with pronunciation rules, then let the community refine the best spelling.
+        The goal is a Hangul result that feels natural to read and write.
       </p>
-      <div class="card-grid">
-        <div class="mini-card">
-          <b>1) Dictionary-first</b>
-          <p class="text">Common names are mapped to the most natural Hangul spelling.</p>
-        </div>
-        <div class="mini-card">
-          <b>2) Rule-based fallback</b>
-          <p class="text">If a name is not found, the converter builds syllables from vowel/consonant patterns.</p>
-        </div>
-        <div class="mini-card">
-          <b>3) Custom fixes</b>
-          <p class="text">Save your own spelling once; your browser remembers it.</p>
-        </div>
-      </div>
     </section>
 
-    <section id="examples" class="section reveal delay-4">
-      <div class="section-head">
-        <h3>Example conversions</h3>
-        <span>Realistic output</span>
-      </div>
-      <table class="table" aria-label="Example conversions">
-        <thead>
-          <tr>
-            <th>English</th>
-            <th>Hangul (recommended)</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Jacob</td>
-            <td>제이콥</td>
-            <td>Dictionary match</td>
-          </tr>
-          <tr>
-            <td>Thomas</td>
-            <td>토머스</td>
-            <td>Dictionary match</td>
-          </tr>
-          <tr>
-            <td>Charlie</td>
-            <td>찰리</td>
-            <td>Dictionary match</td>
-          </tr>
-          <tr>
-            <td>Avery</td>
-            <td>에이브리</td>
-            <td>Rule-based fallback</td>
-          </tr>
-          <tr>
-            <td>Brooklyn</td>
-            <td>브루클린</td>
-            <td>Rule-based fallback</td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="text">Names vary by preference. If you want a different spelling, save it in the custom dictionary.</p>
-    </section>
-
-    <section id="faq" class="section reveal delay-5">
-      <div class="section-head">
-        <h3>FAQ</h3>
-        <span>Quick answers</span>
-      </div>
-      <div class="faq">
-        <div class="faq-item">
-          <h4>Is this an official romanization tool?</h4>
-          <p>No. This is a practical name spelling helper based on common usage and a simple rule fallback.</p>
-        </div>
-        <div class="faq-item">
-          <h4>Will the result be “correct”?</h4>
-          <p>There is no single official spelling for many names. If you prefer a different spelling, save it.</p>
-        </div>
-        <div class="faq-item">
-          <h4>Do you store my name?</h4>
-          <p>No. Everything runs in your browser. Only your custom dictionary is saved locally.</p>
-        </div>
-        <div class="faq-item">
-          <h4>Can I use this on mobile?</h4>
-          <p>Yes. The site is responsive and runs entirely in the browser.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="privacy" class="section reveal delay-3">
+    <section id="privacy" class="section reveal delay-4">
       <div class="section-head">
         <h3>Privacy</h3>
-        <span>No server</span>
+        <span>Transparency</span>
       </div>
       <p class="text">
-        This tool does not send your input to a server. The converter runs on-device. If you save a
-        custom spelling, it is stored only in your browser via localStorage. For details, read the
-        full privacy policy page.
+        For details about data handling and advertising, read the full privacy policy page.
       </p>
     </section>
 
-    <section id="contact" class="section reveal delay-4">
+    <section id="contact" class="section reveal delay-5">
       <div class="section-head">
         <h3>Contact</h3>
         <span>Feedback welcome</span>
@@ -290,6 +202,7 @@
     const resultsEl = $("#results");
     const toast = $("#toast");
     const communityList = $("#communityList");
+    const randomBtn = $("#randomBtn");
 
     const suggestKey = $("#suggestKey");
     const suggestHangul = $("#suggestHangul");
@@ -347,6 +260,17 @@
       suggestKey.value = "";
       suggestHangul.value = "";
       nameInput.focus();
+    });
+
+    const RANDOM_NAMES = [
+      "Jacob", "Jason", "Michael", "Emily", "Sophia", "Noah", "Oliver", "Mia",
+      "Ethan", "Ava", "Lucas", "Liam", "Harper", "Mason", "Henry", "Chloe"
+    ];
+
+    randomBtn.addEventListener("click", () => {
+      const pick = RANDOM_NAMES[Math.floor(Math.random() * RANDOM_NAMES.length)];
+      nameInput.value = pick;
+      convert();
     });
 
     // ------------------------------
