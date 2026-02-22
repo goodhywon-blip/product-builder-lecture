@@ -1,4 +1,4 @@
-# Name → Hangul
+# Hangul Name Studio
 
 Community-driven English name to Hangul converter with admin review.
 
