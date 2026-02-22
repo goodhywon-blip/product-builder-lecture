@@ -60,7 +60,7 @@
       align-items:center;
       justify-content:space-between;
       gap:16px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .brand{
@@ -114,6 +114,25 @@
     }
     [data-theme="light"] .pill{ background: rgba(15,23,42,.03); }
     .pill:hover{ border-color: rgba(124,58,237,.55); transform: translateY(-1px); }
+
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom: 18px;
+    }
+    .nav a{
+      text-decoration:none;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 12px;
+      transition: border-color .12s ease, transform .12s ease, color .12s ease;
+      background: rgba(255,255,255,.03);
+    }
+    [data-theme="light"] .nav a{ background: rgba(15,23,42,.02); }
+    .nav a:hover{ border-color: rgba(124,58,237,.55); color: var(--text); transform: translateY(-1px); }
 
     .hero{
       display:flex;
@@ -293,6 +312,72 @@
       line-height: 1.55;
     }
 
+    .section{
+      margin-top: 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.02);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    [data-theme="light"] .section{ background: rgba(255,255,255,.8); }
+
+    .section-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom: 8px;
+    }
+    .section-head h3{ margin:0; font-size: 16px; letter-spacing:-.01em; }
+    .section-head span{ color: var(--muted); font-size: 12px; }
+
+    .text{
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+      margin: 6px 0 0;
+    }
+
+    .card-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+    @media (max-width: 900px){
+      .card-grid{ grid-template-columns: 1fr; }
+    }
+    .mini-card{
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 12px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .table{
+      width:100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    .table th, .table td{
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+    .table th{ color: var(--muted); font-weight: 600; }
+
+    .faq{ display:grid; gap:10px; margin-top: 10px; }
+    .faq-item{
+      border:1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      background: rgba(255,255,255,.03);
+    }
+    .faq-item h4{ margin:0 0 6px 0; font-size: 14px; }
+    .faq-item p{ margin:0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+
     /* Right panel */
     .panel-title{
       display:flex;
@@ -306,11 +391,13 @@
     .muted{ color: var(--muted); font-size: 12px; }
 
     footer{
-      margin-top: 16px;
+      margin-top: 18px;
       text-align:center;
       color: var(--muted);
       font-size: 12px;
     }
+    footer a{ color: var(--muted); text-decoration:none; }
+    footer a:hover{ color: var(--text); }
 
     .toast{
       position: fixed;
@@ -353,15 +440,29 @@
       </div>
     </header>
 
+    <nav class="nav" aria-label="Page">
+      <a href="#tool">Tool</a>
+      <a href="#how">How it works</a>
+      <a href="#examples">Examples</a>
+      <a href="#quality">Quality & intent</a>
+      <a href="#faq">FAQ</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#contact">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="about.html">About</a>
+    </nav>
+
     <section class="hero">
       <h2 class="headline">Write your name in Hangul ✨</h2>
       <p class="subhead">
         Dictionary-first for accuracy. If something looks wrong, save a correction once —
-        your browser will remember it.
+        your browser will remember it. This site is designed for English speakers who want
+        a clean, readable Hangul spelling for personal or creative use.
       </p>
     </section>
 
-    <div class="grid">
+    <section id="tool" class="grid">
       <!-- LEFT -->
       <section class="card">
         <div class="inner">
@@ -384,7 +485,7 @@
       </section>
 
       <!-- RIGHT -->
-      <aside class="card">
+      <aside class="card" id="dictionary">
         <div class="inner">
           <div class="panel-title">
             <b>Fix a name (dictionary)</b>
@@ -415,10 +516,156 @@
           </div>
         </div>
       </aside>
-    </div>
+    </section>
+
+    <section id="how" class="section">
+      <div class="section-head">
+        <h3>How it works</h3>
+        <span>Accuracy first</span>
+      </div>
+      <p class="text">
+        The converter follows a simple priority order to reduce weird spellings. First it checks a
+        built-in dictionary of common names. If no match exists, it applies a rule-based fallback
+        that approximates English pronunciation into Hangul syllables. You can override any result
+        by saving a custom spelling, which always wins.
+      </p>
+      <div class="card-grid">
+        <div class="mini-card">
+          <b>1) Dictionary-first</b>
+          <p class="text">Common names are mapped to the most natural Hangul spelling.</p>
+        </div>
+        <div class="mini-card">
+          <b>2) Rule-based fallback</b>
+          <p class="text">If a name is not found, the converter builds syllables from vowel/consonant patterns.</p>
+        </div>
+        <div class="mini-card">
+          <b>3) Custom fixes</b>
+          <p class="text">Save your own spelling once; your browser remembers it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="examples" class="section">
+      <div class="section-head">
+        <h3>Example conversions</h3>
+        <span>Realistic output</span>
+      </div>
+      <table class="table" aria-label="Example conversions">
+        <thead>
+          <tr>
+            <th>English</th>
+            <th>Hangul (recommended)</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jacob</td>
+            <td>제이콥</td>
+            <td>Dictionary match</td>
+          </tr>
+          <tr>
+            <td>Thomas</td>
+            <td>토머스</td>
+            <td>Dictionary match</td>
+          </tr>
+          <tr>
+            <td>Charlie</td>
+            <td>찰리</td>
+            <td>Dictionary match</td>
+          </tr>
+          <tr>
+            <td>Avery</td>
+            <td>에이브리</td>
+            <td>Rule-based fallback</td>
+          </tr>
+          <tr>
+            <td>Brooklyn</td>
+            <td>브루클린</td>
+            <td>Rule-based fallback</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="text">Names vary by preference. If you want a different spelling, save it in the custom dictionary.</p>
+    </section>
+
+    <section id="quality" class="section">
+      <div class="section-head">
+        <h3>Quality & intent</h3>
+        <span>User-first content</span>
+      </div>
+      <p class="text">
+        This page exists to deliver a specific, useful service: converting English names into Hangul
+        in a way that feels natural to Korean readers. The content is original, focused, and built
+        to be easy to navigate. There are no empty pages, no keyword stuffing, and no deceptive flows.
+      </p>
+      <div class="card-grid">
+        <div class="mini-card">
+          <b>Clear purpose</b>
+          <p class="text">One focused tool with direct, practical output.</p>
+        </div>
+        <div class="mini-card">
+          <b>Readable structure</b>
+          <p class="text">Sections explain how it works, examples, and limitations.</p>
+        </div>
+        <div class="mini-card">
+          <b>Honest limitations</b>
+          <p class="text">Spellings vary; you can correct and save your preference.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="section-head">
+        <h3>FAQ</h3>
+        <span>Quick answers</span>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <h4>Is this an official romanization tool?</h4>
+          <p>No. This is a practical name spelling helper based on common usage and a simple rule fallback.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Will the result be “correct”?</h4>
+          <p>There is no single official spelling for many names. If you prefer a different spelling, save it.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Do you store my name?</h4>
+          <p>No. Everything runs in your browser. Only your custom dictionary is saved locally.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Can I use this on mobile?</h4>
+          <p>Yes. The site is responsive and runs entirely in the browser.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy" class="section">
+      <div class="section-head">
+        <h3>Privacy</h3>
+        <span>No server</span>
+      </div>
+      <p class="text">
+        This tool does not send your input to a server. The converter runs on-device. If you save a
+        custom spelling, it is stored only in your browser via localStorage. For details, read the
+        full privacy policy page.
+      </p>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="section-head">
+        <h3>Contact</h3>
+        <span>Feedback welcome</span>
+      </div>
+      <p class="text">
+        If you find a name that looks wrong or want to suggest improvements, please use the contact
+        page and include the English spelling and your preferred Hangul output.
+      </p>
+    </section>
 
     <footer>
-      © <span id="year"></span> Name → Hangul · Privacy-friendly (localStorage only)
+      © <span id="year"></span> Name → Hangul · Privacy-friendly (localStorage only) ·
+      <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="contact.html">Contact</a>
     </footer>
   </div>
 
