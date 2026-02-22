@@ -138,6 +138,8 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
   display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;
   border:1px solid var(--border);background:#f8f9fb;color:var(--muted);font-size:12px;
 }
+.badge-ok{border-color:#c7efd5;background:#ecfdf3;color:#1f7a3a;}
+.badge-warn{border-color:#ffe1b8;background:#fff7ea;color:#8a5a00;}
 
 .hint{margin-top:12px;color:var(--muted);font-size:13px;line-height:1.55;}
 
@@ -163,6 +165,12 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
 .faq-item h4{margin:0 0 6px 0;font-size:14px;}
 .faq-item p{margin:0;color:var(--muted);font-size:13px;line-height:1.55;}
 
+.community-list{display:grid;gap:8px;margin-top:8px;}
+.community-item{
+  border:1px solid var(--border);background:#fff;border-radius:16px;padding:12px 12px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;
+}
+
 footer{margin-top:18px;text-align:center;color:var(--muted);font-size:12px;}
 footer a{color:var(--muted);text-decoration:none;}
 footer a:hover{color:var(--ink);}
@@ -175,11 +183,9 @@ footer a:hover{color:var(--ink);}
 }
 .toast.show{opacity:1;}
 
-/* Subpage helpers */
 .page-title{margin:0 0 8px;font-size:28px;letter-spacing:-.02em;}
 .page-sub{margin:0;color:var(--muted);line-height:1.6;}
 
-/* Motion */
 @media (prefers-reduced-motion: no-preference){
   .reveal{
     opacity:0;transform: translateY(8px);

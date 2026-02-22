@@ -31,7 +31,7 @@
       <a href="#tool">Tool</a>
       <a href="#how">How it works</a>
       <a href="#examples">Examples</a>
-      <a href="#quality">Quality & intent</a>
+      <a href="#community">Community</a>
       <a href="#faq">FAQ</a>
       <a href="#privacy">Privacy</a>
       <a href="#contact">Contact</a>
@@ -103,7 +103,19 @@
       </aside>
     </section>
 
-    <section id="how" class="section reveal delay-2">
+    <section id="community" class="section reveal delay-2">
+      <div class="section-head">
+        <h3>Community suggestions</h3>
+        <span>Reviewed</span>
+      </div>
+      <p class="text">Community suggestions are reviewed before becoming official.</p>
+      <div class="row" style="margin-top:10px;">
+        <button class="btn" id="submitSuggestionBtn">Submit suggestion (reviewed before publication)</button>
+      </div>
+      <div class="community-list" id="communityList"></div>
+    </section>
+
+    <section id="how" class="section reveal delay-3">
       <div class="section-head">
         <h3>How it works</h3>
         <span>Accuracy first</span>
@@ -130,7 +142,7 @@
       </div>
     </section>
 
-    <section id="examples" class="section reveal delay-3">
+    <section id="examples" class="section reveal delay-4">
       <div class="section-head">
         <h3>Example conversions</h3>
         <span>Realistic output</span>
@@ -172,32 +184,6 @@
         </tbody>
       </table>
       <p class="text">Names vary by preference. If you want a different spelling, save it in the custom dictionary.</p>
-    </section>
-
-    <section id="quality" class="section reveal delay-4">
-      <div class="section-head">
-        <h3>Quality & intent</h3>
-        <span>User-first content</span>
-      </div>
-      <p class="text">
-        This page exists to deliver a specific, useful service: converting English names into Hangul
-        in a way that feels natural to Korean readers. The content is original, focused, and built
-        to be easy to navigate. There are no empty pages, no keyword stuffing, and no deceptive flows.
-      </p>
-      <div class="card-grid">
-        <div class="mini-card">
-          <b>Clear purpose</b>
-          <p class="text">One focused tool with direct, practical output.</p>
-        </div>
-        <div class="mini-card">
-          <b>Readable structure</b>
-          <p class="text">Sections explain how it works, examples, and limitations.</p>
-        </div>
-        <div class="mini-card">
-          <b>Honest limitations</b>
-          <p class="text">Spellings vary; you can correct and save your preference.</p>
-        </div>
-      </div>
     </section>
 
     <section id="faq" class="section reveal delay-5">
@@ -258,12 +244,36 @@
 
   <div class="toast" id="toast">Copied!</div>
 
-  <script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import {
+      getFirestore, doc, getDoc, setDoc, updateDoc, serverTimestamp,
+      collection, query, where, orderBy, limit, getDocs, runTransaction, enableIndexedDbPersistence
+    } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+    // ------------------------------
+    // Firebase config (replace with your project values)
+    // ------------------------------
+    const firebaseConfig = {
+      apiKey: "PASTE_API_KEY",
+      authDomain: "PASTE_AUTH_DOMAIN",
+      projectId: "PASTE_PROJECT_ID",
+      storageBucket: "PASTE_STORAGE_BUCKET",
+      messagingSenderId: "PASTE_SENDER_ID",
+      appId: "PASTE_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    enableIndexedDbPersistence(db).catch(() => {});
+
     // ------------------------------
     // Storage keys
     // ------------------------------
-    const THEME_KEY = "nh_theme";
     const CUSTOM_DICT_KEY = "nh_custom_dict";
+    const LAST_SUGGESTION_KEY = "nh_last_suggestion_ts";
 
     // ------------------------------
     // Built-in dictionary (seed)
@@ -291,7 +301,7 @@
       ["leo", ["레오"]],
       ["liam", ["리암"]],
       ["oliver", ["올리버"]],
-      ["jack", ["잭"]],
+      ["jack", ["잭"]]
     ]);
 
     // ------------------------------
@@ -301,12 +311,24 @@
     const nameInput = $("#nameInput");
     const resultsEl = $("#results");
     const toast = $("#toast");
+    const communityList = $("#communityList");
 
     const fixEn = $("#fixEn");
     const fixKo = $("#fixKo");
     const dictStatus = $("#dictStatus");
+    const submitSuggestionBtn = $("#submitSuggestionBtn");
 
     $("#year").textContent = new Date().getFullYear();
+
+    let currentUser = null;
+    let canonicalCache = new Map();
+
+    onAuthStateChanged(auth, (user) => {
+      currentUser = user;
+      if (!user) {
+        signInAnonymously(auth).catch(() => {});
+      }
+    });
 
     function escapeHtml(s) {
       return String(s).replace(/[&<>"']/g, c => ({
@@ -338,6 +360,7 @@
     $("#clearBtn").addEventListener("click", () => {
       nameInput.value = "";
       resultsEl.innerHTML = "";
+      communityList.innerHTML = "";
       nameInput.focus();
     });
 
@@ -491,9 +514,188 @@
       return res;
     }
 
-    function lookupOneWord(wordLower) {
+    // ------------------------------
+    // Firestore helpers
+    // ------------------------------
+    async function getCanonical(nameKey) {
+      if (canonicalCache.has(nameKey)) return canonicalCache.get(nameKey);
+      try {
+        const snap = await getDoc(doc(db, "canonical", nameKey));
+        if (snap.exists()) {
+          const data = snap.data();
+          canonicalCache.set(nameKey, data);
+          return data;
+        }
+      } catch {}
+      return null;
+    }
+
+    async function fetchCommunitySuggestions(nameKey) {
+      communityList.innerHTML = "";
+      if (!nameKey) return;
+      const q = query(
+        collection(db, "suggestions"),
+        where("nameKey", "==", nameKey),
+        where("status", "in", ["approved", "pending"]),
+        orderBy("score", "desc"),
+        orderBy("reportCount", "asc"),
+        orderBy("createdAt", "desc"),
+        limit(8)
+      );
+      const snap = await getDocs(q);
+      if (snap.empty) {
+        communityList.innerHTML = `<div class="muted" style="margin-top:8px;">No suggestions yet.</div>`;
+        return;
+      }
+      snap.forEach((docSnap) => {
+        const s = docSnap.data();
+        const row = document.createElement("div");
+        row.className = "community-item";
+        row.innerHTML = `
+          <div>
+            <div class="hangul">${escapeHtml(s.hangul)}</div>
+            <div class="meta">
+              <span class="mini-badge">Score ${s.score ?? 0}</span>
+              <span class="mini-badge">Reports ${s.reportCount ?? 0}</span>
+              <span class="mini-badge ${s.status === "approved" ? "badge-ok" : "badge-warn"}">${s.status === "approved" ? "Approved" : "Pending review"}</span>
+            </div>
+          </div>
+          <div class="row" style="margin:0">
+            <button class="btn" data-vote="up" data-id="${docSnap.id}">👍</button>
+            <button class="btn" data-vote="down" data-id="${docSnap.id}">👎</button>
+            <button class="btn" data-report="true" data-id="${docSnap.id}">Report</button>
+          </div>
+        `;
+        communityList.appendChild(row);
+      });
+    }
+
+    function isValidHangul(s) {
+      return /[가-힣]/.test(s || "");
+    }
+
+    function withinLimits(nameKey, hangul) {
+      return nameKey.length >= 2 && nameKey.length <= 40 && hangul.length >= 1 && hangul.length <= 20;
+    }
+
+    function throttleSuggestion() {
+      const last = Number(localStorage.getItem(LAST_SUGGESTION_KEY) || 0);
+      const now = Date.now();
+      if (now - last < 10000) return false;
+      localStorage.setItem(LAST_SUGGESTION_KEY, String(now));
+      return true;
+    }
+
+    async function submitSuggestion(nameKey, hangul) {
+      if (!currentUser) { showToast("Signing in..."); return; }
+      if (!isValidHangul(hangul)) { showToast("Hangul required"); return; }
+      if (!withinLimits(nameKey, hangul)) { showToast("Length out of range"); return; }
+
+      const canonical = await getCanonical(nameKey);
+      if (canonical && canonical.hangulBest === hangul) {
+        showToast("Already official");
+        return;
+      }
+
+      if (!throttleSuggestion()) {
+        showToast("Please wait 10s before submitting again");
+        return;
+      }
+
+      // If duplicate suggestion exists, upvote it instead of creating a new doc.
+      const dupQ = query(
+        collection(db, "suggestions"),
+        where("nameKey", "==", nameKey),
+        where("hangul", "==", hangul),
+        where("status", "in", ["pending", "approved"]),
+        limit(1)
+      );
+      const dupSnap = await getDocs(dupQ);
+      if (!dupSnap.empty) {
+        const dupDoc = dupSnap.docs[0];
+        await voteSuggestion(nameKey, dupDoc.id, 1);
+        showToast("Voted existing suggestion");
+        return;
+      }
+
+      const suggestionId = crypto.randomUUID();
+      await setDoc(doc(db, "suggestions", suggestionId), {
+        nameKey,
+        hangul,
+        status: "pending",
+        votesUp: 1,
+        votesDown: 0,
+        score: 1,
+        reportCount: 0,
+        createdAt: serverTimestamp(),
+        createdBy: currentUser.uid
+      });
+
+      await setDoc(doc(db, "votes", `${nameKey}_${currentUser.uid}`), {
+        nameKey,
+        suggestionId,
+        vote: 1
+      });
+
+      showToast("Submitted for review");
+      await fetchCommunitySuggestions(nameKey);
+    }
+
+    async function voteSuggestion(nameKey, suggestionId, vote) {
+      if (!currentUser) { showToast("Signing in..."); return; }
+      const voteId = `${nameKey}_${currentUser.uid}`;
+      const voteRef = doc(db, "votes", voteId);
+      await runTransaction(db, async (tx) => {
+        const existingVote = await tx.get(voteRef);
+        if (existingVote.exists()) return;
+        const suggestionRef = doc(db, "suggestions", suggestionId);
+        const suggestionSnap = await tx.get(suggestionRef);
+        if (!suggestionSnap.exists()) return;
+
+        const data = suggestionSnap.data();
+        const up = (data.votesUp || 0) + (vote === 1 ? 1 : 0);
+        const down = (data.votesDown || 0) + (vote === -1 ? 1 : 0);
+        tx.update(suggestionRef, {
+          votesUp: up,
+          votesDown: down,
+          score: up - down
+        });
+        tx.set(voteRef, { nameKey, suggestionId, vote });
+      });
+      await fetchCommunitySuggestions(nameKey);
+    }
+
+    async function reportSuggestion(nameKey, suggestionId) {
+      if (!currentUser) { showToast("Signing in..."); return; }
+      const reportId = `${suggestionId}_${currentUser.uid}`;
+      const reportRef = doc(db, "reports", reportId);
+      await runTransaction(db, async (tx) => {
+        const existingReport = await tx.get(reportRef);
+        if (existingReport.exists()) return;
+        const suggestionRef = doc(db, "suggestions", suggestionId);
+        const suggestionSnap = await tx.get(suggestionRef);
+        if (!suggestionSnap.exists()) return;
+        const data = suggestionSnap.data();
+        tx.update(suggestionRef, { reportCount: (data.reportCount || 0) + 1 });
+        tx.set(reportRef, { suggestionId, nameKey });
+      });
+      showToast("Reported");
+      await fetchCommunitySuggestions(nameKey);
+    }
+
+    // ------------------------------
+    // Lookup order: local > canonical > built-in > rule
+    // ------------------------------
+    async function lookupOneWord(wordLower) {
       const custom = loadCustomDict();
       if (custom[wordLower]) return { options: [custom[wordLower]], source: "custom" };
+
+      const canonical = await getCanonical(wordLower);
+      if (canonical?.hangulBest) {
+        const alts = Array.isArray(canonical.alts) ? canonical.alts : [];
+        return { options: [canonical.hangulBest, ...alts].filter(Boolean).slice(0,3), source: "canonical" };
+      }
+
       if (BUILTIN_DICT.has(wordLower)) return { options: BUILTIN_DICT.get(wordLower), source: "builtin" };
 
       const base = ruleBasedHangul(wordLower);
@@ -505,11 +707,12 @@
 
     function sourceLabel(src){
       if (src === "custom") return "Custom dictionary";
+      if (src === "canonical") return "Canonical";
       if (src === "builtin") return "Built-in dictionary";
       return "Rule-based fallback";
     }
 
-    function renderResults(rawInput, wordResults, combinedOptions, combinedSource) {
+    async function renderResults(rawInput, wordResults, combinedOptions, combinedSource) {
       resultsEl.innerHTML = "";
 
       if (!combinedOptions.length) {
@@ -543,13 +746,13 @@
       debug.className = "muted";
       debug.style.marginTop = "8px";
       debug.innerHTML = wordResults.map(wr => {
-        const s = wr.source === "custom" ? "custom" : (wr.source === "builtin" ? "dict" : "rule");
+        const s = wr.source === "custom" ? "custom" : (wr.source === "canonical" ? "canonical" : (wr.source === "builtin" ? "dict" : "rule"));
         return `${escapeHtml(wr.word)} <span style="opacity:.7">(${s})</span>`;
       }).join(" · ");
       resultsEl.appendChild(debug);
     }
 
-    function convert() {
+    async function convert() {
       const raw = nameInput.value.trim();
       if (!raw) { resultsEl.innerHTML = ""; return; }
 
@@ -561,11 +764,12 @@
       if (!cleaned) { resultsEl.innerHTML = ""; return; }
 
       const words = cleaned.split(" ").map(w => w.trim()).filter(Boolean);
-      const wordResults = words.map(w => {
+      const wordResults = [];
+      for (const w of words) {
         const key = normalizeEnglishKey(w);
-        const res = lookupOneWord(key);
-        return { word: w, key, options: res.options, source: res.source };
-      });
+        const res = await lookupOneWord(key);
+        wordResults.push({ word: w, key, options: res.options, source: res.source });
+      }
 
       const combined = [];
       for (let i = 0; i < 3; i++) {
@@ -575,14 +779,20 @@
       const combinedOptions = [...new Set(combined)].slice(0, 3);
 
       const anyCustom = wordResults.some(w => w.source === "custom");
+      const anyCanonical = wordResults.some(w => w.source === "canonical");
       const allBuiltin = wordResults.every(w => w.source === "builtin");
-      const combinedSource = anyCustom ? "custom" : (allBuiltin ? "builtin" : "rule");
+      const combinedSource = anyCustom ? "custom" : (anyCanonical ? "canonical" : (allBuiltin ? "builtin" : "rule"));
 
-      renderResults(raw, wordResults, combinedOptions, combinedSource);
+      await renderResults(raw, wordResults, combinedOptions, combinedSource);
 
       fixEn.value = normalizeEnglishKey(raw);
       if (!fixKo.value) fixKo.value = combinedOptions[0] || "";
       updateDictStatus();
+
+      const firstKey = wordResults[0]?.key || "";
+      if (firstKey) {
+        fetchCommunitySuggestions(firstKey).catch(() => {});
+      }
     }
 
     $("#convertBtn").addEventListener("click", convert);
@@ -641,9 +851,31 @@
       fixKo.value = ko;
     }
 
+    submitSuggestionBtn.addEventListener("click", () => {
+      const key = normalizeEnglishKey(nameInput.value);
+      const hangul = normalizeHangulValue(fixKo.value);
+      if (!key || key.length < 2) { showToast("Enter an English name"); return; }
+      if (!hangul) { showToast("Enter a Hangul spelling"); return; }
+      submitSuggestion(key, hangul).catch(() => showToast("Failed to submit"));
+    });
+
+    communityList.addEventListener("click", (e) => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      const suggestionId = btn.getAttribute("data-id");
+      if (!suggestionId) return;
+      const nameKey = normalizeEnglishKey(nameInput.value);
+      if (btn.getAttribute("data-vote") === "up") {
+        voteSuggestion(nameKey, suggestionId, 1).catch(() => showToast("Vote failed"));
+      } else if (btn.getAttribute("data-vote") === "down") {
+        voteSuggestion(nameKey, suggestionId, -1).catch(() => showToast("Vote failed"));
+      } else if (btn.getAttribute("data-report")) {
+        reportSuggestion(nameKey, suggestionId).catch(() => showToast("Report failed"));
+      }
+    });
+
     updateDictStatus();
     nameInput.focus();
-    $("#year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

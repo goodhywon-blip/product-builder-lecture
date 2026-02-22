@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="google-adsense-account" content="ca-pub-7713287823701747">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin | Name → Hangul</title>
+  <meta name="description" content="Admin moderation dashboard for Name → Hangul."/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7713287823701747" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="reveal">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <h1>Name → Hangul</h1>
+          <p>Admin dashboard · moderation & canonical control</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <div class="pill" id="loginBtn">Sign in (Google)</div>
+        <div class="pill" id="logoutBtn" style="display:none;">Sign out</div>
+      </div>
+    </header>
+
+    <nav class="nav reveal delay-1" aria-label="Admin">
+      <a href="#shortlist">Review Shortlist</a>
+      <a href="#pending">Pending</a>
+      <a href="#canonical">Canonical Editor</a>
+      <a href="#log">Moderation Log</a>
+      <a href="index.html">Public site</a>
+    </nav>
+
+    <section id="shortlist" class="section reveal delay-2">
+      <div class="section-head">
+        <h3>Review Shortlist</h3>
+        <span>score ≥ 2 and reportCount = 0</span>
+      </div>
+      <div id="shortlistList"></div>
+    </section>
+
+    <section id="pending" class="section reveal delay-3">
+      <div class="section-head">
+        <h3>All Pending</h3>
+        <span>Newest first</span>
+      </div>
+      <div id="pendingList"></div>
+    </section>
+
+    <section id="canonical" class="section reveal delay-4">
+      <div class="section-head">
+        <h3>Canonical Editor</h3>
+        <span>Search by nameKey</span>
+      </div>
+      <div class="row">
+        <div class="field" style="flex:1 1 240px">
+          <div class="icon" aria-hidden="true">EN</div>
+          <input id="canonicalKey" placeholder="nameKey (e.g., jacob)" />
+        </div>
+        <button class="btn" id="loadCanonicalBtn">Load</button>
+      </div>
+      <div class="row">
+        <div class="field" style="flex:1 1 240px">
+          <div class="icon" aria-hidden="true">가</div>
+          <input id="canonicalBest" placeholder="hangulBest" />
+        </div>
+        <div class="field" style="flex:1 1 240px">
+          <div class="icon" aria-hidden="true">Alt</div>
+          <input id="canonicalAlts" placeholder="alts (comma separated)" />
+        </div>
+        <button class="btn primary" id="saveCanonicalBtn">Save canonical</button>
+      </div>
+    </section>
+
+    <section id="log" class="section reveal delay-5">
+      <div class="section-head">
+        <h3>Moderation Log</h3>
+        <span>Latest actions</span>
+      </div>
+      <div id="logList"></div>
+    </section>
+
+    <footer class="reveal delay-5">
+      © <span id="year"></span> Name → Hangul · Admin
+    </footer>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import {
+      getFirestore, doc, getDoc, setDoc, updateDoc, serverTimestamp,
+      collection, query, where, orderBy, limit, getDocs, runTransaction
+    } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "PASTE_API_KEY",
+      authDomain: "PASTE_AUTH_DOMAIN",
+      projectId: "PASTE_PROJECT_ID",
+      storageBucket: "PASTE_STORAGE_BUCKET",
+      messagingSenderId: "PASTE_SENDER_ID",
+      appId: "PASTE_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    const ADMIN_UID = "PASTE_ADMIN_UID_HERE";
+
+    const $ = (s) => document.querySelector(s);
+    const loginBtn = $("#loginBtn");
+    const logoutBtn = $("#logoutBtn");
+
+    const shortlistList = $("#shortlistList");
+    const pendingList = $("#pendingList");
+    const logList = $("#logList");
+
+    const canonicalKey = $("#canonicalKey");
+    const canonicalBest = $("#canonicalBest");
+    const canonicalAlts = $("#canonicalAlts");
+
+    $("#year").textContent = new Date().getFullYear();
+
+    function requireAdmin(user) {
+      return user && user.uid === ADMIN_UID;
+    }
+
+    function renderSuggestionRow(data, id) {
+      const row = document.createElement("div");
+      row.className = "community-item";
+      row.innerHTML = `
+        <div>
+          <div class="hangul">${data.hangul}</div>
+          <div class="meta">
+            <span class="mini-badge">${data.nameKey}</span>
+            <span class="mini-badge">Score ${data.score ?? 0}</span>
+            <span class="mini-badge">Reports ${data.reportCount ?? 0}</span>
+            <span class="mini-badge ${data.status === "approved" ? "badge-ok" : "badge-warn"}">${data.status}</span>
+          </div>
+        </div>
+        <div class="row" style="margin:0">
+          <button class="btn green" data-action="approve" data-id="${id}">Approve</button>
+          <button class="btn danger" data-action="reject" data-id="${id}">Reject</button>
+        </div>
+      `;
+      return row;
+    }
+
+    async function loadShortlist() {
+      shortlistList.innerHTML = "";
+      const q = query(
+        collection(db, "suggestions"),
+        where("status", "==", "pending"),
+        where("reportCount", "==", 0),
+        where("score", ">=", 2),
+        orderBy("score", "desc"),
+        limit(30)
+      );
+      const snap = await getDocs(q);
+      snap.forEach((docSnap) => {
+        shortlistList.appendChild(renderSuggestionRow(docSnap.data(), docSnap.id));
+      });
+      if (snap.empty) shortlistList.innerHTML = `<div class="muted">No shortlist items.</div>`;
+    }
+
+    async function loadPending() {
+      pendingList.innerHTML = "";
+      const q = query(
+        collection(db, "suggestions"),
+        where("status", "==", "pending"),
+        orderBy("createdAt", "desc"),
+        limit(50)
+      );
+      const snap = await getDocs(q);
+      snap.forEach((docSnap) => {
+        pendingList.appendChild(renderSuggestionRow(docSnap.data(), docSnap.id));
+      });
+      if (snap.empty) pendingList.innerHTML = `<div class="muted">No pending items.</div>`;
+    }
+
+    async function loadLog() {
+      logList.innerHTML = "";
+      const q = query(collection(db, "moderationLog"), orderBy("createdAt", "desc"), limit(50));
+      const snap = await getDocs(q);
+      snap.forEach((docSnap) => {
+        const d = docSnap.data();
+        const row = document.createElement("div");
+        row.className = "mini-card";
+        row.innerHTML = `
+          <b>${d.action}</b>
+          <div class="meta">
+            <span class="mini-badge">${d.nameKey || ""}</span>
+            <span class="mini-badge">${d.suggestionId || ""}</span>
+          </div>
+        `;
+        logList.appendChild(row);
+      });
+      if (snap.empty) logList.innerHTML = `<div class="muted">No log entries.</div>`;
+    }
+
+    async function approveSuggestion(id) {
+      const ref = doc(db, "suggestions", id);
+      await runTransaction(db, async (tx) => {
+        const snap = await tx.get(ref);
+        if (!snap.exists()) return;
+        const data = snap.data();
+        const canonicalRef = doc(db, "canonical", data.nameKey);
+        const before = (await tx.get(canonicalRef)).data() || null;
+        tx.set(canonicalRef, {
+          hangulBest: data.hangul,
+          alts: before?.alts || [],
+          updatedAt: serverTimestamp(),
+          updatedBy: auth.currentUser.uid
+        }, { merge: true });
+        tx.update(ref, { status: "approved" });
+        tx.set(doc(collection(db, "moderationLog")), {
+          action: "approve",
+          nameKey: data.nameKey,
+          suggestionId: id,
+          before,
+          after: { hangulBest: data.hangul },
+          adminUid: auth.currentUser.uid,
+          createdAt: serverTimestamp()
+        });
+      });
+    }
+
+    async function rejectSuggestion(id) {
+      const ref = doc(db, "suggestions", id);
+      await runTransaction(db, async (tx) => {
+        const snap = await tx.get(ref);
+        if (!snap.exists()) return;
+        const data = snap.data();
+        tx.update(ref, { status: "rejected" });
+        tx.set(doc(collection(db, "moderationLog")), {
+          action: "reject",
+          nameKey: data.nameKey,
+          suggestionId: id,
+          before: null,
+          after: null,
+          adminUid: auth.currentUser.uid,
+          createdAt: serverTimestamp()
+        });
+      });
+    }
+
+    async function loadCanonical() {
+      const key = canonicalKey.value.trim().toLowerCase();
+      if (!key) return;
+      const snap = await getDoc(doc(db, "canonical", key));
+      if (!snap.exists()) {
+        canonicalBest.value = "";
+        canonicalAlts.value = "";
+        return;
+      }
+      const data = snap.data();
+      canonicalBest.value = data.hangulBest || "";
+      canonicalAlts.value = Array.isArray(data.alts) ? data.alts.join(", ") : "";
+    }
+
+    async function saveCanonical() {
+      const key = canonicalKey.value.trim().toLowerCase();
+      if (key.length < 2) return;
+      const best = canonicalBest.value.trim();
+      const alts = canonicalAlts.value.split(",").map(s => s.trim()).filter(Boolean);
+      const ref = doc(db, "canonical", key);
+      await runTransaction(db, async (tx) => {
+        const before = (await tx.get(ref)).data() || null;
+        tx.set(ref, {
+          hangulBest: best,
+          alts,
+          updatedAt: serverTimestamp(),
+          updatedBy: auth.currentUser.uid
+        }, { merge: true });
+        tx.set(doc(collection(db, "moderationLog")), {
+          action: "editCanonical",
+          nameKey: key,
+          suggestionId: null,
+          before,
+          after: { hangulBest: best, alts },
+          adminUid: auth.currentUser.uid,
+          createdAt: serverTimestamp()
+        });
+      });
+    }
+
+    loginBtn.addEventListener("click", async () => {
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
+    });
+
+    logoutBtn.addEventListener("click", async () => {
+      await signOut(auth);
+    });
+
+    $("#loadCanonicalBtn").addEventListener("click", loadCanonical);
+    $("#saveCanonicalBtn").addEventListener("click", saveCanonical);
+
+    shortlistList.addEventListener("click", async (e) => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      const id = btn.getAttribute("data-id");
+      const action = btn.getAttribute("data-action");
+      if (action === "approve") await approveSuggestion(id);
+      if (action === "reject") await rejectSuggestion(id);
+      await loadShortlist();
+      await loadPending();
+      await loadLog();
+    });
+
+    pendingList.addEventListener("click", async (e) => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      const id = btn.getAttribute("data-id");
+      const action = btn.getAttribute("data-action");
+      if (action === "approve") await approveSuggestion(id);
+      if (action === "reject") await rejectSuggestion(id);
+      await loadShortlist();
+      await loadPending();
+      await loadLog();
+    });
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!requireAdmin(user)) {
+        loginBtn.style.display = "inline-flex";
+        logoutBtn.style.display = "none";
+        shortlistList.innerHTML = `<div class="muted">Admin access required.</div>`;
+        pendingList.innerHTML = `<div class="muted">Admin access required.</div>`;
+        logList.innerHTML = `<div class="muted">Admin access required.</div>`;
+        return;
+      }
+      loginBtn.style.display = "none";
+      logoutBtn.style.display = "inline-flex";
+      await loadShortlist();
+      await loadPending();
+      await loadLog();
+    });
+  </script>
+</body>
+</html>
