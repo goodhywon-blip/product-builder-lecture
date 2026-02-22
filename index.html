@@ -1,195 +1,845 @@
-<!DOCTYPE html>
-<html lang="ko">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="google-adsense-account" content="ca-pub-7713287823701747">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="카메라로 손 모양을 보여주면 AI가 가위/바위/보를 인식하는 인터랙티브 게임. 브라우저에서 바로 즐겨보세요.">
-    <title>가위 바위 보 AI 대결 | 카메라 인식 게임</title>
-    <link rel="stylesheet" href="style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7713287823701747"
-        crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="google-adsense-account" content="ca-pub-7713287823701747">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Name → Hangul</title>
+  <meta name="description" content="Write your English name in Hangul. Dictionary-first accuracy + smart fallback. Browser-only."/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7713287823701747"
+      crossorigin="anonymous"></script>
+  <style>
+    :root{
+      --bg:#070a12;
+      --card:#0c1221;
+      --card2:#0a1020;
+      --text:#eef2ff;
+      --muted:#a7b0c5;
+      --border:#1b2a44;
+      --shadow: 0 18px 46px rgba(0,0,0,.45);
+      --radius: 22px;
+
+      --p1:#7c3aed; /* purple */
+      --p2:#22c55e; /* green */
+      --p3:#38bdf8; /* sky */
+      --danger:#ef4444;
+    }
+
+    [data-theme="light"]{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --card2:#f2f5ff;
+      --text:#0b1220;
+      --muted:#4b5563;
+      --border:#d6def0;
+      --shadow: 0 14px 30px rgba(15,23,42,.10);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1000px 700px at 10% -10%, rgba(124,58,237,.35), transparent 60%),
+        radial-gradient(900px 600px at 110% 10%, rgba(34,197,94,.22), transparent 55%),
+        radial-gradient(1000px 650px at 50% 110%, rgba(56,189,248,.12), transparent 55%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 26px 18px 64px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom: 18px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 240px;
+    }
+
+    .mark{
+      width:44px;height:44px;border-radius:16px;
+      background:
+        radial-gradient(60% 60% at 30% 30%, rgba(255,255,255,.22), transparent 60%),
+        linear-gradient(135deg, rgba(124,58,237,1), rgba(34,197,94,1));
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .mark:after{
+      content:"";
+      position:absolute; inset:-35%;
+      background: linear-gradient(120deg, rgba(255,255,255,.28), transparent 55%);
+      transform: rotate(18deg);
+    }
+
+    .brand h1{
+      margin:0;
+      font-size: 16px;
+      letter-spacing:-.02em;
+    }
+    .brand p{
+      margin:4px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.2;
+    }
+
+    .top-actions{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
+
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:10px 12px;
+      border:1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      cursor:pointer;
+      user-select:none;
+      transition: transform .12s ease, border-color .12s ease;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    [data-theme="light"] .pill{ background: rgba(15,23,42,.03); }
+    .pill:hover{ border-color: rgba(124,58,237,.55); transform: translateY(-1px); }
+
+    .hero{
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 10px 0 16px;
+    }
+    .hero .headline{
+      font-size: 30px;
+      letter-spacing:-.03em;
+      margin:0;
+    }
+    .hero .subhead{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      max-width: 80ch;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 16px;
+      align-items:start;
+    }
+    @media (max-width: 940px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(1200px 400px at 10% 0%, rgba(124,58,237,.10), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position: relative;
+    }
+    [data-theme="light"] .card{
+      background: linear-gradient(180deg, var(--card), var(--card2));
+    }
+    .card .inner{ padding: 18px; }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    [data-theme="light"] .badge{ background: rgba(15,23,42,.03); }
+
+    .row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items: stretch;
+      margin-top: 14px;
+    }
+
+    .field{
+      flex: 1 1 320px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(255,255,255,.03);
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 12px 12px;
+    }
+    [data-theme="light"] .field{ background: rgba(15,23,42,.02); }
+
+    .field .icon{
+      width:34px;height:34px;border-radius: 12px;
+      display:flex;align-items:center;justify-content:center;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: rgba(255,255,255,.85);
+      font-size: 16px;
+      flex: 0 0 auto;
+    }
+    [data-theme="light"] .field .icon{ color: rgba(15,23,42,.75); background: rgba(15,23,42,.02); }
+
+    .field input{
+      flex:1;
+      border:0;
+      outline:none;
+      background: transparent;
+      color: var(--text);
+      font-size: 16px;
+      padding: 2px 2px;
+      min-width: 180px;
+    }
+    .field input::placeholder{ color: rgba(167,176,197,.85); }
+
+    .btn{
+      border:1px solid var(--border);
+      border-radius: 16px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: -.01em;
+      cursor:pointer;
+      transition: transform .12s ease, filter .12s ease, border-color .12s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      user-select:none;
+    }
+    [data-theme="light"] .btn{ background: rgba(15,23,42,.03); }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(124,58,237,.55); }
+    .btn:active{ transform: translateY(0px); }
+    .btn.primary{
+      border-color: rgba(124,58,237,.8);
+      background: linear-gradient(135deg, rgba(124,58,237,.92), rgba(124,58,237,.62));
+    }
+    .btn.primary:hover{ filter: brightness(1.06); }
+    .btn.green{
+      border-color: rgba(34,197,94,.75);
+      background: linear-gradient(135deg, rgba(34,197,94,.92), rgba(34,197,94,.58));
+    }
+    .btn.danger{
+      border-color: rgba(239,68,68,.75);
+      background: linear-gradient(135deg, rgba(239,68,68,.88), rgba(239,68,68,.55));
+    }
+
+    .results{ display:grid; gap:10px; margin-top: 14px; }
+    .result{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      border-radius: 18px;
+      padding: 12px 12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    [data-theme="light"] .result{ background: rgba(15,23,42,.02); }
+    .hangul{
+      font-size: 28px;
+      font-weight: 950;
+      letter-spacing: .02em;
+      line-height: 1.1;
+    }
+    .meta{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .mini-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .hint{
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    /* Right panel */
+    .panel-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom: 10px;
+    }
+    .panel-title b{ font-size: 14px; letter-spacing: -.01em; }
+
+    .muted{ color: var(--muted); font-size: 12px; }
+
+    footer{
+      margin-top: 16px;
+      text-align:center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .toast{
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 18px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.65);
+      color: white;
+      border: 1px solid rgba(255,255,255,.15);
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .18s ease;
+      font-size: 13px;
+      z-index: 9999;
+    }
+    [data-theme="light"] .toast{ background: rgba(15,23,42,.86); }
+    .toast.show{ opacity: 1; }
+  </style>
 </head>
+
 <body>
-    <main class="container">
-        <header class="topbar">
-            <div class="brand">
-                <p class="eyebrow">AI RPS CHALLENGE</p>
-                <h1>가위 바위 보, AI랑 한 판!</h1>
-                <p class="subtitle">카메라로 손 모양을 보여주면 모델이 가위/바위/보를 인식해요.</p>
-            </div>
-            <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
-                Dark mode
-            </button>
-        </header>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <h1>Name → Hangul</h1>
+          <p>English name → natural Hangul spelling · browser-only</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <div class="pill" id="themeBtn" title="Toggle theme">
+          <span aria-hidden="true">🌓</span><span>Theme</span>
+        </div>
+        <div class="pill" id="clearBtn" title="Clear">
+          <span aria-hidden="true">🧹</span><span>Reset</span>
+        </div>
+      </div>
+    </header>
 
-        <nav class="nav">
-            <a href="#play">플레이</a>
-            <a href="#guide">사용법</a>
-            <a href="#model">모델 소개</a>
-            <a href="#trust">신뢰와 안전</a>
-            <a href="#faq">FAQ</a>
-            <a href="resources.html">리소스</a>
-            <a href="about.html">소개</a>
-            <a href="privacy.html">개인정보</a>
-            <a href="terms.html">이용약관</a>
-            <a href="contact.html">문의</a>
-        </nav>
+    <section class="hero">
+      <h2 class="headline">Write your name in Hangul ✨</h2>
+      <p class="subhead">
+        Dictionary-first for accuracy. If something looks wrong, save a correction once —
+        your browser will remember it.
+      </p>
+    </section>
 
-        <section id="play" class="arena">
-            <div class="camera-panel">
-                <div class="camera-header">
-                    <h2>내 손 모양</h2>
-                    <p>Start를 눌러 카메라를 켜주세요.</p>
-                </div>
-                <div id="webcam-container" class="webcam"></div>
-                <div class="control-row">
-                    <button id="start-btn" class="primary" type="button">Start</button>
-                    <button id="play-btn" class="ghost" type="button" disabled>대결 시작</button>
-                </div>
-                <div class="status" id="status">대기 중</div>
-            </div>
+    <div class="grid">
+      <!-- LEFT -->
+      <section class="card">
+        <div class="inner">
+          <div class="badge">🇺🇸 English-only MVP · No server · No AI tokens</div>
 
-            <div class="result-panel">
-                <div class="result-card">
-                    <div>
-                        <p class="label">내 선택</p>
-                        <h3 id="player-choice">-</h3>
-                    </div>
-                    <div>
-                        <p class="label">AI 선택</p>
-                        <h3 id="ai-choice">-</h3>
-                    </div>
-                </div>
-                <div class="result-message" id="result-message">카메라를 켠 뒤 대결을 시작해보세요.</div>
-                <div class="probability">
-                    <p class="label">인식 확률</p>
-                    <div id="label-container" class="label-list"></div>
-                </div>
+          <div class="row">
+            <div class="field" role="group" aria-label="Name input">
+              <div class="icon" aria-hidden="true">✍️</div>
+              <input id="nameInput" placeholder="e.g., Jacob / Jason / Michael" autocomplete="off" />
             </div>
-        </section>
+            <button class="btn primary" id="convertBtn">Convert</button>
+          </div>
 
-        <section id="guide" class="section">
-            <div class="section-head">
-                <h2>사용법</h2>
-                <p class="section-subtitle">처음 방문한 사용자가 바로 이해할 수 있도록 흐름을 정리했어요.</p>
-            </div>
-            <ul class="bullet">
-                <li>Start 버튼을 눌러 카메라 권한을 허용하세요.</li>
-                <li>카메라에 손을 보여주고, 인식 확률이 안정될 때까지 기다려요.</li>
-                <li>대결 시작 버튼을 누르면 AI가 랜덤으로 선택한 손 모양과 승패가 표시돼요.</li>
-                <li>밝은 조명과 깨끗한 배경에서 인식률이 높습니다.</li>
-            </ul>
-        </section>
+          <div class="results" id="results"></div>
 
-        <section id="model" class="section">
-            <div class="section-head">
-                <h2>모델 소개</h2>
-                <p class="section-subtitle">Teachable Machine 기반의 이미지 분류 모델을 사용합니다.</p>
-            </div>
-            <div class="card-grid">
-                <article class="card">
-                    <h3>브라우저 내 처리</h3>
-                    <p>손 모양 인식은 브라우저에서 바로 수행됩니다. 카메라 영상이 별도의 서버로 업로드되지 않도록 구성했습니다.</p>
-                </article>
-                <article class="card">
-                    <h3>모델 불러오기</h3>
-                    <p>모델 파일은 Teachable Machine의 공개 URL에서 불러옵니다. 네트워크가 불안하면 로딩 시간이 길어질 수 있어요.</p>
-                </article>
-                <article class="card">
-                    <h3>한계와 개선</h3>
-                    <p>조명, 각도, 배경에 따라 인식률이 달라질 수 있습니다. 업데이트 노트에서 개선 계획을 공유합니다.</p>
-                </article>
-            </div>
-        </section>
+          <div class="hint">
+            Tip: click <b>Fix</b> on a result to pre-fill the right panel.
+          </div>
+        </div>
+      </section>
 
-        <section class="section">
-            <div class="section-head">
-                <h2>업데이트 노트</h2>
-                <p class="section-subtitle">작지만 꾸준히 개선되는 프로젝트를 지향합니다.</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <p class="timeline-date">2026-02-22</p>
-                    <p class="timeline-text">사이트 구조, 안내 콘텐츠, 정책 페이지를 강화하고 리소스 문서를 추가했습니다.</p>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-date">2026-02-07</p>
-                    <p class="timeline-text">기본 UI와 다크모드 토글, Teachable Machine 연동을 적용했습니다.</p>
-                </div>
-            </div>
-        </section>
+      <!-- RIGHT -->
+      <aside class="card">
+        <div class="inner">
+          <div class="panel-title">
+            <b>Fix a name (dictionary)</b>
+            <span class="muted" id="dictStatus"></span>
+          </div>
+          <div class="muted">If Google Translate is “right”, just save that spelling here.</div>
 
-        <section id="trust" class="section">
-            <div class="section-head">
-                <h2>신뢰와 안전</h2>
-                <p class="section-subtitle">사용자에게 가치 있는 정보와 경험을 제공하기 위한 원칙입니다.</p>
+          <div class="row" style="margin-top:10px">
+            <div class="field" style="flex:1 1 240px">
+              <div class="icon" aria-hidden="true">A</div>
+              <input id="fixEn" placeholder="English (e.g., Jacob)" autocomplete="off" />
             </div>
-            <div class="card-grid">
-                <article class="card">
-                    <h3>콘텐츠 중심</h3>
-                    <p>게임 체험과 설명 콘텐츠를 핵심으로 구성했습니다. 빈 페이지나 중복 콘텐츠를 만들지 않습니다.</p>
-                </article>
-                <article class="card">
-                    <h3>탐색 구조</h3>
-                    <p>상단 메뉴에서 원하는 정보를 빠르게 찾을 수 있습니다. 정책 페이지와 문의 경로도 쉽게 접근하도록 했습니다.</p>
-                </article>
-                <article class="card">
-                    <h3>광고 균형</h3>
-                    <p>광고는 콘텐츠의 보조 요소로만 다룹니다. 과도한 광고로 콘텐츠를 가리지 않도록 설계합니다.</p>
-                </article>
+            <div class="field" style="flex:1 1 240px">
+              <div class="icon" aria-hidden="true">가</div>
+              <input id="fixKo" placeholder="Hangul (e.g., 제이콥)" autocomplete="off" />
             </div>
-            <div class="callout">
-                <p>본 사이트는 사용자 경험과 콘텐츠 가치를 우선으로 개선합니다. 운영 방식과 업데이트는 리소스 문서에서 투명하게 공유합니다.</p>
-            </div>
-        </section>
+          </div>
 
-        <section id="faq" class="section">
-            <div class="section-head">
-                <h2>자주 묻는 질문</h2>
-                <p class="section-subtitle">실제 방문자가 궁금해하는 내용을 중심으로 정리했습니다.</p>
-            </div>
-            <div class="faq">
-                <div class="faq-item">
-                    <h3>카메라 영상이 저장되나요?</h3>
-                    <p>아니요. 인식은 브라우저에서만 이루어지며 영상은 저장하지 않습니다.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>모델이 틀리는 경우가 있나요?</h3>
-                    <p>빛이나 배경, 손의 각도에 따라 인식률이 떨어질 수 있습니다. 밝은 조명에서 시도해 주세요.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>모바일에서도 되나요?</h3>
-                    <p>모바일 브라우저에서도 동작하지만, 기기 성능에 따라 로딩 시간이 길어질 수 있어요.</p>
-                </div>
-                <div class="faq-item">
-                    <h3>광고가 표시되나요?</h3>
-                    <p>현재는 광고가 표시되지 않지만, 향후 운영을 위해 광고 도입을 검토하고 있습니다.</p>
-                </div>
-            </div>
-        </section>
+          <div class="row">
+            <button class="btn green" id="saveFixBtn">Save</button>
+            <button class="btn danger" id="deleteFixBtn">Delete</button>
+            <button class="btn" id="exportDictBtn">Copy dictionary</button>
+            <button class="btn" id="resetDictBtn" title="Remove all your custom fixes">Reset custom</button>
+          </div>
 
-        <footer class="footer">
-            <div>
-                <p class="footer-title">AI RPS CHALLENGE</p>
-                <p class="footer-text">가위 바위 보를 AI로 즐기는 미니 프로젝트입니다.</p>
-            </div>
-            <div class="footer-links">
-                <a href="resources.html">리소스</a>
-                <a href="about.html">소개</a>
-                <a href="privacy.html">개인정보처리방침</a>
-                <a href="terms.html">이용약관</a>
-                <a href="contact.html">문의</a>
-            </div>
-            <div>
-                <p class="footer-label">Contact</p>
-                <p class="footer-text">goodhywon@gmail.com</p>
-            </div>
-        </footer>
-    </main>
+          <div class="hint" style="margin-top:12px">
+            Your fixes are stored only in this browser (localStorage).
+          </div>
+        </div>
+      </aside>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-    <script src="main.js"></script>
+    <footer>
+      © <span id="year"></span> Name → Hangul · Privacy-friendly (localStorage only)
+    </footer>
+  </div>
+
+  <div class="toast" id="toast">Copied!</div>
+
+  <script>
+    // ------------------------------
+    // Storage keys
+    // ------------------------------
+    const THEME_KEY = "nh_theme";
+    const CUSTOM_DICT_KEY = "nh_custom_dict";
+
+    // ------------------------------
+    // Built-in dictionary (seed)
+    // ------------------------------
+    const BUILTIN_DICT = new Map([
+      ["jacob", ["제이콥"]],
+      ["jason", ["제이슨"]],
+      ["mason", ["메이슨"]],
+      ["jackson", ["잭슨","재커슨"]],
+      ["michael", ["마이클"]],
+      ["william", ["윌리엄","윌리암"]],
+      ["thomas", ["토머스","토마스"]],
+      ["james", ["제임스"]],
+      ["andrew", ["앤드루"]],
+      ["henry", ["헨리"]],
+      ["george", ["조지"]],
+      ["david", ["데이비드"]],
+      ["john", ["존"]],
+      ["noah", ["노아"]],
+      ["isaac", ["아이작","이삭"]],
+      ["benjamin", ["벤자민"]],
+      ["alexander", ["알렉산더","알렉산더르"]],
+      ["charlie", ["찰리"]],
+      ["harry", ["해리"]],
+      ["leo", ["레오"]],
+      ["liam", ["리암"]],
+      ["oliver", ["올리버"]],
+      ["jack", ["잭"]],
+    ]);
+
+    // ------------------------------
+    // DOM
+    // ------------------------------
+    const $ = (s) => document.querySelector(s);
+    const nameInput = $("#nameInput");
+    const resultsEl = $("#results");
+    const toast = $("#toast");
+
+    const fixEn = $("#fixEn");
+    const fixKo = $("#fixKo");
+    const dictStatus = $("#dictStatus");
+
+    $("#year").textContent = new Date().getFullYear();
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+      }[c]));
+    }
+
+    function showToast(msg="Copied!") {
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 900);
+    }
+
+    async function copyText(t) {
+      try {
+        await navigator.clipboard.writeText(t);
+        showToast("Copied!");
+      } catch {
+        const ta = document.createElement("textarea");
+        ta.value = t;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        showToast("Copied!");
+      }
+    }
+
+    // ------------------------------
+    // Theme
+    // ------------------------------
+    function setTheme(t) {
+      document.documentElement.setAttribute("data-theme", t);
+      localStorage.setItem(THEME_KEY, t);
+    }
+    setTheme(localStorage.getItem(THEME_KEY) || "dark");
+
+    $("#themeBtn").addEventListener("click", () => {
+      const cur = document.documentElement.getAttribute("data-theme") || "dark";
+      setTheme(cur === "dark" ? "light" : "dark");
+    });
+
+    $("#clearBtn").addEventListener("click", () => {
+      nameInput.value = "";
+      resultsEl.innerHTML = "";
+      nameInput.focus();
+    });
+
+    // ------------------------------
+    // Custom dictionary (highest priority)
+    // ------------------------------
+    function loadCustomDict() {
+      try {
+        const obj = JSON.parse(localStorage.getItem(CUSTOM_DICT_KEY) || "{}");
+        if (obj && typeof obj === "object") return obj;
+      } catch {}
+      return {};
+    }
+
+    function saveCustomDict(obj) {
+      localStorage.setItem(CUSTOM_DICT_KEY, JSON.stringify(obj));
+    }
+
+    function normalizeEnglishKey(s) {
+      return (s || "")
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z\s'-]/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    function normalizeHangulValue(s) {
+      return (s || "").trim().replace(/\s+/g, " ").trim();
+    }
+
+    function updateDictStatus() {
+      const d = loadCustomDict();
+      dictStatus.textContent = `${Object.keys(d).length} custom fixes`;
+    }
+
+    // ------------------------------
+    // Rule-based fallback
+    // ------------------------------
+    const CHO  = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"];
+    const JUNG = ["ㅏ","ㅐ","ㅑ","ㅒ","ㅓ","ㅔ","ㅕ","ㅖ","ㅗ","ㅘ","ㅙ","ㅚ","ㅛ","ㅜ","ㅝ","ㅞ","ㅟ","ㅠ","ㅡ","ㅢ","ㅣ"];
+    const JONG = ["", "ㄱ","ㄲ","ㄳ","ㄴ","ㄵ","ㄶ","ㄷ","ㄹ","ㄺ","ㄻ","ㄼ","ㄽ","ㄾ","ㄿ","ㅀ","ㅁ","ㅂ","ㅄ","ㅅ","ㅆ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"];
+    const choIndex  = Object.fromEntries(CHO.map((c,i)=>[c,i]));
+    const jungIndex = Object.fromEntries(JUNG.map((c,i)=>[c,i]));
+    const jongIndex = Object.fromEntries(JONG.map((c,i)=>[c,i]));
+
+    function composeSyllable(cho, jung, jong="") {
+      if (!(cho in choIndex)) cho = "ㅇ";
+      if (!(jung in jungIndex)) jung = "ㅏ";
+      if (!(jong in jongIndex)) jong = "";
+      const base = 0xAC00;
+      const code = base + (choIndex[cho] * 21 * 28) + (jungIndex[jung] * 28) + jongIndex[jong];
+      return String.fromCharCode(code);
+    }
+
+    const VOWELS = [
+      ["eigh","에이"], ["igh","아이"],
+      ["eau","오"], ["ieu","유"],
+      ["ai","에이"], ["ay","에이"],
+      ["ea","이"], ["ee","이"], ["ie","이"], ["ei","이"],
+      ["oo","우"], ["ow","아우"], ["ou","아우"],
+      ["au","오"], ["aw","오"],
+      ["oi","오이"], ["oy","오이"],
+      ["oa","오"], ["oe","오"],
+      ["a","아"], ["e","에"], ["i","이"], ["o","오"], ["u","우"], ["y","이"]
+    ];
+
+    const CONS = [
+      ["tch","ㅊ"], ["ch","ㅊ"], ["sh","ㅅ"], ["ph","ㅍ"],
+      ["th","ㅌ"], ["ck","ㅋ"], ["ng","ㅇ"], ["qu","ㅋ"], ["wh","ㅎ"],
+      ["kn","ㄴ"], ["wr","ㄹ"], ["ps","ㅅ"], ["x","ㅋㅅ"],
+      ["c","ㅋ"], ["g","ㄱ"], ["k","ㅋ"], ["j","ㅈ"], ["q","ㅋ"],
+      ["r","ㄹ"], ["l","ㄹ"], ["m","ㅁ"], ["n","ㄴ"], ["b","ㅂ"], ["p","ㅍ"],
+      ["d","ㄷ"], ["t","ㅌ"], ["f","ㅍ"], ["v","ㅂ"], ["h","ㅎ"], ["s","ㅅ"], ["z","ㅈ"], ["w","ㅇ"],
+    ];
+
+    function tokenize(word) {
+      let s = word.toLowerCase();
+      const out = [];
+      let i = 0;
+      while (i < s.length) {
+        const ch = s[i];
+        if (ch === "'" || ch === "-") { i++; continue; }
+
+        // "c" before e/i/y -> ㅅ
+        if (s[i] === "c" && (s[i+1] === "e" || s[i+1] === "i" || s[i+1] === "y")) {
+          out.push({type:"C", val:"ㅅ"}); i += 1; continue;
+        }
+
+        let matched = false;
+
+        for (const [pat, val] of VOWELS) {
+          if (s.startsWith(pat, i)) { out.push({type:"V", val}); i += pat.length; matched = true; break; }
+        }
+        if (matched) continue;
+
+        for (const [pat, val] of CONS) {
+          if (s.startsWith(pat, i)) { out.push({type:"C", val}); i += pat.length; matched = true; break; }
+        }
+        if (matched) continue;
+
+        i++;
+      }
+      return out;
+    }
+
+    function pickJung(vowelSyllables) {
+      const map = [
+        ["아","ㅏ"], ["애","ㅐ"], ["야","ㅑ"], ["예","ㅖ"], ["에","ㅔ"],
+        ["어","ㅓ"], ["여","ㅕ"],
+        ["오","ㅗ"], ["와","ㅘ"], ["왜","ㅙ"], ["외","ㅚ"],
+        ["우","ㅜ"], ["워","ㅝ"], ["웨","ㅞ"], ["위","ㅟ"],
+        ["유","ㅠ"], ["으","ㅡ"], ["의","ㅢ"], ["이","ㅣ"],
+      ];
+      for (const [k,v] of map) if (vowelSyllables.startsWith(k)) return v;
+      return "ㅏ";
+    }
+
+    function toJong(consonantJamo) {
+      const last = consonantJamo.slice(-1);
+      if (JONG.includes(last)) return last;
+      const close = {"ㅍ":"ㅂ","ㅋ":"ㄱ","ㅊ":"ㅈ","ㅌ":"ㄷ","ㅆ":"ㅅ"};
+      return (close[last] && JONG.includes(close[last])) ? close[last] : "";
+    }
+
+    function toCho(consonantJamo) {
+      const first = consonantJamo[0];
+      if (CHO.includes(first)) return first;
+      const close = {"ㅍ":"ㅂ","ㅋ":"ㄱ","ㅊ":"ㅈ","ㅌ":"ㄷ","ㅆ":"ㅅ"};
+      return (close[first] && CHO.includes(close[first])) ? close[first] : "ㅇ";
+    }
+
+    function ruleBasedHangul(word) {
+      const tokens = tokenize(word);
+      if (!tokens.length) return "";
+      let res = "";
+      let i = 0;
+      while (i < tokens.length) {
+        let cho = "ㅇ";
+        if (tokens[i]?.type === "C") { cho = toCho(tokens[i].val); i++; }
+        if (tokens[i]?.type !== "V") break;
+        const jung = pickJung(tokens[i].val);
+        i++;
+
+        let jong = "";
+        if (tokens[i]?.type === "C" && tokens[i+1]?.type !== "V") {
+          jong = toJong(tokens[i].val);
+          i++;
+        }
+        res += composeSyllable(cho, jung, jong);
+      }
+      return res;
+    }
+
+    // ------------------------------
+    // Lookup: Custom > Built-in > Rule
+    // ------------------------------
+    function lookupOneWord(wordLower) {
+      const custom = loadCustomDict();
+      if (custom[wordLower]) return { options: [custom[wordLower]], source: "custom" };
+      if (BUILTIN_DICT.has(wordLower)) return { options: BUILTIN_DICT.get(wordLower), source: "builtin" };
+
+      const base = ruleBasedHangul(wordLower);
+      let thVariant = "";
+      if (wordLower.includes("th")) thVariant = ruleBasedHangul(wordLower.replaceAll("th", "s"));
+      const opts = [base, thVariant].filter(Boolean);
+      return { options: [...new Set(opts)].slice(0, 3), source: "rule" };
+    }
+
+    // ------------------------------
+    // Results
+    // ------------------------------
+    function sourceLabel(src){
+      if (src === "custom") return "Custom dictionary";
+      if (src === "builtin") return "Built-in dictionary";
+      return "Rule-based fallback";
+    }
+
+    function renderResults(rawInput, wordResults, combinedOptions, combinedSource) {
+      resultsEl.innerHTML = "";
+
+      if (!combinedOptions.length) {
+        resultsEl.innerHTML = `<div class="result"><div><div class="hangul">—</div><div class="meta">Couldn’t parse that. Please use letters only.</div></div></div>`;
+        return;
+      }
+
+      combinedOptions.forEach((ko, idx) => {
+        const el = document.createElement("div");
+        el.className = "result";
+        el.innerHTML = `
+          <div>
+            <div class="hangul">${escapeHtml(ko)}</div>
+            <div class="meta">
+              <span class="mini-badge">${idx === 0 ? "Recommended" : "Alternative"}</span>
+              <span class="mini-badge">${escapeHtml(sourceLabel(combinedSource))}</span>
+            </div>
+          </div>
+          <div class="row" style="margin:0">
+            <button class="btn green" style="padding:10px 12px;border-radius:14px">Copy</button>
+            <button class="btn" style="padding:10px 12px;border-radius:14px">Fix</button>
+          </div>
+        `;
+        const [copyBtn, fixBtn] = el.querySelectorAll("button");
+        copyBtn.addEventListener("click", () => copyText(ko));
+        fixBtn.addEventListener("click", () => setFixBoxesFromInputOutput(rawInput, ko));
+        resultsEl.appendChild(el);
+      });
+
+      const debug = document.createElement("div");
+      debug.className = "muted";
+      debug.style.marginTop = "8px";
+      debug.innerHTML = wordResults.map(wr => {
+        const s = wr.source === "custom" ? "custom" : (wr.source === "builtin" ? "dict" : "rule");
+        return `${escapeHtml(wr.word)} <span style="opacity:.7">(${s})</span>`;
+      }).join(" · ");
+      resultsEl.appendChild(debug);
+    }
+
+    // ------------------------------
+    // Convert
+    // ------------------------------
+    function convert() {
+      const raw = nameInput.value.trim();
+      if (!raw) { resultsEl.innerHTML = ""; return; }
+
+      const cleaned = raw
+        .replace(/[^a-zA-Z\s'-]/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+      if (!cleaned) { resultsEl.innerHTML = ""; return; }
+
+      const words = cleaned.split(" ").map(w => w.trim()).filter(Boolean);
+      const wordResults = words.map(w => {
+        const key = normalizeEnglishKey(w);
+        const res = lookupOneWord(key);
+        return { word: w, key, options: res.options, source: res.source };
+      });
+
+      const combined = [];
+      for (let i = 0; i < 3; i++) {
+        const parts = wordResults.map(wr => wr.options[i] || wr.options[0]).filter(Boolean);
+        if (parts.length) combined.push(parts.join(" "));
+      }
+      const combinedOptions = [...new Set(combined)].slice(0, 3);
+
+      const anyCustom = wordResults.some(w => w.source === "custom");
+      const allBuiltin = wordResults.every(w => w.source === "builtin");
+      const combinedSource = anyCustom ? "custom" : (allBuiltin ? "builtin" : "rule");
+
+      renderResults(raw, wordResults, combinedOptions, combinedSource);
+
+      // Prefill fix box
+      fixEn.value = normalizeEnglishKey(raw);
+      if (!fixKo.value) fixKo.value = combinedOptions[0] || "";
+      updateDictStatus();
+    }
+
+    $("#convertBtn").addEventListener("click", convert);
+    nameInput.addEventListener("keydown", (e) => { if (e.key === "Enter") convert(); });
+
+    // ------------------------------
+    // Fix actions
+    // ------------------------------
+    $("#saveFixBtn").addEventListener("click", () => {
+      const en = normalizeEnglishKey(fixEn.value);
+      const ko = normalizeHangulValue(fixKo.value);
+
+      if (!en || en.length < 2) { showToast("Enter an English name"); return; }
+      if (!ko || !/[가-힣]/.test(ko)) { showToast("Enter a Hangul spelling"); return; }
+
+      const d = loadCustomDict();
+      d[en] = ko;
+      saveCustomDict(d);
+
+      updateDictStatus();
+      showToast("Saved!");
+      nameInput.value = en;
+      convert();
+    });
+
+    $("#deleteFixBtn").addEventListener("click", () => {
+      const en = normalizeEnglishKey(fixEn.value);
+      if (!en) { showToast("Enter the English name"); return; }
+
+      const d = loadCustomDict();
+      if (d[en]) {
+        delete d[en];
+        saveCustomDict(d);
+        updateDictStatus();
+        showToast("Deleted!");
+      } else {
+        showToast("No custom entry");
+      }
+      convert();
+    });
+
+    $("#exportDictBtn").addEventListener("click", async () => {
+      const d = loadCustomDict();
+      const lines = Object.entries(d)
+        .sort((a,b)=>a[0].localeCompare(b[0]))
+        .map(([k,v]) => `${k}\t${v}`);
+      await copyText(lines.join("\n") || "(empty)");
+    });
+
+    $("#resetDictBtn").addEventListener("click", () => {
+      localStorage.removeItem(CUSTOM_DICT_KEY);
+      updateDictStatus();
+      showToast("Reset custom fixes!");
+      convert();
+    });
+
+    function setFixBoxesFromInputOutput(en, ko) {
+      fixEn.value = normalizeEnglishKey(en);
+      fixKo.value = ko;
+    }
+
+    // ------------------------------
+    // Init
+    // ------------------------------
+    updateDictStatus();
+    nameInput.focus();
+  </script>
 </body>
 </html>
