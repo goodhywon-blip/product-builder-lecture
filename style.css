@@ -98,6 +98,11 @@ h3 {
     margin: 8px 0 32px;
 }
 
+.brand {
+    display: grid;
+    gap: 6px;
+}
+
 .nav a {
     text-decoration: none;
     color: var(--text-color);
@@ -285,6 +290,18 @@ h3 {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 12px;
+}
+
+.callout {
+    margin-top: 18px;
+    padding: 16px;
+    border-radius: 14px;
+    background: rgba(255, 107, 61, 0.1);
+    border: 1px solid rgba(255, 107, 61, 0.2);
+}
+
+.callout p {
+    margin: 0;
 }
 
 .section-subtitle {
