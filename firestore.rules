@@ -34,7 +34,8 @@ service cloud.firestore {
     }
 
     match /votes/{voteId} {
-      allow read: if false;
+      allow get: if request.auth != null && voteId.matches('.*_' + request.auth.uid);
+      allow list: if false;
       allow create: if request.auth != null
         && isValidNameKey(request.resource.data.nameKey)
         && (request.resource.data.vote == 1 || request.resource.data.vote == -1)
@@ -43,7 +44,8 @@ service cloud.firestore {
     }
 
     match /reports/{reportId} {
-      allow read: if false;
+      allow get: if request.auth != null && reportId.matches('.*_' + request.auth.uid);
+      allow list: if false;
       allow create: if request.auth != null
         && isValidNameKey(request.resource.data.nameKey)
         && request.resource.data.suggestionId is string;
