@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="google-adsense-account" content="ca-pub-7713287823701747">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>가위 바위 보 AI 대결</title>
+    <meta name="description" content="카메라로 손 모양을 보여주면 AI가 가위/바위/보를 인식하는 인터랙티브 게임. 브라우저에서 바로 즐겨보세요.">
+    <title>가위 바위 보 AI 대결 | 카메라 인식 게임</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="container">
         <header class="topbar">
-            <div>
+            <div class="brand">
                 <p class="eyebrow">AI RPS CHALLENGE</p>
                 <h1>가위 바위 보, AI랑 한 판!</h1>
                 <p class="subtitle">카메라로 손 모양을 보여주면 모델이 가위/바위/보를 인식해요.</p>
@@ -20,7 +21,18 @@
             </button>
         </header>
 
-        <section class="arena">
+        <nav class="nav">
+            <a href="#play">플레이</a>
+            <a href="#guide">사용법</a>
+            <a href="#model">모델 소개</a>
+            <a href="#faq">FAQ</a>
+            <a href="about.html">소개</a>
+            <a href="privacy.html">개인정보</a>
+            <a href="terms.html">이용약관</a>
+            <a href="contact.html">문의</a>
+        </nav>
+
+        <section id="play" class="arena">
             <div class="camera-panel">
                 <div class="camera-header">
                     <h2>내 손 모양</h2>
@@ -52,6 +64,99 @@
                 </div>
             </div>
         </section>
+
+        <section id="guide" class="section">
+            <div class="section-head">
+                <h2>사용법</h2>
+                <p class="section-subtitle">처음 방문한 사용자가 바로 이해할 수 있도록 흐름을 정리했어요.</p>
+            </div>
+            <ul class="bullet">
+                <li>Start 버튼을 눌러 카메라 권한을 허용하세요.</li>
+                <li>카메라에 손을 보여주고, 인식 확률이 안정될 때까지 기다려요.</li>
+                <li>대결 시작 버튼을 누르면 AI가 랜덤으로 선택한 손 모양과 승패가 표시돼요.</li>
+                <li>밝은 조명과 깨끗한 배경에서 인식률이 높습니다.</li>
+            </ul>
+        </section>
+
+        <section id="model" class="section">
+            <div class="section-head">
+                <h2>모델 소개</h2>
+                <p class="section-subtitle">Teachable Machine 기반의 이미지 분류 모델을 사용합니다.</p>
+            </div>
+            <div class="card-grid">
+                <article class="card">
+                    <h3>브라우저 내 처리</h3>
+                    <p>손 모양 인식은 브라우저에서 바로 수행됩니다. 카메라 영상이 별도의 서버로 업로드되지 않도록 구성했습니다.</p>
+                </article>
+                <article class="card">
+                    <h3>모델 불러오기</h3>
+                    <p>모델 파일은 Teachable Machine의 공개 URL에서 불러옵니다. 네트워크가 불안하면 로딩 시간이 길어질 수 있어요.</p>
+                </article>
+                <article class="card">
+                    <h3>한계와 개선</h3>
+                    <p>조명, 각도, 배경에 따라 인식률이 달라질 수 있습니다. 업데이트 노트에서 개선 계획을 공유합니다.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-head">
+                <h2>업데이트 노트</h2>
+                <p class="section-subtitle">작지만 꾸준히 개선되는 프로젝트를 지향합니다.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <p class="timeline-date">2026-02-22</p>
+                    <p class="timeline-text">사이트 구조와 안내 콘텐츠를 강화하고, 개인정보 및 이용약관 페이지를 추가했습니다.</p>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-date">2026-02-07</p>
+                    <p class="timeline-text">기본 UI와 다크모드 토글, Teachable Machine 연동을 적용했습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="section">
+            <div class="section-head">
+                <h2>자주 묻는 질문</h2>
+                <p class="section-subtitle">실제 방문자가 궁금해하는 내용을 중심으로 정리했습니다.</p>
+            </div>
+            <div class="faq">
+                <div class="faq-item">
+                    <h3>카메라 영상이 저장되나요?</h3>
+                    <p>아니요. 인식은 브라우저에서만 이루어지며 영상은 저장하지 않습니다.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>모델이 틀리는 경우가 있나요?</h3>
+                    <p>빛이나 배경, 손의 각도에 따라 인식률이 떨어질 수 있습니다. 밝은 조명에서 시도해 주세요.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>모바일에서도 되나요?</h3>
+                    <p>모바일 브라우저에서도 동작하지만, 기기 성능에 따라 로딩 시간이 길어질 수 있어요.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>광고가 표시되나요?</h3>
+                    <p>현재는 광고가 표시되지 않지만, 향후 운영을 위해 광고 도입을 검토하고 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div>
+                <p class="footer-title">AI RPS CHALLENGE</p>
+                <p class="footer-text">가위 바위 보를 AI로 즐기는 미니 프로젝트입니다.</p>
+            </div>
+            <div class="footer-links">
+                <a href="about.html">소개</a>
+                <a href="privacy.html">개인정보처리방침</a>
+                <a href="terms.html">이용약관</a>
+                <a href="contact.html">문의</a>
+            </div>
+            <div>
+                <p class="footer-label">Contact</p>
+                <p class="footer-text">contact@yourdomain.com</p>
+            </div>
+        </footer>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
