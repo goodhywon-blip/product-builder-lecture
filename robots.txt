@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+
 Sitemap: https://product-builder-lecture-m0x.pages.dev/sitemap.xml

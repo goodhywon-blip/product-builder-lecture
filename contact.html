@@ -1,68 +1,48 @@
-<!DOCTYPE html>
-<html lang="ko">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="google-adsense-account" content="ca-pub-7713287823701747">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI 가위바위보 문의 및 피드백 안내.">
-    <title>문의 | 가위 바위 보 AI 대결</title>
-    <link rel="stylesheet" href="style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7713287823701747"
-        crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="google-adsense-account" content="ca-pub-7713287823701747">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Name → Hangul." />
+  <title>Contact | Name → Hangul</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7713287823701747" crossorigin="anonymous"></script>
+  <style>
+    :root{--bg:#0b1020;--card:#11192e;--text:#eef2ff;--muted:#a7b0c5;--border:#1f2b46;}
+    *{box-sizing:border-box} body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; background:var(--bg); color:var(--text);} 
+    .wrap{max-width:900px;margin:0 auto;padding:28px 18px 60px;}
+    .nav{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 20px;}
+    .nav a{color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:8px 12px;border-radius:999px;font-size:12px;}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px;}
+    h1{margin:0 0 8px;font-size:26px;} p{color:var(--muted);line-height:1.6;}
+    footer{margin-top:18px;color:var(--muted);font-size:12px;}
+  </style>
 </head>
 <body>
-    <main class="container page">
-        <header class="topbar">
-            <div class="brand">
-                <p class="eyebrow">CONTACT</p>
-                <h1>문의하기</h1>
-                <p class="subtitle">피드백과 버그 제보를 환영합니다.</p>
-            </div>
-            <a class="ghost" href="index.html">홈으로</a>
-        </header>
+  <main class="wrap">
+    <h1>Contact</h1>
+    <p>Feedback and corrections are welcome. Please include the English name and your preferred Hangul spelling.</p>
 
-        <nav class="nav">
-            <a href="index.html">홈</a>
-            <a href="about.html">소개</a>
-            <a href="resources.html">리소스</a>
-            <a href="privacy.html">개인정보</a>
-            <a href="terms.html">이용약관</a>
-            <a href="contact.html" aria-current="page">문의</a>
-        </nav>
+    <nav class="nav" aria-label="Site">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="resources.html">Resources</a>
+    </nav>
 
-        <section class="section">
-            <div class="section-head">
-                <h2>연락처</h2>
-                <p class="section-subtitle">운영자에게 이메일로 문의해 주세요.</p>
-            </div>
-            <p>goodhywon@gamil.com</p>
-        </section>
+    <section class="card">
+      <h2>Email</h2>
+      <p>goodhywon@gamil.com</p>
+    </section>
 
-        <section class="section">
-            <div class="section-head">
-                <h2>피드백 가이드</h2>
-                <p class="section-subtitle">아래 내용을 알려주시면 확인이 빨라집니다.</p>
-            </div>
-            <ul class="bullet">
-                <li>사용 중인 기기와 브라우저</li>
-                <li>문제가 발생한 상황과 재현 방법</li>
-                <li>가능하다면 스크린샷</li>
-            </ul>
-        </section>
+    <section class="card" style="margin-top:12px;">
+      <h2>What to include</h2>
+      <p>Device, browser, name tested, and the preferred Hangul spelling. A screenshot helps when relevant.</p>
+    </section>
 
-        <footer class="footer">
-            <div>
-                <p class="footer-title">AI RPS CHALLENGE</p>
-                <p class="footer-text">소중한 피드백을 기다립니다.</p>
-            </div>
-            <div class="footer-links">
-                <a href="index.html">홈</a>
-                <a href="about.html">소개</a>
-                <a href="resources.html">리소스</a>
-                <a href="privacy.html">개인정보처리방침</a>
-                <a href="terms.html">이용약관</a>
-            </div>
-        </footer>
-    </main>
+    <footer>© <span id="year"></span> Name → Hangul</footer>
+  </main>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
