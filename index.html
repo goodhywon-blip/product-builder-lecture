@@ -300,6 +300,9 @@
     let currentUser = null;
     let authReadyResolve;
     const authReady = new Promise((resolve) => { authReadyResolve = resolve; });
+    let lastNameKey = "";
+    let lastRecommended = "";
+    let lastSource = "";
     let canonicalCache = new Map();
 
     onAuthStateChanged(auth, (user) => {
@@ -764,8 +767,11 @@
 
       await renderResults(raw, wordResults, combinedOptions, combinedSource);
 
-      suggestKey.value = normalizeEnglishKey(raw);
-      suggestHangul.value = combinedOptions[0] || "";
+      lastNameKey = normalizeEnglishKey(raw);
+      lastRecommended = combinedOptions[0] || "";
+      lastSource = combinedSource;
+      suggestKey.value = lastNameKey;
+      suggestHangul.value = lastRecommended;
 
       const firstKey = wordResults[0]?.key || "";
       if (firstKey) {
@@ -787,6 +793,11 @@
       const hangul = normalizeHangulValue(suggestHangul.value);
       if (!key || key.length < 2) { showToast("Enter an English name"); return; }
       if (!hangul) { showToast("Enter a Hangul spelling"); return; }
+      const isKnownSource = (lastSource === "custom" || lastSource === "canonical" || lastSource === "builtin");
+      if (isKnownSource && key === lastNameKey && hangul === lastRecommended) {
+        showToast("Already official. No suggestion needed.");
+        return;
+      }
       submitSuggestion(key, hangul).catch((err) => {
         console.error("submitSuggestion failed", err);
         showToast(err?.message ? `Failed: ${err.message}` : "Failed to submit");
