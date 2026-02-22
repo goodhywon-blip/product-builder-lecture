@@ -65,42 +65,10 @@
           <div class="results" id="results"></div>
 
           <div class="hint">
-            Tip: click <b>Fix</b> on a result to pre-fill the right panel.
+            Tip: click <b>Fix</b> to pre-fill the community suggestion form.
           </div>
         </div>
       </section>
-
-      <aside class="card reveal delay-4" id="dictionary">
-        <div class="inner">
-          <div class="panel-title">
-            <b>Fix a name (dictionary)</b>
-            <span class="muted" id="dictStatus"></span>
-          </div>
-          <div class="muted">If Google Translate is “right”, just save that spelling here.</div>
-
-          <div class="row" style="margin-top:10px">
-            <div class="field" style="flex:1 1 240px">
-              <div class="icon" aria-hidden="true">EN</div>
-              <input id="fixEn" placeholder="English (e.g., Jacob)" autocomplete="off" />
-            </div>
-            <div class="field" style="flex:1 1 240px">
-              <div class="icon" aria-hidden="true">가</div>
-              <input id="fixKo" placeholder="Hangul (e.g., 제이콥)" autocomplete="off" />
-            </div>
-          </div>
-
-          <div class="row">
-            <button class="btn green" id="saveFixBtn">Save</button>
-            <button class="btn danger" id="deleteFixBtn">Delete</button>
-            <button class="btn" id="exportDictBtn">Copy dictionary</button>
-            <button class="btn" id="resetDictBtn" title="Remove all your custom fixes">Reset custom</button>
-          </div>
-
-          <div class="hint" style="margin-top:12px">
-            Your fixes are stored only in this browser (localStorage).
-          </div>
-        </div>
-      </aside>
     </section>
 
     <section id="community" class="section reveal delay-2">
@@ -109,6 +77,16 @@
         <span>Reviewed</span>
       </div>
       <p class="text">Community suggestions are reviewed before becoming official.</p>
+      <div class="row" style="margin-top:10px;">
+        <div class="field" style="flex:1 1 240px">
+          <div class="icon" aria-hidden="true">EN</div>
+          <input id="suggestKey" placeholder="Name key" autocomplete="off" />
+        </div>
+        <div class="field" style="flex:1 1 240px">
+          <div class="icon" aria-hidden="true">가</div>
+          <input id="suggestHangul" placeholder="Suggested Hangul" autocomplete="off" />
+        </div>
+      </div>
       <div class="row" style="margin-top:10px;">
         <button class="btn" id="submitSuggestionBtn">Submit suggestion (reviewed before publication)</button>
       </div>
@@ -313,9 +291,8 @@
     const toast = $("#toast");
     const communityList = $("#communityList");
 
-    const fixEn = $("#fixEn");
-    const fixKo = $("#fixKo");
-    const dictStatus = $("#dictStatus");
+    const suggestKey = $("#suggestKey");
+    const suggestHangul = $("#suggestHangul");
     const submitSuggestionBtn = $("#submitSuggestionBtn");
 
     $("#year").textContent = new Date().getFullYear();
@@ -375,9 +352,6 @@
       return {};
     }
 
-    function saveCustomDict(obj) {
-      localStorage.setItem(CUSTOM_DICT_KEY, JSON.stringify(obj));
-    }
 
     function normalizeEnglishKey(s) {
       return (s || "")
@@ -392,10 +366,6 @@
       return (s || "").trim().replace(/\s+/g, " ").trim();
     }
 
-    function updateDictStatus() {
-      const d = loadCustomDict();
-      dictStatus.textContent = `${Object.keys(d).length} custom fixes`;
-    }
 
     // ------------------------------
     // Rule-based fallback
@@ -733,12 +703,12 @@
           </div>
           <div class="row" style="margin:0">
             <button class="btn green" style="padding:10px 12px;border-radius:14px">Copy</button>
-            <button class="btn" style="padding:10px 12px;border-radius:14px">Fix</button>
+            <button class="btn" style="padding:10px 12px;border-radius:14px">Submit suggestion (reviewed before publication)</button>
           </div>
         `;
         const [copyBtn, fixBtn] = el.querySelectorAll("button");
         copyBtn.addEventListener("click", () => copyText(ko));
-        fixBtn.addEventListener("click", () => setFixBoxesFromInputOutput(rawInput, ko));
+        fixBtn.addEventListener("click", () => setSuggestionFromOutput(rawInput, ko));
         resultsEl.appendChild(el);
       });
 
@@ -785,9 +755,8 @@
 
       await renderResults(raw, wordResults, combinedOptions, combinedSource);
 
-      fixEn.value = normalizeEnglishKey(raw);
-      if (!fixKo.value) fixKo.value = combinedOptions[0] || "";
-      updateDictStatus();
+      suggestKey.value = normalizeEnglishKey(raw);
+      if (!suggestHangul.value) suggestHangul.value = combinedOptions[0] || "";
 
       const firstKey = wordResults[0]?.key || "";
       if (firstKey) {
@@ -798,62 +767,15 @@
     $("#convertBtn").addEventListener("click", convert);
     nameInput.addEventListener("keydown", (e) => { if (e.key === "Enter") convert(); });
 
-    $("#saveFixBtn").addEventListener("click", () => {
-      const en = normalizeEnglishKey(fixEn.value);
-      const ko = normalizeHangulValue(fixKo.value);
-
-      if (!en || en.length < 2) { showToast("Enter an English name"); return; }
-      if (!ko || !/[가-힣]/.test(ko)) { showToast("Enter a Hangul spelling"); return; }
-
-      const d = loadCustomDict();
-      d[en] = ko;
-      saveCustomDict(d);
-
-      updateDictStatus();
-      showToast("Saved!");
-      nameInput.value = en;
-      convert();
-    });
-
-    $("#deleteFixBtn").addEventListener("click", () => {
-      const en = normalizeEnglishKey(fixEn.value);
-      if (!en) { showToast("Enter the English name"); return; }
-
-      const d = loadCustomDict();
-      if (d[en]) {
-        delete d[en];
-        saveCustomDict(d);
-        updateDictStatus();
-        showToast("Deleted!");
-      } else {
-        showToast("No custom entry");
-      }
-      convert();
-    });
-
-    $("#exportDictBtn").addEventListener("click", async () => {
-      const d = loadCustomDict();
-      const lines = Object.entries(d)
-        .sort((a,b)=>a[0].localeCompare(b[0]))
-        .map(([k,v]) => `${k}\t${v}`);
-      await copyText(lines.join("\n") || "(empty)");
-    });
-
-    $("#resetDictBtn").addEventListener("click", () => {
-      localStorage.removeItem(CUSTOM_DICT_KEY);
-      updateDictStatus();
-      showToast("Reset custom fixes!");
-      convert();
-    });
-
-    function setFixBoxesFromInputOutput(en, ko) {
-      fixEn.value = normalizeEnglishKey(en);
-      fixKo.value = ko;
+    function setSuggestionFromOutput(en, ko) {
+      suggestKey.value = normalizeEnglishKey(en);
+      suggestHangul.value = ko;
+      document.getElementById("community").scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
     submitSuggestionBtn.addEventListener("click", () => {
-      const key = normalizeEnglishKey(nameInput.value);
-      const hangul = normalizeHangulValue(fixKo.value);
+      const key = normalizeEnglishKey(suggestKey.value || nameInput.value);
+      const hangul = normalizeHangulValue(suggestHangul.value);
       if (!key || key.length < 2) { showToast("Enter an English name"); return; }
       if (!hangul) { showToast("Enter a Hangul spelling"); return; }
       submitSuggestion(key, hangul).catch(() => showToast("Failed to submit"));
@@ -864,7 +786,7 @@
       if (!btn) return;
       const suggestionId = btn.getAttribute("data-id");
       if (!suggestionId) return;
-      const nameKey = normalizeEnglishKey(nameInput.value);
+      const nameKey = normalizeEnglishKey(suggestKey.value || nameInput.value);
       if (btn.getAttribute("data-vote") === "up") {
         voteSuggestion(nameKey, suggestionId, 1).catch(() => showToast("Vote failed"));
       } else if (btn.getAttribute("data-vote") === "down") {
@@ -874,7 +796,6 @@
       }
     });
 
-    updateDictStatus();
     nameInput.focus();
   </script>
 </body>
