@@ -22,6 +22,7 @@
       <div class="top-actions">
         <div class="pill" id="loginBtn">Sign in (Google)</div>
         <div class="pill" id="logoutBtn" style="display:none;">Sign out</div>
+        <div class="pill" id="uidPill" style="display:none;"></div>
       </div>
     </header>
 
@@ -113,6 +114,7 @@
     const $ = (s) => document.querySelector(s);
     const loginBtn = $("#loginBtn");
     const logoutBtn = $("#logoutBtn");
+    const uidPill = $("#uidPill");
 
     const shortlistList = $("#shortlistList");
     const pendingList = $("#pendingList");
@@ -324,6 +326,13 @@
     });
 
     onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        uidPill.style.display = "none";
+        uidPill.textContent = "";
+      } else {
+        uidPill.style.display = "inline-flex";
+        uidPill.textContent = `UID: ${user.uid}`;
+      }
       if (!requireAdmin(user)) {
         loginBtn.style.display = "inline-flex";
         logoutBtn.style.display = "none";
