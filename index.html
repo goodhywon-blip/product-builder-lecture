@@ -298,10 +298,13 @@
     $("#year").textContent = new Date().getFullYear();
 
     let currentUser = null;
+    let authReadyResolve;
+    const authReady = new Promise((resolve) => { authReadyResolve = resolve; });
     let canonicalCache = new Map();
 
     onAuthStateChanged(auth, (user) => {
       currentUser = user;
+      if (user) authReadyResolve?.();
       if (!user) {
         signInAnonymously(auth).catch(() => {});
       }
@@ -557,7 +560,11 @@
     }
 
     async function submitSuggestion(nameKey, hangul) {
-      if (!currentUser) { showToast("Signing in..."); return; }
+      if (!currentUser) {
+        showToast("Signing in...");
+        await authReady.catch(() => {});
+      }
+      if (!currentUser) { showToast("Auth not ready"); return; }
       if (!isValidHangul(hangul)) { showToast("Hangul required"); return; }
       if (!withinLimits(nameKey, hangul)) { showToast("Length out of range"); return; }
 
@@ -778,7 +785,10 @@
       const hangul = normalizeHangulValue(suggestHangul.value);
       if (!key || key.length < 2) { showToast("Enter an English name"); return; }
       if (!hangul) { showToast("Enter a Hangul spelling"); return; }
-      submitSuggestion(key, hangul).catch(() => showToast("Failed to submit"));
+      submitSuggestion(key, hangul).catch((err) => {
+        console.error("submitSuggestion failed", err);
+        showToast(err?.message ? `Failed: ${err.message}` : "Failed to submit");
+      });
     });
 
     communityList.addEventListener("click", (e) => {
