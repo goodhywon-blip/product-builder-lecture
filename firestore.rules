@@ -29,7 +29,21 @@ service cloud.firestore {
         && request.resource.data.reportCount >= 0
         && request.resource.data.score == (request.resource.data.votesUp - request.resource.data.votesDown)
         && request.resource.data.createdBy == request.auth.uid;
-      allow update: if isAdmin();
+      allow update: if isAdmin() || (request.auth != null
+        && request.resource.data.nameKey == resource.data.nameKey
+        && request.resource.data.hangul == resource.data.hangul
+        && request.resource.data.status == resource.data.status
+        && request.resource.data.createdBy == resource.data.createdBy
+        && request.resource.data.votesUp >= resource.data.votesUp
+        && request.resource.data.votesDown >= resource.data.votesDown
+        && request.resource.data.reportCount >= resource.data.reportCount
+        && request.resource.data.votesUp - resource.data.votesDown == request.resource.data.score
+        && request.resource.data.votesUp - resource.data.votesDown >= -9999
+        && request.resource.data.votesUp - resource.data.votesDown <= 9999
+        && (request.resource.data.votesUp == resource.data.votesUp + 1
+            || request.resource.data.votesDown == resource.data.votesDown + 1
+            || request.resource.data.reportCount == resource.data.reportCount + 1)
+      );
       allow delete: if false;
     }
 
