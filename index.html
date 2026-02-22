@@ -3,109 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>오늘 저녁 뭐 먹지?</title>
+    <title>가위 바위 보 AI 대결</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="container">
         <header class="topbar">
             <div>
-                <p class="eyebrow">Tonight's pick</p>
-                <h1>오늘 저녁 뭐 먹지?</h1>
-                <p class="subtitle">버튼을 누르면 오늘의 저녁 메뉴 5가지를 추천해줘요.</p>
+                <p class="eyebrow">AI RPS CHALLENGE</p>
+                <h1>가위 바위 보, AI랑 한 판!</h1>
+                <p class="subtitle">카메라로 손 모양을 보여주면 모델이 가위/바위/보를 인식해요.</p>
             </div>
             <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
                 Dark mode
             </button>
         </header>
 
-        <div class="menu-display">
-            <div class="menu-sets" id="menu-sets" aria-live="polite"></div>
-            <section class="menu-art-card" aria-live="polite">
-                <div class="menu-art-header">
-                    <p class="menu-art-label">Selected Menu</p>
-                    <h2 id="menu-art-title">Pick a menu</h2>
+        <section class="arena">
+            <div class="camera-panel">
+                <div class="camera-header">
+                    <h2>내 손 모양</h2>
+                    <p>Start를 눌러 카메라를 켜주세요.</p>
                 </div>
-                <div class="menu-art-media">
-                    <img id="menu-art-image" alt="Selected menu photo" loading="lazy">
+                <div id="webcam-container" class="webcam"></div>
+                <div class="control-row">
+                    <button id="start-btn" class="primary" type="button">Start</button>
+                    <button id="play-btn" class="ghost" type="button" disabled>대결 시작</button>
                 </div>
-                <div class="menu-art-tags" id="menu-art-tags"></div>
-                <p class="menu-art-note" id="menu-art-note">메뉴를 선택하면 사진을 불러와요.</p>
-                <p class="menu-art-credit">Image source: TheMealDB</p>
-            </section>
-        </div>
-
-        <button id="generate-btn">메뉴 5가지 추천받기</button>
-
-        <section class="inquiry" aria-labelledby="inquiry-title">
-            <div class="inquiry-header">
-                <p class="eyebrow">Partnership</p>
-                <h2 id="inquiry-title">제휴 문의</h2>
-                <p class="subtitle">간단한 정보를 남겨주시면 1-2 영업일 내로 연락드릴게요.</p>
+                <div class="status" id="status">대기 중</div>
             </div>
 
-            <form id="partner-form" class="inquiry-form" action="https://formspree.io/f/mkovqeoo" method="POST">
-                <input type="hidden" name="_subject" value="제휴 문의">
-
-                <label class="field">
-                    <span>담당자 이름</span>
-                    <input type="text" name="name" placeholder="홍길동" required>
-                </label>
-
-                <label class="field">
-                    <span>업무 이메일</span>
-                    <input type="email" name="email" placeholder="hello@company.com" required>
-                </label>
-
-                <label class="field">
-                    <span>회사/브랜드명</span>
-                    <input type="text" name="company" placeholder="브랜드 또는 회사명을 입력" required>
-                </label>
-
-                <label class="field">
-                    <span>직책/역할</span>
-                    <input type="text" name="role" placeholder="마케팅 매니저" required>
-                </label>
-
-                <label class="field field-full">
-                    <span>제휴 내용</span>
-                    <textarea name="message" rows="5" placeholder="제휴 목적, 기대 효과, 주요 아이디어를 적어주세요." required></textarea>
-                </label>
-
-                <label class="consent">
-                    <input type="checkbox" name="consent" required>
-                    <span>개인정보 수집 및 이용에 동의합니다.</span>
-                </label>
-
-                <button class="submit" type="submit">문의 보내기</button>
-                <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-            </form>
-        </section>
-
-        <section class="comments" aria-labelledby="comments-title">
-            <h2 id="comments-title">댓글</h2>
-            <div id="disqus_thread"></div>
-            <script>
-                /**
-                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-                /*
-                var disqus_config = function () {
-                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                };
-                */
-                (function() { // DON'T EDIT BELOW THIS LINE
-                var d = document, s = d.createElement('script');
-                s.src = 'https://productbuilder-ig27u28yea.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            <div class="result-panel">
+                <div class="result-card">
+                    <div>
+                        <p class="label">내 선택</p>
+                        <h3 id="player-choice">-</h3>
+                    </div>
+                    <div>
+                        <p class="label">AI 선택</p>
+                        <h3 id="ai-choice">-</h3>
+                    </div>
+                </div>
+                <div class="result-message" id="result-message">카메라를 켠 뒤 대결을 시작해보세요.</div>
+                <div class="probability">
+                    <p class="label">인식 확률</p>
+                    <div id="label-container" class="label-list"></div>
+                </div>
+            </div>
         </section>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
