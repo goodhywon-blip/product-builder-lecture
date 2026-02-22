@@ -45,14 +45,19 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
 .brand{display:flex;align-items:center;gap:12px;min-width:240px;}
 .mark{
   width:40px;height:40px;border-radius:12px;
-  background: linear-gradient(135deg, #0a84ff, #34c759);
+  background:
+    radial-gradient(circle at 50% 50%, #ffffff 0 36%, transparent 37%),
+    conic-gradient(from 90deg, #0a3d91 0 180deg, #c5161d 180deg 360deg);
   box-shadow: 0 10px 22px rgba(0,0,0,.12);
   position:relative;overflow:hidden;
 }
 .mark:after{
-  content:"";position:absolute;inset:-40%;
-  background: linear-gradient(120deg, rgba(255,255,255,.75), transparent 55%);
-  transform: rotate(18deg);
+  content:"";position:absolute;inset:12%;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 35% 35%, #c5161d 0 34%, transparent 35%),
+    radial-gradient(circle at 65% 65%, #0a3d91 0 34%, transparent 35%);
+  opacity:.95;
 }
 .brand h1{margin:0;font-size:16px;letter-spacing:-.02em;}
 .brand p{margin:3px 0 0;font-size:12px;color:var(--muted);}
@@ -98,6 +103,11 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
   border-radius:999px;border:1px solid var(--border);
   background:#fff;color:var(--muted);font-size:12px;
 }
+.badge::before{
+  content:"";
+  width:10px;height:10px;border-radius:50%;
+  background: conic-gradient(#c5161d 0 120deg, #0a3d91 120deg 240deg, #1f7a3a 240deg 360deg);
+}
 
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch;margin-top:14px;}
 
@@ -124,6 +134,14 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
 .btn:hover{transform: translateY(-1px);border-color:#cdd3dc;box-shadow:0 8px 20px rgba(11,13,18,.08);}
 .btn:active{transform: translateY(0px);}
 .btn.primary{border-color:#cfe3fb;background:linear-gradient(180deg,#0a84ff,#0071e3);color:#fff;}
+.btn.primary::before{
+  content:"";
+  width:14px;height:14px;border-radius:50%;
+  background:
+    radial-gradient(circle at 50% 50%, #ffffff 0 36%, transparent 37%),
+    conic-gradient(from 90deg, #0a3d91 0 180deg, #c5161d 180deg 360deg);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.4);
+}
 .btn.green{border-color:#c7efd5;background:linear-gradient(180deg,#34c759,#23b24a);color:#fff;}
 .btn.danger{border-color:#ffd1cc;background:linear-gradient(180deg,#ff453a,#ff3b30);color:#fff;}
 
