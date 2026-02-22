@@ -3,38 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>제휴 문의</title>
+    <title>오늘 저녁 뭐 먹지?</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main class="page">
-        <section class="hero">
-            <p class="eyebrow">PARTNERSHIP INQUIRY</p>
-            <h1>함께 성장할<br>제휴 파트너를 찾습니다.</h1>
-            <p class="subtitle">간단한 정보를 남겨주시면 1-2 영업일 내에 연락드릴게요.</p>
-            <div class="hero-card">
-                <div class="hero-stat">
-                    <span class="stat-label">응답 시간</span>
-                    <strong>1-2 영업일</strong>
-                </div>
-                <div class="hero-stat">
-                    <span class="stat-label">문의 항목</span>
-                    <strong>브랜드 · 콜라보 · 유통</strong>
-                </div>
-                <div class="hero-stat">
-                    <span class="stat-label">채널</span>
-                    <strong>이메일 회신</strong>
-                </div>
+    <main class="container">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">Tonight's pick</p>
+                <h1>오늘 저녁 뭐 먹지?</h1>
+                <p class="subtitle">버튼을 누르면 오늘의 저녁 메뉴 5가지를 추천해줘요.</p>
             </div>
-        </section>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">
+                Dark mode
+            </button>
+        </header>
 
-        <section class="form-panel" aria-labelledby="form-title">
-            <div class="form-header">
-                <h2 id="form-title">제휴 문의 폼</h2>
-                <p>필수 항목을 채워주세요. 내용이 구체적일수록 빠르게 검토할 수 있어요.</p>
+        <div class="menu-display">
+            <div class="menu-sets" id="menu-sets" aria-live="polite"></div>
+            <section class="menu-art-card" aria-live="polite">
+                <div class="menu-art-header">
+                    <p class="menu-art-label">Selected Menu</p>
+                    <h2 id="menu-art-title">Pick a menu</h2>
+                </div>
+                <div class="menu-art-media">
+                    <img id="menu-art-image" alt="Selected menu photo" loading="lazy">
+                </div>
+                <div class="menu-art-tags" id="menu-art-tags"></div>
+                <p class="menu-art-note" id="menu-art-note">메뉴를 선택하면 사진을 불러와요.</p>
+                <p class="menu-art-credit">Image source: TheMealDB</p>
+            </section>
+        </div>
+
+        <button id="generate-btn">메뉴 5가지 추천받기</button>
+
+        <section class="inquiry" aria-labelledby="inquiry-title">
+            <div class="inquiry-header">
+                <p class="eyebrow">Partnership</p>
+                <h2 id="inquiry-title">제휴 문의</h2>
+                <p class="subtitle">간단한 정보를 남겨주시면 1-2 영업일 내로 연락드릴게요.</p>
             </div>
 
-            <form id="partner-form" action="https://formspree.io/f/mkovqeoo" method="POST">
+            <form id="partner-form" class="inquiry-form" action="https://formspree.io/f/mkovqeoo" method="POST">
                 <input type="hidden" name="_subject" value="제휴 문의">
 
                 <label class="field">
@@ -55,29 +65,6 @@
                 <label class="field">
                     <span>직책/역할</span>
                     <input type="text" name="role" placeholder="마케팅 매니저" required>
-                </label>
-
-                <label class="field">
-                    <span>예상 예산</span>
-                    <select name="budget" required>
-                        <option value="" disabled selected>선택해주세요</option>
-                        <option>1,000만원 미만</option>
-                        <option>1,000만 - 3,000만원</option>
-                        <option>3,000만 - 1억원</option>
-                        <option>1억원 이상</option>
-                        <option>미정</option>
-                    </select>
-                </label>
-
-                <label class="field">
-                    <span>희망 일정</span>
-                    <select name="timeline" required>
-                        <option value="" disabled selected>선택해주세요</option>
-                        <option>즉시 논의</option>
-                        <option>1개월 이내</option>
-                        <option>분기 내</option>
-                        <option>장기 검토</option>
-                    </select>
                 </label>
 
                 <label class="field field-full">
