@@ -122,7 +122,7 @@
     </section>
 
     <footer class="reveal delay-5">
-      © <span id="year"></span> Hangul Name Studio · Privacy-friendly (localStorage only) ·
+      © <span id="year"></span> Hangul Name Studio · Community-reviewed ·
       Contact: <b>goodhywon@gmail.com</b> ·
       <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="contact.html">Contact</a>
     </footer>
@@ -158,8 +158,6 @@
     // ------------------------------
     // Storage keys
     // ------------------------------
-    const CUSTOM_DICT_KEY = "nh_custom_dict";
-    const LAST_SUGGESTION_KEY = "nh_last_suggestion_ts";
 
     // ------------------------------
     // Built-in dictionary (seed)
@@ -212,6 +210,7 @@
     let lastNameKey = "";
     let lastRecommended = "";
     let lastSource = "";
+    let lastSuggestionTs = 0;
     let canonicalCache = new Map();
 
     onAuthStateChanged(auth, (user) => {
@@ -270,17 +269,8 @@
     });
 
     // ------------------------------
-    // Custom dictionary (highest priority)
+    // Normalizers
     // ------------------------------
-    function loadCustomDict() {
-      try {
-        const obj = JSON.parse(localStorage.getItem(CUSTOM_DICT_KEY) || "{}");
-        if (obj && typeof obj === "object") return obj;
-      } catch {}
-      return {};
-    }
-
-
     function normalizeEnglishKey(s) {
       return (s || "")
         .trim()
@@ -477,10 +467,9 @@
     }
 
     function throttleSuggestion() {
-      const last = Number(localStorage.getItem(LAST_SUGGESTION_KEY) || 0);
       const now = Date.now();
-      if (now - last < 10000) return false;
-      localStorage.setItem(LAST_SUGGESTION_KEY, String(now));
+      if (now - lastSuggestionTs < 10000) return false;
+      lastSuggestionTs = now;
       return true;
     }
 
@@ -589,9 +578,6 @@
     // Lookup order: local > canonical > built-in > rule
     // ------------------------------
     async function lookupOneWord(wordLower) {
-      const custom = loadCustomDict();
-      if (custom[wordLower]) return { options: [custom[wordLower]], source: "custom" };
-
       const canonical = await getCanonical(wordLower);
       if (canonical?.hangulBest) {
         const alts = Array.isArray(canonical.alts) ? canonical.alts : [];
@@ -608,7 +594,6 @@
     }
 
     function sourceLabel(src){
-      if (src === "custom") return "Custom dictionary";
       if (src === "canonical") return "Canonical";
       if (src === "builtin") return "Built-in dictionary";
       return "Rule-based fallback";
@@ -648,7 +633,7 @@
       debug.className = "muted";
       debug.style.marginTop = "8px";
       debug.innerHTML = wordResults.map(wr => {
-        const s = wr.source === "custom" ? "custom" : (wr.source === "canonical" ? "canonical" : (wr.source === "builtin" ? "dict" : "rule"));
+        const s = wr.source === "canonical" ? "canonical" : (wr.source === "builtin" ? "dict" : "rule");
         return `${escapeHtml(wr.word)} <span style="opacity:.7">(${s})</span>`;
       }).join(" · ");
       resultsEl.appendChild(debug);
@@ -680,10 +665,9 @@
       }
       const combinedOptions = [...new Set(combined)].slice(0, 3);
 
-      const anyCustom = wordResults.some(w => w.source === "custom");
       const anyCanonical = wordResults.some(w => w.source === "canonical");
       const allBuiltin = wordResults.every(w => w.source === "builtin");
-      const combinedSource = anyCustom ? "custom" : (anyCanonical ? "canonical" : (allBuiltin ? "builtin" : "rule"));
+      const combinedSource = anyCanonical ? "canonical" : (allBuiltin ? "builtin" : "rule");
 
       await renderResults(raw, wordResults, combinedOptions, combinedSource);
 
