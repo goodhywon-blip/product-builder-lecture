@@ -7,54 +7,11 @@
   <meta name="description" content="Resources and notes for Name → Hangul." />
   <title>Resources | Name → Hangul</title>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7713287823701747" crossorigin="anonymous"></script>
-  <style>
-    :root{
-      --bg: #f5f6f8;
-      --bg2:#ffffff;
-      --ink:#0b0d12;
-      --muted:#5a6472;
-      --border:#e7e9ee;
-      --glass: rgba(255,255,255,.72);
-      --shadow: 0 18px 50px rgba(11,13,18,.08);
-      --radius: 20px;
-      --accent:#0071e3;
-      --line:#e1e4ea;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
-      color:var(--ink);
-      background:
-        radial-gradient(1200px 600px at 50% -10%, rgba(0,113,227,.12), transparent 60%),
-        radial-gradient(900px 400px at 90% 10%, rgba(52,199,89,.10), transparent 60%),
-        linear-gradient(180deg, #f7f8fb, #eef1f6);
-    }
-    .wrap{max-width:1040px;margin:0 auto;padding:28px 18px 80px;}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px;}
-    .brand{display:flex;align-items:center;gap:12px;min-width:240px;}
-    .mark{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#0a84ff,#34c759);box-shadow:0 10px 22px rgba(0,0,0,.12);position:relative;overflow:hidden;}
-    .mark:after{content:"";position:absolute;inset:-40%;background:linear-gradient(120deg,rgba(255,255,255,.75),transparent 55%);transform:rotate(18deg);}    
-    .brand h1{margin:0;font-size:16px;letter-spacing:-.02em;}
-    .brand p{margin:3px 0 0;font-size:12px;color:var(--muted);}    
-    .nav{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 20px;}
-    .nav a{text-decoration:none;color:var(--muted);border:1px solid var(--border);border-radius:999px;padding:8px 12px;font-size:12px;background:var(--glass);}
-    .nav a:hover{border-color:#cdd3dc;color:var(--ink);background:#fff;}
-    .hero h2{margin:0 0 8px;font-size:28px;letter-spacing:-.02em;}
-    .hero p{margin:0;color:var(--muted);line-height:1.6;}
-    .section{margin-top:18px;border:1px solid var(--border);border-radius:var(--radius);background:#fff;padding:18px;box-shadow:var(--shadow);}    
-    .section h3{margin:0 0 6px;font-size:16px;}
-    .section p{margin:0;color:var(--muted);line-height:1.6;}
-    .section ul{margin:8px 0 0 18px;color:var(--muted);}    
-    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:12px;}
-    footer a{color:var(--muted);text-decoration:none;}
-    footer a:hover{color:var(--ink);}    
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="wrap">
-    <header>
+    <header class="reveal">
       <div class="brand">
         <div class="mark" aria-hidden="true"></div>
         <div>
@@ -64,7 +21,7 @@
       </div>
     </header>
 
-    <nav class="nav" aria-label="Site">
+    <nav class="nav reveal delay-1" aria-label="Site">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="resources.html">Resources</a>
@@ -73,12 +30,12 @@
       <a href="contact.html">Contact</a>
     </nav>
 
-    <section class="hero">
-      <h2>Resources</h2>
-      <p>Notes about name spellings, pronunciation, and usage.</p>
+    <section class="hero reveal delay-2">
+      <h2 class="page-title">Resources</h2>
+      <p class="page-sub">Notes about name spellings, pronunciation, and usage.</p>
     </section>
 
-    <section class="section">
+    <section class="section reveal delay-3">
       <h3>How to choose a spelling</h3>
       <ul>
         <li>Hangul spellings vary by preference and region.</li>
@@ -94,12 +51,12 @@
       </ul>
     </section>
 
-    <section class="section">
+    <section class="section reveal delay-4">
       <h3>Corrections</h3>
       <p>If you prefer a different spelling, save it in the custom dictionary on the homepage so it becomes your default.</p>
     </section>
 
-    <footer>
+    <footer class="reveal delay-5">
       © <span id="year"></span> Name → Hangul · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a>
     </footer>
   </main>
