@@ -248,14 +248,17 @@
       }
     }
 
-    $("#clearBtn").addEventListener("click", () => {
-      nameInput.value = "";
-      resultsEl.innerHTML = "";
-      communityList.innerHTML = "";
-      suggestKey.value = "";
-      suggestHangul.value = "";
-      nameInput.focus();
-    });
+    const clearBtn = $("#clearBtn");
+    if (clearBtn) {
+      clearBtn.addEventListener("click", () => {
+        nameInput.value = "";
+        resultsEl.innerHTML = "";
+        communityList.innerHTML = "";
+        suggestKey.value = "";
+        suggestHangul.value = "";
+        nameInput.focus();
+      });
+    }
 
     const RANDOM_NAMES = [
       "Jacob", "Jason", "Michael", "Emily", "Sophia", "Noah", "Oliver", "Mia",
