@@ -143,29 +143,136 @@
     // Built-in dictionary (seed)
     // ------------------------------
     const BUILTIN_DICT = new Map([
-      ["jacob", ["제이콥"]],
-      ["jason", ["제이슨"]],
-      ["mason", ["메이슨"]],
-      ["jackson", ["잭슨","재커슨"]],
-      ["michael", ["마이클"]],
-      ["william", ["윌리엄","윌리암"]],
-      ["thomas", ["토머스","토마스"]],
-      ["james", ["제임스"]],
-      ["andrew", ["앤드루"]],
-      ["henry", ["헨리"]],
-      ["george", ["조지"]],
-      ["david", ["데이비드"]],
-      ["john", ["존"]],
-      ["noah", ["노아"]],
-      ["isaac", ["아이작","이삭"]],
-      ["benjamin", ["벤자민"]],
+      ["alex", ["알렉스"]],
+      ["alexa", ["알렉사"]],
       ["alexander", ["알렉산더","알렉산더르"]],
+      ["alexis", ["알렉시스"]],
+      ["alice", ["앨리스"]],
+      ["allen", ["앨런"]],
+      ["alan", ["앨런"]],
+      ["andrew", ["앤드루"]],
+      ["anna", ["안나"]],
+      ["annie", ["애니"]],
+      ["anthony", ["앤서니"]],
+      ["arthur", ["아서"]],
+      ["ava", ["에이바"]],
+      ["bella", ["벨라"]],
+      ["ben", ["벤"]],
+      ["benjamin", ["벤자민"]],
+      ["brian", ["브라이언"]],
+      ["bryan", ["브라이언"]],
+      ["carl", ["칼"]],
+      ["carol", ["캐럴"]],
+      ["charles", ["찰스"]],
       ["charlie", ["찰리"]],
+      ["chris", ["크리스"]],
+      ["christian", ["크리스천"]],
+      ["christina", ["크리스티나"]],
+      ["christine", ["크리스틴"]],
+      ["christopher", ["크리스토퍼"]],
+      ["daniel", ["다니엘"]],
+      ["danielle", ["다니엘"]],
+      ["david", ["데이비드"]],
+      ["diana", ["다이애나"]],
+      ["dylan", ["딜런"]],
+      ["edward", ["에드워드"]],
+      ["elijah", ["일라이저"]],
+      ["elizabeth", ["엘리자베스"]],
+      ["ella", ["엘라"]],
+      ["elliot", ["엘리엇"]],
+      ["emily", ["에밀리"]],
+      ["emma", ["엠마"]],
+      ["eric", ["에릭"]],
+      ["ethan", ["이선"]],
+      ["eugene", ["유진"]],
+      ["felix", ["펠릭스"]],
+      ["frank", ["프랭크"]],
+      ["gabriel", ["가브리엘"]],
+      ["geoff", ["제프"]],
+      ["geoffrey", ["제프리"]],
+      ["george", ["조지"]],
+      ["grace", ["그레이스"]],
+      ["hannah", ["한나"]],
+      ["harriet", ["해리엇"]],
       ["harry", ["해리"]],
+      ["helen", ["헬렌"]],
+      ["henry", ["헨리"]],
+      ["isaac", ["아이작","이삭"]],
+      ["isabella", ["이사벨라"]],
+      ["isabelle", ["이사벨"]],
+      ["jack", ["잭"]],
+      ["jackson", ["잭슨","재커슨"]],
+      ["jacob", ["제이콥"]],
+      ["james", ["제임스"]],
+      ["jane", ["제인"]],
+      ["janet", ["재닛"]],
+      ["jason", ["제이슨"]],
+      ["jennifer", ["제니퍼"]],
+      ["jeremy", ["제러미"]],
+      ["jerry", ["제리"]],
+      ["jessica", ["제시카"]],
+      ["joel", ["조엘"]],
+      ["john", ["존"]],
+      ["joseph", ["조셉"]],
+      ["joshua", ["조슈아"]],
+      ["julia", ["줄리아"]],
+      ["justin", ["저스틴"]],
+      ["karen", ["캐런"]],
+      ["katherine", ["캐서린"]],
+      ["kathryn", ["캐서린"]],
+      ["katie", ["케이티"]],
+      ["kevin", ["케빈"]],
+      ["kylie", ["카일리"]],
+      ["laura", ["로라"]],
+      ["lauren", ["로런"]],
       ["leo", ["레오"]],
       ["liam", ["리암"]],
+      ["linda", ["린다"]],
+      ["lisa", ["리사"]],
+      ["lucas", ["루카스"]],
+      ["lucy", ["루시"]],
+      ["maria", ["마리아"]],
+      ["mark", ["마크"]],
+      ["martin", ["마틴"]],
+      ["mary", ["메리"]],
+      ["mason", ["메이슨"]],
+      ["matt", ["맷"]],
+      ["matthew", ["매튜"]],
+      ["may", ["메이"]],
+      ["megan", ["메건"]],
+      ["mia", ["미아"]],
+      ["michael", ["마이클"]],
+      ["michelle", ["미셸"]],
+      ["morgan", ["모건"]],
+      ["natalie", ["나탈리"]],
+      ["nathan", ["네이선"]],
+      ["nicholas", ["니콜라스"]],
+      ["nicolas", ["니콜라스"]],
+      ["nicole", ["니콜"]],
+      ["noah", ["노아"]],
       ["oliver", ["올리버"]],
-      ["jack", ["잭"]]
+      ["olivia", ["올리비아"]],
+      ["owen", ["오웬"]],
+      ["paul", ["폴"]],
+      ["peter", ["피터"]],
+      ["rachel", ["레이첼"]],
+      ["rebecca", ["레베카"]],
+      ["richard", ["리처드"]],
+      ["robert", ["로버트"]],
+      ["ryan", ["라이언"]],
+      ["samuel", ["새뮤얼"]],
+      ["sarah", ["사라"]],
+      ["sean", ["션"]],
+      ["shawn", ["션"]],
+      ["simon", ["사이먼"]],
+      ["sophia", ["소피아"]],
+      ["stephen", ["스티븐"]],
+      ["steven", ["스티븐"]],
+      ["taylor", ["테일러"]],
+      ["thomas", ["토머스","토마스"]],
+      ["victoria", ["빅토리아"]],
+      ["william", ["윌리엄","윌리암"]],
+      ["zoe", ["조이"]]
     ]);
 
     // ------------------------------
@@ -321,7 +428,13 @@
       ["eigh","에이"], ["igh","아이"],
       ["eau","오"], ["ieu","유"],
       ["ai","에이"], ["ay","에이"],
+      ["air","에어"], ["ear","이어"],
+      ["are","에어"], ["ere","이어"],
+      ["eer","이어"], ["ier","이어"],
+      ["er","어"], ["ir","어"], ["ur","어"],
+      ["ar","아"], ["or","오"],
       ["ea","이"], ["ee","이"], ["ie","이"], ["ei","이"],
+      ["ew","유"], ["ui","위"], ["ue","유"], ["eu","유"],
       ["oo","우"], ["ow","아우"], ["ou","아우"],
       ["au","오"], ["aw","오"],
       ["oi","오이"], ["oy","오이"],
@@ -330,9 +443,10 @@
     ];
 
     const CONS = [
-      ["tch","ㅊ"], ["ch","ㅊ"], ["sh","ㅅ"], ["ph","ㅍ"],
+      ["tch","ㅊ"], ["dge","ㅈ"], ["dg","ㅈ"],
+      ["ch","ㅊ"], ["sh","ㅅ"], ["ph","ㅍ"],
       ["th","ㅌ"], ["ck","ㅋ"], ["ng","ㅇ"], ["qu","ㅋ"], ["wh","ㅎ"],
-      ["kn","ㄴ"], ["wr","ㄹ"], ["ps","ㅅ"], ["x","ㅋㅅ"],
+      ["kn","ㄴ"], ["wr","ㄹ"], ["gn","ㄴ"], ["ps","ㅅ"], ["x","ㅋㅅ"],
       ["c","ㅋ"], ["g","ㄱ"], ["k","ㅋ"], ["j","ㅈ"], ["q","ㅋ"],
       ["r","ㄹ"], ["l","ㄹ"], ["m","ㅁ"], ["n","ㄴ"], ["b","ㅂ"], ["p","ㅍ"],
       ["d","ㄷ"], ["t","ㅌ"], ["f","ㅍ"], ["v","ㅂ"], ["h","ㅎ"], ["s","ㅅ"], ["z","ㅈ"], ["w","ㅇ"],
@@ -342,9 +456,14 @@
       let s = word.toLowerCase();
       const out = [];
       let i = 0;
+      const isVowelLetter = (ch) => "aeiouy".includes(ch || "");
       while (i < s.length) {
         const ch = s[i];
         if (ch === "'" || ch === "-") { i++; continue; }
+
+        if (s.startsWith("gh", i) && i > 0 && isVowelLetter(s[i - 1]) && !isVowelLetter(s[i + 2])) {
+          i += 2; continue; // silent "gh" in words like "night"
+        }
 
         if (s[i] === "c" && (s[i+1] === "e" || s[i+1] === "i" || s[i+1] === "y")) {
           out.push({type:"C", val:"ㅅ"}); i += 1; continue;
@@ -358,7 +477,7 @@
         if (matched) continue;
 
         for (const [pat, val] of CONS) {
-          if (s.startsWith(pat, i)) { out.push({type:"C", val}); i += pat.length; matched = true; break; }
+          if (s.startsWith(pat, i)) { out.push({type:"C", val, raw: pat}); i += pat.length; matched = true; break; }
         }
         if (matched) continue;
 
@@ -379,6 +498,12 @@
       return "ㅏ";
     }
 
+    function splitHangulSyllables(s) {
+      const out = [];
+      for (const ch of (s || "")) out.push(ch);
+      return out.length ? out : [s];
+    }
+
     function toJong(consonantJamo) {
       const last = consonantJamo.slice(-1);
       if (JONG.includes(last)) return last;
@@ -393,26 +518,98 @@
       return (close[first] && CHO.includes(close[first])) ? close[first] : "ㅇ";
     }
 
+    const SUFFIX_MAP = [
+      ["tious","셔스"],
+      ["cious","셔스"],
+      ["tion","션"],
+      ["sion","션"],
+      ["cion","션"],
+      ["tial","셜"],
+      ["cial","셜"],
+      ["ture","처"],
+      ["sure","셔"],
+      ["tia","시아"],
+      ["cia","시아"],
+      ["sia","시아"],
+      ["tio","시오"],
+      ["cio","시오"],
+      ["sio","시오"],
+      ["ment","먼트"],
+      ["ness","니스"],
+      ["able","에이블"],
+      ["ible","이블"],
+      ["son","슨"],
+      ["sen","슨"],
+      ["ton","턴"],
+      ["man","맨"],
+      ["men","맨"],
+      ["lynne","린"],
+      ["line","라인"],
+      ["lyn","린"],
+      ["ette","에트"]
+    ];
+
+    function splitSuffix(word) {
+      for (const [suf, hangul] of SUFFIX_MAP) {
+        if (word.length > suf.length && word.endsWith(suf)) {
+          return { base: word.slice(0, -suf.length), suffix: hangul };
+        }
+      }
+      return { base: word, suffix: "" };
+    }
+
     function ruleBasedHangul(word) {
-      const tokens = tokenize(word);
-      if (!tokens.length) return "";
+      const { base, suffix } = splitSuffix(word);
+      const tokens = tokenize(base);
+      if (!tokens.length) return suffix || "";
       let res = "";
       let i = 0;
       while (i < tokens.length) {
         let cho = "ㅇ";
         if (tokens[i]?.type === "C") { cho = toCho(tokens[i].val); i++; }
         if (tokens[i]?.type !== "V") break;
-        const jung = pickJung(tokens[i].val);
+        const vowelSylls = splitHangulSyllables(tokens[i].val);
         i++;
 
-        let jong = "";
+        let pendingFinal = false;
+        let finalCon = null;
         if (tokens[i]?.type === "C" && tokens[i+1]?.type !== "V") {
-          jong = toJong(tokens[i].val);
+          pendingFinal = true;
+          finalCon = tokens[i];
           i++;
         }
-        res += composeSyllable(cho, jung, jong);
+
+        const firstJung = pickJung(vowelSylls[0]);
+        if (vowelSylls.length === 1) {
+          let jong = "";
+          if (pendingFinal) {
+            if (finalCon?.raw === "x") {
+              jong = "ㄱ";
+              res += composeSyllable(cho, firstJung, jong) + "스";
+              continue;
+            }
+            jong = toJong(finalCon.val);
+          }
+          res += composeSyllable(cho, firstJung, jong);
+          continue;
+        }
+
+        res += composeSyllable(cho, firstJung, "");
+        for (let s = 1; s < vowelSylls.length; s++) {
+          const isLast = s === vowelSylls.length - 1;
+          let jong = "";
+          if (isLast && pendingFinal) {
+            if (finalCon?.raw === "x") {
+              jong = "ㄱ";
+              res += composeSyllable("ㅇ", pickJung(vowelSylls[s]), jong) + "스";
+              break;
+            }
+            jong = toJong(finalCon.val);
+          }
+          res += composeSyllable("ㅇ", pickJung(vowelSylls[s]), jong);
+        }
       }
-      return res;
+      return res + suffix;
     }
 
     // ------------------------------
