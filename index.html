@@ -6,6 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hangul Name Studio</title>
   <meta name="description" content="Write your English name in Hangul. Dictionary-first accuracy + smart fallback. Browser-only."/>
+  <script>
+    tailwind = {
+      corePlugins: { preflight: false }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7713287823701747" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -46,7 +52,53 @@
             <button class="btn" id="randomBtn" type="button">Surprise me</button>
           </div>
 
-          <div class="results" id="results"></div>
+          <div class="results" id="results">
+            <div id="idCardWrap" class="mt-4">
+              <div
+                id="idCard"
+                class="relative mx-auto w-full max-w-[520px] aspect-[85.6/54] rounded-2xl border border-emerald-900/10 bg-gradient-to-br from-emerald-50 via-amber-50 to-stone-50 shadow-lg overflow-hidden"
+              >
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_20%_20%,rgba(0,0,0,0.06),transparent_50%),radial-gradient(circle_at_80%_70%,rgba(0,0,0,0.05),transparent_55%)]"></div>
+
+                <div class="relative h-full p-4 sm:p-5 flex flex-col justify-between">
+                  <div class="text-[10px] sm:text-[11px] uppercase tracking-widest text-emerald-900/70">
+                    명예 한국인 신분증 / Honorary Korean ID
+                  </div>
+
+                  <div class="flex items-center gap-4 mt-2">
+                    <div class="h-16 w-16 sm:h-20 sm:w-20 rounded-full bg-white/80 border border-emerald-900/10 shadow-inner flex items-center justify-center">
+                      <div class="h-10 w-10 rounded-full bg-gradient-to-br from-rose-200 to-amber-200 flex items-center justify-center text-xl">🐯</div>
+                    </div>
+
+                    <div class="flex-1">
+                      <div id="hangulName" class="text-2xl sm:text-3xl font-semibold text-emerald-900">—</div>
+                      <div id="englishName" class="text-sm sm:text-base text-emerald-900/70">English Name</div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-end justify-between text-[11px] sm:text-xs text-emerald-900/70">
+                    <div id="issueDate">발급일(Issue Date): —</div>
+
+                    <div class="relative">
+                      <div class="rotate-[-8deg] px-3 py-1 border-2 border-red-600 text-red-600 font-bold text-xs rounded">
+                        인증 Verified
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-3 flex gap-2">
+                <button id="shareBtn" class="px-4 py-2 rounded-lg bg-emerald-600 text-white text-sm hover:bg-emerald-700">
+                  SNS 공유하기
+                </button>
+                <button id="copyHangulBtn" class="px-4 py-2 rounded-lg border border-emerald-900/10 bg-white text-sm">
+                  Copy Hangul
+                </button>
+              </div>
+              <div id="resultNote" class="text-xs text-emerald-900/60 mt-2"></div>
+            </div>
+          </div>
         </div>
       </section>
     </section>
@@ -110,6 +162,7 @@
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" crossorigin="anonymous"></script>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import {
@@ -284,6 +337,12 @@
     const toast = $("#toast");
     const communityList = $("#communityList");
     const randomBtn = $("#randomBtn");
+    const hangulNameEl = $("#hangulName");
+    const englishNameEl = $("#englishName");
+    const issueDateEl = $("#issueDate");
+    const shareBtn = $("#shareBtn");
+    const copyHangulBtn = $("#copyHangulBtn");
+    const resultNote = $("#resultNote");
 
     const suggestKey = $("#suggestKey");
     const suggestHangul = $("#suggestHangul");
@@ -321,6 +380,76 @@
       }
     });
 
+    function setIssueDate() {
+      const now = new Date();
+      const yyyy = now.getFullYear();
+      const mm = String(now.getMonth() + 1).padStart(2, "0");
+      const dd = String(now.getDate()).padStart(2, "0");
+      if (issueDateEl) issueDateEl.textContent = `발급일(Issue Date): ${yyyy}-${mm}-${dd}`;
+    }
+
+    function setCardValues(hangul, english) {
+      if (hangulNameEl) hangulNameEl.textContent = hangul || "—";
+      if (englishNameEl) englishNameEl.textContent = english || "English Name";
+    }
+
+    function setResultNote(text) {
+      if (resultNote) resultNote.textContent = text || "";
+    }
+
+    async function captureIDCard() {
+      const card = document.getElementById("idCard");
+      if (!card) throw new Error("idCard not found");
+      const canvas = await html2canvas(card, {
+        backgroundColor: null,
+        scale: Math.min(window.devicePixelRatio || 1, 2),
+        useCORS: true
+      });
+      return new Promise((resolve) => {
+        canvas.toBlob((blob) => resolve(blob), "image/png", 0.95);
+      });
+    }
+
+    async function shareToSNS() {
+      try {
+        const blob = await captureIDCard();
+        if (!blob) throw new Error("capture failed");
+        const file = new File([blob], "hangul-id.png", { type: "image/png" });
+        if (navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share) {
+          await navigator.share({
+            title: "Honorary Korean ID",
+            text: "My Hangul Name ID",
+            files: [file]
+          });
+          return;
+        }
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "hangul-id.png";
+        a.click();
+        URL.revokeObjectURL(url);
+      } catch {
+        try {
+          const blob = await captureIDCard();
+          if (!blob) return;
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "hangul-id.png";
+          a.click();
+          URL.revokeObjectURL(url);
+        } catch {}
+      }
+    }
+
+    shareBtn?.addEventListener("click", shareToSNS);
+    copyHangulBtn?.addEventListener("click", () => {
+      const text = hangulNameEl?.textContent?.trim();
+      if (text && text !== "—") copyText(text);
+    });
+
+    setIssueDate();
     let currentUser = null;
     let authReadyResolve;
     const authReady = new Promise((resolve) => { authReadyResolve = resolve; });
@@ -369,7 +498,8 @@
     if (clearBtn) {
       clearBtn.addEventListener("click", () => {
         nameInput.value = "";
-        resultsEl.innerHTML = "";
+        setCardValues("—", "English Name");
+        setResultNote("");
         communityList.innerHTML = "";
         suggestKey.value = "";
         suggestHangul.value = "";
@@ -810,55 +940,31 @@
     }
 
     async function renderResults(rawInput, wordResults, combinedOptions, combinedSource) {
-      resultsEl.innerHTML = "";
-
       if (!combinedOptions.length) {
-        resultsEl.innerHTML = `<div class="result"><div><div class="hangul">—</div><div class="meta">Couldn’t parse that. Please use letters only.</div></div></div>`;
+        setCardValues("—", rawInput || "English Name");
+        setResultNote("Couldn’t parse that. Please use letters only.");
         return;
       }
 
-      combinedOptions.forEach((ko, idx) => {
-        const el = document.createElement("div");
-        el.className = "result";
-        el.innerHTML = `
-          <div>
-            <div class="hangul">${escapeHtml(ko)}</div>
-            <div class="meta">
-              <span class="mini-badge">${idx === 0 ? "Recommended" : "Alternative"}</span>
-              <span class="mini-badge">${escapeHtml(sourceLabel(combinedSource))}</span>
-            </div>
-          </div>
-          <div class="row" style="margin:0">
-            <button class="btn green" style="padding:10px 12px;border-radius:14px">Copy</button>
-            <button class="btn" style="padding:10px 12px;border-radius:14px">Suggest edit</button>
-          </div>
-        `;
-        const [copyBtn, fixBtn] = el.querySelectorAll("button");
-        copyBtn.addEventListener("click", () => copyText(ko));
-        fixBtn.addEventListener("click", () => setSuggestionFromOutput(rawInput, ko));
-        resultsEl.appendChild(el);
-      });
+      const primary = combinedOptions[0];
+      setCardValues(primary, rawInput);
 
-      const debug = document.createElement("div");
-      debug.className = "muted";
-      debug.style.marginTop = "8px";
-      debug.innerHTML = wordResults.map(wr => {
-        const s = wr.source === "canonical" ? "canonical" : (wr.source === "builtin" ? "dict" : "rule");
-        return `${escapeHtml(wr.word)} <span style="opacity:.7">(${s})</span>`;
-      }).join(" · ");
-      resultsEl.appendChild(debug);
+      const sourceText = sourceLabel(combinedSource);
+      const alts = combinedOptions.slice(1);
+      const altText = alts.length ? ` · Alternatives: ${alts.join(" / ")}` : "";
+      setResultNote(`Source: ${sourceText}${altText}`);
     }
 
     async function convert() {
       const raw = nameInput.value.trim();
-      if (!raw) { resultsEl.innerHTML = ""; return; }
+      if (!raw) { setCardValues("—", "English Name"); setResultNote(""); return; }
 
       const cleaned = raw
         .replace(/[^a-zA-Z\s'-]/g, "")
         .replace(/\s+/g, " ")
         .trim();
 
-      if (!cleaned) { resultsEl.innerHTML = ""; return; }
+      if (!cleaned) { setCardValues("—", raw); setResultNote("Use letters only."); return; }
 
       const words = cleaned.split(" ").map(w => w.trim()).filter(Boolean);
       const wordResults = [];
