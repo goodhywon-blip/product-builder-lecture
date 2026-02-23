@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hangul Name Studio</title>
   <meta name="description" content="Write your English name in Hangul. Dictionary-first accuracy + smart fallback. Browser-only."/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind = {
       corePlugins: { preflight: false }
@@ -53,50 +54,48 @@
           </div>
 
           <div class="results" id="results">
-            <div id="idCardWrap" class="mt-4">
+            <div id="resultBox" class="mt-4">
               <div
                 id="idCard"
-                class="relative mx-auto w-full max-w-[520px] aspect-[85.6/54] rounded-2xl border border-emerald-900/10 bg-gradient-to-br from-emerald-50 via-amber-50 to-stone-50 shadow-lg overflow-hidden"
+                class="relative mx-auto w-full max-w-[640px] aspect-[85.6/54] rounded-2xl overflow-hidden shadow-lg border border-black/10 font-['Noto_Serif_KR']"
               >
-                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_20%_20%,rgba(0,0,0,0.06),transparent_50%),radial-gradient(circle_at_80%_70%,rgba(0,0,0,0.05),transparent_55%)]"></div>
+                <img
+                  src="assets/honorary_id_bg.png"
+                  alt="Honorary ID background"
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 bg-black/5"></div>
 
-                <div class="relative h-full p-4 sm:p-5 flex flex-col justify-between">
-                  <div class="text-[10px] sm:text-[11px] uppercase tracking-widest text-emerald-900/70">
-                    명예 한국인 신분증 / Honorary Korean ID
+                <div class="relative h-full p-5 sm:p-6 text-[#3b2f20]">
+                  <div class="text-[11px] sm:text-xs tracking-[0.2em] font-semibold opacity-80">
+                    명예 한국인 신분증 / HONORARY KOREAN ID
                   </div>
 
-                  <div class="flex items-center gap-4 mt-2">
-                    <div class="h-16 w-16 sm:h-20 sm:w-20 rounded-full bg-white/80 border border-emerald-900/10 shadow-inner flex items-center justify-center">
-                      <div class="h-10 w-10 rounded-full bg-gradient-to-br from-rose-200 to-amber-200 flex items-center justify-center text-xl">🐯</div>
-                    </div>
-
-                    <div class="flex-1">
-                      <div id="hangulName" class="text-2xl sm:text-3xl font-semibold text-emerald-900">—</div>
-                      <div id="englishName" class="text-sm sm:text-base text-emerald-900/70">English Name</div>
-                    </div>
+                  <div class="absolute right-[7%] bottom-[14%] w-[28%] aspect-[4/5] rounded-md overflow-hidden border border-black/10 bg-white/50">
+                    <img id="profileImg" src="" alt="Profile" class="w-full h-full object-cover hidden" />
+                    <div id="profilePlaceholder" class="w-full h-full flex items-center justify-center text-2xl opacity-60">✶</div>
                   </div>
 
-                  <div class="flex items-end justify-between text-[11px] sm:text-xs text-emerald-900/70">
-                    <div id="issueDate">발급일(Issue Date): —</div>
+                  <div class="absolute left-[8%] top-[33%] right-[40%]">
+                    <div id="englishName" class="text-xs sm:text-sm tracking-wide opacity-80">English Name</div>
+                    <div id="hangulName" class="text-2xl sm:text-3xl font-bold mt-1">—</div>
+                  </div>
 
-                    <div class="relative">
-                      <div class="rotate-[-8deg] px-3 py-1 border-2 border-red-600 text-red-600 font-bold text-xs rounded">
-                        인증 Verified
-                      </div>
-                    </div>
+                  <div class="absolute left-[8%] bottom-[12%] text-xs opacity-80">
+                    <span id="issueDate">발급일(Issue Date): —</span>
                   </div>
                 </div>
               </div>
 
-              <div class="mt-3 flex gap-2">
-                <button id="shareBtn" class="px-4 py-2 rounded-lg bg-emerald-600 text-white text-sm hover:bg-emerald-700">
-                  SNS 공유하기
-                </button>
-                <button id="copyHangulBtn" class="px-4 py-2 rounded-lg border border-emerald-900/10 bg-white text-sm">
-                  Copy Hangul
+              <div class="mt-3 flex flex-wrap gap-2 items-center">
+                <label class="px-4 py-2 rounded-lg border border-black/10 bg-white text-sm cursor-pointer">
+                  사진 업로드
+                  <input id="photoInput" type="file" accept="image/*" class="hidden" />
+                </label>
+                <button id="saveIdBtn" class="px-4 py-2 rounded-lg bg-emerald-700 text-white text-sm hover:bg-emerald-800">
+                  신분증 저장하기
                 </button>
               </div>
-              <div id="resultNote" class="text-xs text-emerald-900/60 mt-2"></div>
             </div>
           </div>
         </div>
@@ -340,9 +339,10 @@
     const hangulNameEl = $("#hangulName");
     const englishNameEl = $("#englishName");
     const issueDateEl = $("#issueDate");
-    const shareBtn = $("#shareBtn");
-    const copyHangulBtn = $("#copyHangulBtn");
-    const resultNote = $("#resultNote");
+    const photoInput = $("#photoInput");
+    const profileImg = $("#profileImg");
+    const profilePlaceholder = $("#profilePlaceholder");
+    const saveIdBtn = $("#saveIdBtn");
 
     const suggestKey = $("#suggestKey");
     const suggestHangul = $("#suggestHangul");
@@ -393,10 +393,6 @@
       if (englishNameEl) englishNameEl.textContent = english || "English Name";
     }
 
-    function setResultNote(text) {
-      if (resultNote) resultNote.textContent = text || "";
-    }
-
     async function captureIDCard() {
       const card = document.getElementById("idCard");
       if (!card) throw new Error("idCard not found");
@@ -410,44 +406,31 @@
       });
     }
 
-    async function shareToSNS() {
+    async function downloadIDCard() {
       try {
         const blob = await captureIDCard();
         if (!blob) throw new Error("capture failed");
-        const file = new File([blob], "hangul-id.png", { type: "image/png" });
-        if (navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share) {
-          await navigator.share({
-            title: "Honorary Korean ID",
-            text: "My Hangul Name ID",
-            files: [file]
-          });
-          return;
-        }
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "hangul-id.png";
+        a.download = "honorary-korean-id.png";
         a.click();
         URL.revokeObjectURL(url);
-      } catch {
-        try {
-          const blob = await captureIDCard();
-          if (!blob) return;
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = "hangul-id.png";
-          a.click();
-          URL.revokeObjectURL(url);
-        } catch {}
-      }
+      } catch {}
     }
 
-    shareBtn?.addEventListener("click", shareToSNS);
-    copyHangulBtn?.addEventListener("click", () => {
-      const text = hangulNameEl?.textContent?.trim();
-      if (text && text !== "—") copyText(text);
+    photoInput?.addEventListener("change", (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      const url = URL.createObjectURL(file);
+      if (profileImg) {
+        profileImg.src = url;
+        profileImg.classList.remove("hidden");
+      }
+      profilePlaceholder?.classList.add("hidden");
     });
+
+    saveIdBtn?.addEventListener("click", downloadIDCard);
 
     setIssueDate();
     let currentUser = null;
@@ -499,7 +482,6 @@
       clearBtn.addEventListener("click", () => {
         nameInput.value = "";
         setCardValues("—", "English Name");
-        setResultNote("");
         communityList.innerHTML = "";
         suggestKey.value = "";
         suggestHangul.value = "";
@@ -942,29 +924,23 @@
     async function renderResults(rawInput, wordResults, combinedOptions, combinedSource) {
       if (!combinedOptions.length) {
         setCardValues("—", rawInput || "English Name");
-        setResultNote("Couldn’t parse that. Please use letters only.");
         return;
       }
 
       const primary = combinedOptions[0];
       setCardValues(primary, rawInput);
-
-      const sourceText = sourceLabel(combinedSource);
-      const alts = combinedOptions.slice(1);
-      const altText = alts.length ? ` · Alternatives: ${alts.join(" / ")}` : "";
-      setResultNote(`Source: ${sourceText}${altText}`);
     }
 
     async function convert() {
       const raw = nameInput.value.trim();
-      if (!raw) { setCardValues("—", "English Name"); setResultNote(""); return; }
+      if (!raw) { setCardValues("—", "English Name"); return; }
 
       const cleaned = raw
         .replace(/[^a-zA-Z\s'-]/g, "")
         .replace(/\s+/g, " ")
         .trim();
 
-      if (!cleaned) { setCardValues("—", raw); setResultNote("Use letters only."); return; }
+      if (!cleaned) { setCardValues("—", raw); return; }
 
       const words = cleaned.split(" ").map(w => w.trim()).filter(Boolean);
       const wordResults = [];
