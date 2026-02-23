@@ -24,30 +24,19 @@
     </header>
 
     <nav class="nav reveal delay-1" aria-label="Page">
-      <a href="#tool">Tool</a>
       <a href="#tool">Convert</a>
-      <a href="#community">Community</a>
+      <a href="#community" id="communityNav">Community</a>
       <a href="#about">About</a>
-      <a href="#privacy">Privacy</a>
-      <a href="#contact">Contact</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms</a>
-      <a href="about.html">About</a>
     </nav>
 
     <section class="hero reveal delay-2">
       <h2 class="headline">Write your name in Hangul</h2>
-      <p class="subhead">
-        A calm, culture-forward tool to turn English names into elegant Hangul. Try it, tweak it,
-        and share your best spelling with the community.
-      </p>
+      <p class="subhead">Clean conversion. Community-checked.</p>
     </section>
 
     <section id="tool" class="grid">
       <section class="card reveal delay-3">
         <div class="inner">
-          <div class="badge">English-only · Community reviewed</div>
-
           <div class="row">
             <div class="field" role="group" aria-label="Name input">
               <div class="icon" aria-hidden="true">Aa</div>
@@ -58,77 +47,68 @@
           </div>
 
           <div class="results" id="results"></div>
-
-          <div class="hint">
-            Tip: click <b>Submit suggestion</b> to propose a better spelling.
-          </div>
         </div>
       </section>
     </section>
 
     <section id="community" class="section reveal delay-2">
       <div class="section-head">
-        <h3>Community suggestions</h3>
+        <h3>Community</h3>
         <span>Reviewed</span>
       </div>
-      <p class="text">Community suggestions are reviewed before becoming official.</p>
+      <p class="text">Suggestions open in a light modal to keep the page clean.</p>
       <div class="row" style="margin-top:10px;">
-        <div class="field" style="flex:1 1 240px">
-          <div class="icon" aria-hidden="true">EN</div>
-          <input id="suggestKey" placeholder="Name key" autocomplete="off" />
-        </div>
-        <div class="field" style="flex:1 1 240px">
-          <div class="icon" aria-hidden="true">가</div>
-          <input id="suggestHangul" placeholder="Suggested Hangul" autocomplete="off" />
-        </div>
+        <button class="btn ghost" id="communityOpenBtn">Open community</button>
       </div>
-      <div class="row" style="margin-top:10px;">
-        <button class="btn" id="submitSuggestionBtn">Submit suggestion (reviewed before publication)</button>
-      </div>
-      <div class="community-list" id="communityList"></div>
     </section>
 
     <section id="about" class="section reveal delay-3">
       <div class="section-head">
         <h3>About</h3>
-        <span>Korean-first feel</span>
+        <span>Minimal by design</span>
       </div>
       <p class="text">
-        We blend a curated dictionary with pronunciation rules, then let the community refine the best spelling.
-        The goal is a Hangul result that feels natural to read and write.
+        Dictionary-first spelling, refined by the community. See details on the About and Privacy pages.
       </p>
-    </section>
-
-    <section id="privacy" class="section reveal delay-4">
-      <div class="section-head">
-        <h3>Privacy</h3>
-        <span>Transparency</span>
+      <div class="row" style="margin-top:10px;">
+        <a class="btn ghost" href="about.html">About</a>
+        <a class="btn ghost" href="privacy.html">Privacy</a>
+        <a class="btn ghost" href="terms.html">Terms</a>
+        <a class="btn ghost" href="contact.html">Contact</a>
       </div>
-      <p class="text">
-        For details about data handling and advertising, read the full privacy policy page.
-      </p>
-    </section>
-
-    <section id="contact" class="section reveal delay-5">
-      <div class="section-head">
-        <h3>Contact</h3>
-        <span>Feedback welcome</span>
-      </div>
-      <p class="text">
-        If you find a name that looks wrong or want to suggest improvements, please use the contact
-        page and include the English spelling and your preferred Hangul output. You can also reach
-        us at <b>goodhywon@gmail.com</b>.
-      </p>
     </section>
 
     <footer class="reveal delay-5">
-      © <span id="year"></span> Hangul Name Studio · Community-reviewed ·
-      Contact: <b>goodhywon@gmail.com</b> ·
+      © <span id="year"></span> Hangul Name Studio ·
       <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="contact.html">Contact</a>
     </footer>
   </div>
 
   <div class="toast" id="toast">Copied!</div>
+  <div class="modal" id="communityModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3 class="modal-title">Community suggestions</h3>
+        <button class="modal-close" id="communityCloseBtn" type="button">Close</button>
+      </div>
+      <div class="modal-body">
+        <div class="row" style="margin-top:10px;">
+          <div class="field" style="flex:1 1 240px">
+            <div class="icon" aria-hidden="true">EN</div>
+            <input id="suggestKey" placeholder="Name key" autocomplete="off" />
+          </div>
+          <div class="field" style="flex:1 1 240px">
+            <div class="icon" aria-hidden="true">가</div>
+            <input id="suggestHangul" placeholder="Suggested Hangul" autocomplete="off" />
+          </div>
+        </div>
+        <div class="row" style="margin-top:10px;">
+          <button class="btn" id="submitSuggestionBtn">Submit suggestion</button>
+        </div>
+        <div class="community-list" id="communityList"></div>
+      </div>
+    </div>
+  </div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -201,8 +181,38 @@
     const suggestKey = $("#suggestKey");
     const suggestHangul = $("#suggestHangul");
     const submitSuggestionBtn = $("#submitSuggestionBtn");
+    const communityOpenBtn = $("#communityOpenBtn");
+    const communityModal = $("#communityModal");
+    const communityCloseBtn = $("#communityCloseBtn");
+    const communityNav = $("#communityNav");
 
     $("#year").textContent = new Date().getFullYear();
+
+    function openCommunity() {
+      communityModal.classList.add("open");
+      communityModal.setAttribute("aria-hidden", "false");
+      setTimeout(() => suggestKey?.focus(), 0);
+    }
+
+    function closeCommunity() {
+      communityModal.classList.remove("open");
+      communityModal.setAttribute("aria-hidden", "true");
+    }
+
+    communityOpenBtn?.addEventListener("click", openCommunity);
+    communityNav?.addEventListener("click", (e) => {
+      e.preventDefault();
+      openCommunity();
+    });
+    communityCloseBtn?.addEventListener("click", closeCommunity);
+    communityModal?.addEventListener("click", (e) => {
+      if (e.target === communityModal) closeCommunity();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && communityModal.classList.contains("open")) {
+        closeCommunity();
+      }
+    });
 
     let currentUser = null;
     let authReadyResolve;
@@ -623,7 +633,7 @@
           </div>
           <div class="row" style="margin:0">
             <button class="btn green" style="padding:10px 12px;border-radius:14px">Copy</button>
-            <button class="btn" style="padding:10px 12px;border-radius:14px">Submit suggestion (reviewed before publication)</button>
+            <button class="btn" style="padding:10px 12px;border-radius:14px">Suggest edit</button>
           </div>
         `;
         const [copyBtn, fixBtn] = el.querySelectorAll("button");
@@ -692,7 +702,7 @@
     function setSuggestionFromOutput(en, ko) {
       suggestKey.value = normalizeEnglishKey(en);
       suggestHangul.value = ko;
-      document.getElementById("community").scrollIntoView({ behavior: "smooth", block: "start" });
+      openCommunity();
     }
 
     submitSuggestionBtn.addEventListener("click", () => {
