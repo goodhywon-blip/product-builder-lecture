@@ -142,6 +142,33 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
 .btn.danger{border-color:#ffd1cc;background:linear-gradient(180deg,#ff453a,#ff3b30);color:#fff;}
 
 .results{display:grid;gap:10px;margin-top:14px;}
+.id-layout{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:16px;
+  align-items:center;
+}
+.id-left{
+  min-height:260px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 12px;
+}
+.hangul-large{
+  font-family: "궁서체", "Gungsuh", "GungsuhChe", "궁서", "Nanum Myeongjo", serif;
+  font-size: clamp(32px, 7vw, 64px);
+  font-weight: 700;
+  letter-spacing: .06em;
+  color:#2f2419;
+  text-align:center;
+  line-height:1.15;
+  word-break: keep-all;
+}
+@media (max-width: 940px){
+  .id-layout{grid-template-columns:1fr;}
+  .id-left{min-height:160px;}
+}
 .result{
   border:1px solid var(--border);background:#fff;border-radius:16px;padding:12px 12px;
   display:flex;align-items:center;justify-content:space-between;gap:12px;

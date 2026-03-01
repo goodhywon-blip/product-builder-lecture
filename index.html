@@ -55,21 +55,26 @@
 
           <div class="results" id="results">
             <div id="resultBox" class="mt-4">
-              <div
-                id="idCard"
-                class="relative mx-auto w-full max-w-[640px] aspect-[85.6/54] rounded-2xl overflow-hidden shadow-lg border border-black/10 font-['Noto_Serif_KR']"
-              >
-                <img
-                  src="assets/honorary_id_bg.png"
-                  alt="Honorary ID background"
-                  class="absolute inset-0 w-full h-full object-cover"
-                />
-                <div class="absolute inset-0 bg-black/5"></div>
+              <div class="id-layout">
+                <div class="id-left">
+                  <div id="hangulDisplay" class="hangul-large">—</div>
+                </div>
+                <div
+                  id="idCard"
+                  class="relative mx-auto w-full max-w-[640px] aspect-[85.6/54] rounded-2xl overflow-hidden shadow-lg border border-black/10 font-['Noto_Serif_KR']"
+                >
+                  <img
+                    src="assets/honorary_id_bg.png"
+                    alt="Honorary ID background"
+                    class="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div class="absolute inset-0 bg-black/5"></div>
 
-                <div class="relative h-full p-5 sm:p-6 text-[#3b2f20]">
-                  <div class="absolute left-[8%] bottom-[18%] right-[8%] text-[#3b2f20]">
-                    <div id="hangulName" class="text-2xl sm:text-3xl font-bold mt-1">—</div>
-                    <div id="englishName" class="text-xs sm:text-sm tracking-wide opacity-80">English Name</div>
+                  <div class="relative h-full p-5 sm:p-6 text-[#3b2f20]">
+                    <div class="absolute left-[8%] bottom-[18%] right-[8%] text-[#3b2f20]">
+                      <div id="hangulName" class="text-2xl sm:text-3xl font-bold mt-1">—</div>
+                      <div id="englishName" class="text-xs sm:text-sm tracking-wide opacity-80">English Name</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -320,6 +325,7 @@
     const communityList = $("#communityList");
     const randomBtn = $("#randomBtn");
     const hangulNameEl = $("#hangulName");
+    const hangulDisplayEl = $("#hangulDisplay");
     const englishNameEl = $("#englishName");
     const saveIdBtn = $("#saveIdBtn");
 
@@ -361,6 +367,7 @@
 
     function setCardValues(hangul, english) {
       if (hangulNameEl) hangulNameEl.textContent = hangul || "—";
+      if (hangulDisplayEl) hangulDisplayEl.textContent = hangul || "—";
       if (englishNameEl) englishNameEl.textContent = english || "English Name";
     }
 
