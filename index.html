@@ -67,31 +67,13 @@
                 <div class="absolute inset-0 bg-black/5"></div>
 
                 <div class="relative h-full p-5 sm:p-6 text-[#3b2f20]">
-                  <div class="text-[11px] sm:text-xs tracking-[0.2em] font-semibold opacity-80">
-                    명예 한국인 신분증 / HONORARY KOREAN ID
-                  </div>
-
-                  <div class="absolute right-[7%] bottom-[14%] w-[28%] aspect-[4/5] rounded-md overflow-hidden border border-black/10 bg-white/50">
-                    <img id="profileImg" src="" alt="Profile" class="w-full h-full object-cover hidden" />
-                    <div id="profilePlaceholder" class="w-full h-full flex items-center justify-center text-2xl opacity-60">✶</div>
-                  </div>
-
-                  <div class="absolute left-[8%] top-[33%] right-[40%]">
-                    <div id="englishName" class="text-xs sm:text-sm tracking-wide opacity-80">English Name</div>
+                  <div class="absolute left-[8%] top-[33%] right-[8%]">
                     <div id="hangulName" class="text-2xl sm:text-3xl font-bold mt-1">—</div>
-                  </div>
-
-                  <div class="absolute left-[8%] bottom-[12%] text-xs opacity-80">
-                    <span id="issueDate">발급일(Issue Date): —</span>
                   </div>
                 </div>
               </div>
 
               <div class="mt-3 flex flex-wrap gap-2 items-center">
-                <label class="px-4 py-2 rounded-lg border border-black/10 bg-white text-sm cursor-pointer">
-                  사진 업로드
-                  <input id="photoInput" type="file" accept="image/*" class="hidden" />
-                </label>
                 <button id="saveIdBtn" class="px-4 py-2 rounded-lg bg-emerald-700 text-white text-sm hover:bg-emerald-800">
                   신분증 저장하기
                 </button>
@@ -337,11 +319,6 @@
     const communityList = $("#communityList");
     const randomBtn = $("#randomBtn");
     const hangulNameEl = $("#hangulName");
-    const englishNameEl = $("#englishName");
-    const issueDateEl = $("#issueDate");
-    const photoInput = $("#photoInput");
-    const profileImg = $("#profileImg");
-    const profilePlaceholder = $("#profilePlaceholder");
     const saveIdBtn = $("#saveIdBtn");
 
     const suggestKey = $("#suggestKey");
@@ -380,17 +357,8 @@
       }
     });
 
-    function setIssueDate() {
-      const now = new Date();
-      const yyyy = now.getFullYear();
-      const mm = String(now.getMonth() + 1).padStart(2, "0");
-      const dd = String(now.getDate()).padStart(2, "0");
-      if (issueDateEl) issueDateEl.textContent = `발급일(Issue Date): ${yyyy}-${mm}-${dd}`;
-    }
-
-    function setCardValues(hangul, english) {
+    function setCardValues(hangul) {
       if (hangulNameEl) hangulNameEl.textContent = hangul || "—";
-      if (englishNameEl) englishNameEl.textContent = english || "English Name";
     }
 
     async function captureIDCard() {
@@ -419,20 +387,8 @@
       } catch {}
     }
 
-    photoInput?.addEventListener("change", (e) => {
-      const file = e.target.files?.[0];
-      if (!file) return;
-      const url = URL.createObjectURL(file);
-      if (profileImg) {
-        profileImg.src = url;
-        profileImg.classList.remove("hidden");
-      }
-      profilePlaceholder?.classList.add("hidden");
-    });
-
     saveIdBtn?.addEventListener("click", downloadIDCard);
 
-    setIssueDate();
     let currentUser = null;
     let authReadyResolve;
     const authReady = new Promise((resolve) => { authReadyResolve = resolve; });
@@ -481,7 +437,7 @@
     if (clearBtn) {
       clearBtn.addEventListener("click", () => {
         nameInput.value = "";
-        setCardValues("—", "English Name");
+        setCardValues("—");
         communityList.innerHTML = "";
         suggestKey.value = "";
         suggestHangul.value = "";
@@ -923,24 +879,24 @@
 
     async function renderResults(rawInput, wordResults, combinedOptions, combinedSource) {
       if (!combinedOptions.length) {
-        setCardValues("—", rawInput || "English Name");
+        setCardValues("—");
         return;
       }
 
       const primary = combinedOptions[0];
-      setCardValues(primary, rawInput);
+      setCardValues(primary);
     }
 
     async function convert() {
       const raw = nameInput.value.trim();
-      if (!raw) { setCardValues("—", "English Name"); return; }
+      if (!raw) { setCardValues("—"); return; }
 
       const cleaned = raw
         .replace(/[^a-zA-Z\s'-]/g, "")
         .replace(/\s+/g, " ")
         .trim();
 
-      if (!cleaned) { setCardValues("—", raw); return; }
+      if (!cleaned) { setCardValues("—"); return; }
 
       const words = cleaned.split(" ").map(w => w.trim()).filter(Boolean);
       const wordResults = [];
