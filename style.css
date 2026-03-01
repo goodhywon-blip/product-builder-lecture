@@ -145,12 +145,15 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
 .result-layout{
   display:grid;
   grid-template-columns: 1fr;
-  gap:28px;
+  gap:18px;
   align-items:start;
 }
-.result-left{min-width:0;}
-.result-right{min-width:0;}
-.result-right #idCard{margin-left:0;margin-right:0;}
+.result-segment{
+  padding:8px 0 16px;
+  border-top:1px solid var(--line);
+}
+.result-segment:first-child{border-top:none;padding-top:0;}
+.result-segment #idCard{margin-left:0;margin-right:0;}
 .hangul-banner{
   display:flex;
   align-items:center;
@@ -166,15 +169,6 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
   text-align:center;
   line-height:1.15;
   word-break: keep-all;
-}
-@media (min-width: 900px){
-  .result-layout{
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap:28px;
-    justify-content:start;
-  }
-  .result-left{padding-top:6px;}
-  .result-right{flex-shrink:0;}
 }
 .result{
   border:1px solid var(--border);background:#fff;border-radius:16px;padding:12px 12px;
