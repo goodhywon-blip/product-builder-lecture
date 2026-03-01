@@ -67,8 +67,9 @@
                 <div class="absolute inset-0 bg-black/5"></div>
 
                 <div class="relative h-full p-5 sm:p-6 text-[#3b2f20]">
-                  <div class="absolute left-[8%] bottom-[18%] right-[8%]">
+                  <div class="absolute left-[8%] bottom-[18%] right-[8%] text-[#3b2f20]">
                     <div id="hangulName" class="text-2xl sm:text-3xl font-bold mt-1">—</div>
+                    <div id="englishName" class="text-xs sm:text-sm tracking-wide opacity-80">English Name</div>
                   </div>
                 </div>
               </div>
@@ -319,6 +320,7 @@
     const communityList = $("#communityList");
     const randomBtn = $("#randomBtn");
     const hangulNameEl = $("#hangulName");
+    const englishNameEl = $("#englishName");
     const saveIdBtn = $("#saveIdBtn");
 
     const suggestKey = $("#suggestKey");
@@ -357,8 +359,9 @@
       }
     });
 
-    function setCardValues(hangul) {
+    function setCardValues(hangul, english) {
       if (hangulNameEl) hangulNameEl.textContent = hangul || "—";
+      if (englishNameEl) englishNameEl.textContent = english || "English Name";
     }
 
     async function captureIDCard() {
@@ -437,7 +440,7 @@
     if (clearBtn) {
       clearBtn.addEventListener("click", () => {
         nameInput.value = "";
-        setCardValues("—");
+        setCardValues("—", "English Name");
         communityList.innerHTML = "";
         suggestKey.value = "";
         suggestHangul.value = "";
@@ -879,24 +882,24 @@
 
     async function renderResults(rawInput, wordResults, combinedOptions, combinedSource) {
       if (!combinedOptions.length) {
-        setCardValues("—");
+        setCardValues("—", rawInput || "English Name");
         return;
       }
 
       const primary = combinedOptions[0];
-      setCardValues(primary);
+      setCardValues(primary, rawInput);
     }
 
     async function convert() {
       const raw = nameInput.value.trim();
-      if (!raw) { setCardValues("—"); return; }
+      if (!raw) { setCardValues("—", "English Name"); return; }
 
       const cleaned = raw
         .replace(/[^a-zA-Z\s'-]/g, "")
         .replace(/\s+/g, " ")
         .trim();
 
-      if (!cleaned) { setCardValues("—"); return; }
+      if (!cleaned) { setCardValues("—", raw); return; }
 
       const words = cleaned.split(" ").map(w => w.trim()).filter(Boolean);
       const wordResults = [];
