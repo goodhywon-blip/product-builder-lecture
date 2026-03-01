@@ -74,6 +74,24 @@
                   <div class="hangul-banner" aria-label="Hangul display">
                     <div id="hangulDisplay" class="hangul-large">—</div>
                   </div>
+                  <div class="practice-cta">
+                    <button id="practiceToggle" class="btn ghost" type="button" aria-expanded="false" aria-controls="practicePanel">
+                      🖊 Practice writing
+                    </button>
+                  </div>
+                  <div id="practicePanel" class="practice-panel" hidden>
+                    <div class="practice-block">
+                      <div class="practice-title">Syllable breakdown</div>
+                      <div id="syllableList" class="syllable-list"></div>
+                    </div>
+                    <div class="practice-block">
+                      <div class="practice-title">How to write</div>
+                      <div id="jamoGuideList" class="jamo-guide"></div>
+                    </div>
+                    <div class="practice-actions">
+                      <button id="printPracticeBtn" class="btn" type="button">🖨 Print practice sheet</button>
+                    </div>
+                  </div>
                 </div>
                 <div class="result-segment">
                   <div
@@ -347,6 +365,11 @@
     const hangulDisplayEl = $("#hangulDisplay");
     const englishNameEl = $("#englishName");
     const saveIdBtn = $("#saveIdBtn");
+    const practiceToggle = $("#practiceToggle");
+    const practicePanel = $("#practicePanel");
+    const syllableList = $("#syllableList");
+    const jamoGuideList = $("#jamoGuideList");
+    const printPracticeBtn = $("#printPracticeBtn");
 
     const suggestKey = $("#suggestKey");
     const suggestHangul = $("#suggestHangul");
@@ -389,6 +412,24 @@
       if (hangulDisplayEl) hangulDisplayEl.textContent = hangul || "—";
       if (englishNameEl) englishNameEl.textContent = english || "English Name";
     }
+
+    function setPracticeVisibility(show) {
+      if (!practiceToggle || !practicePanel) return;
+      practiceToggle.style.display = show ? "inline-flex" : "none";
+      if (!show) {
+        practicePanel.hidden = true;
+        practiceToggle.setAttribute("aria-expanded", "false");
+      }
+    }
+
+    function resetPracticePanel() {
+      if (practicePanel) practicePanel.hidden = true;
+      if (practiceToggle) practiceToggle.setAttribute("aria-expanded", "false");
+      if (syllableList) syllableList.innerHTML = "";
+      if (jamoGuideList) jamoGuideList.innerHTML = "";
+    }
+
+    setPracticeVisibility(false);
 
     async function captureIDCard() {
       const card = document.getElementById("idCard");
@@ -467,6 +508,7 @@
       clearBtn.addEventListener("click", () => {
         nameInput.value = "";
         setCardValues("—", "English Name");
+        setPracticeVisibility(false);
         communityList.innerHTML = "";
         suggestKey.value = "";
         suggestHangul.value = "";
@@ -898,23 +940,27 @@
     async function renderResults(rawInput, wordResults, combinedOptions, combinedSource) {
       if (!combinedOptions.length) {
         setCardValues("—", rawInput || "English Name");
+        setPracticeVisibility(false);
         return;
       }
 
       const primary = combinedOptions[0];
       setCardValues(primary, rawInput);
+      setPracticeVisibility(true);
     }
 
     async function convert() {
       const raw = nameInput.value.trim();
-      if (!raw) { setCardValues("—", "English Name"); return; }
+      if (!raw) { setCardValues("—", "English Name"); setPracticeVisibility(false); return; }
 
       const cleaned = raw
         .replace(/[^a-zA-Z\s'-]/g, "")
         .replace(/\s+/g, " ")
         .trim();
 
-      if (!cleaned) { setCardValues("—", raw); return; }
+      if (!cleaned) { setCardValues("—", raw); setPracticeVisibility(false); return; }
+
+      resetPracticePanel();
 
       const words = cleaned.split(" ").map(w => w.trim()).filter(Boolean);
       const wordResults = [];
@@ -987,6 +1033,157 @@
       } else if (btn.getAttribute("data-report")) {
         reportSuggestion(nameKey, suggestionId).catch(() => showToast("Report failed"));
       }
+    });
+
+    // ------------------------------
+    // Writing practice helpers
+    // ------------------------------
+    const JAMO_GUIDE = {
+      "ㄱ": ["Down stroke", "Short stroke to the right"],
+      "ㄴ": ["Down stroke", "Bottom stroke to the right"],
+      "ㄷ": ["Top stroke", "Down stroke", "Bottom stroke to the right"],
+      "ㄹ": ["Top stroke", "Down stroke", "Middle stroke", "Bottom stroke"],
+      "ㅁ": ["Top stroke", "Left down", "Bottom stroke", "Right up"],
+      "ㅂ": ["Left down", "Bottom stroke", "Right up", "Top stroke", "Middle stroke"],
+      "ㅅ": ["Left slant", "Right slant"],
+      "ㅇ": ["Draw a circle"],
+      "ㅈ": ["Left slant", "Right slant", "Top stroke"],
+      "ㅊ": ["Left slant", "Right slant", "Top stroke", "Extra top stroke"],
+      "ㅋ": ["Top stroke", "Down stroke", "Middle short stroke"],
+      "ㅌ": ["Top stroke", "Middle stroke", "Down stroke", "Bottom stroke"],
+      "ㅍ": ["Top stroke", "Left down", "Bottom stroke", "Right up", "Middle stroke"],
+      "ㅎ": ["Top stroke", "Middle short stroke", "Draw a circle below"],
+      "ㅏ": ["Long vertical stroke", "Short stroke to the right (middle)"],
+      "ㅓ": ["Long vertical stroke", "Short stroke to the right (middle)"],
+      "ㅗ": ["Long horizontal stroke", "Short stroke up (middle)"],
+      "ㅜ": ["Long horizontal stroke", "Short stroke down (middle)"],
+      "ㅡ": ["Long horizontal stroke"],
+      "ㅣ": ["Long vertical stroke"],
+      "ㅐ": ["Long vertical stroke", "Short stroke to the right (middle)", "Add a short vertical stroke"],
+      "ㅔ": ["Long vertical stroke", "Short stroke to the right (middle)", "Add a short horizontal stroke"]
+    };
+
+    function decomposeHangulSyllable(ch) {
+      const code = ch.charCodeAt(0);
+      const base = 0xAC00;
+      const end = 0xD7A3;
+      if (code < base || code > end) return null;
+      const sIndex = code - base;
+      const cho = CHO[Math.floor(sIndex / 588)];
+      const jung = JUNG[Math.floor((sIndex % 588) / 28)];
+      const jongIndex = sIndex % 28;
+      const jong = JONG[jongIndex] || "";
+      return { cho, jung, jong };
+    }
+
+    function getJamoGuide(jamo) {
+      return JAMO_GUIDE[jamo] || ["Guide coming soon for this character."];
+    }
+
+    function updatePracticeUI(hangulText) {
+      if (!hangulText || hangulText === "—") return;
+      if (!syllableList || !jamoGuideList) return;
+
+      const chars = Array.from(hangulText.replace(/\s+/g, ""));
+      const jamoSet = new Set();
+      syllableList.innerHTML = "";
+      jamoGuideList.innerHTML = "";
+
+      for (const ch of chars) {
+        const parts = decomposeHangulSyllable(ch);
+        if (!parts) continue;
+        const jamos = [parts.cho, parts.jung, parts.jong].filter(Boolean);
+        jamos.forEach(j => jamoSet.add(j));
+
+        const item = document.createElement("div");
+        item.className = "syllable-item";
+        item.innerHTML = `
+          <div class="syllable">${ch}</div>
+          <div class="jamo">${jamos.join(" + ")}</div>
+        `;
+        syllableList.appendChild(item);
+      }
+
+      Array.from(jamoSet).forEach((jamo) => {
+        const steps = getJamoGuide(jamo);
+        const row = document.createElement("div");
+        row.className = "jamo-row";
+        row.innerHTML = `
+          <div><span class="label">${jamo}</span></div>
+          <div class="steps">${steps.map((s, i) => `${i + 1}) ${s}`).join("  ")}</div>
+        `;
+        jamoGuideList.appendChild(row);
+      });
+    }
+
+    function openPracticeSheetPrintWindow(hangulText) {
+      const safeText = (hangulText || "").trim();
+      if (!safeText || safeText === "—") return;
+      const traceCount = 8;
+      const rows = 4;
+      const cols = 6;
+      const total = rows * cols;
+      const cells = Array.from({ length: total }, (_, i) => {
+        const trace = i < traceCount ? `<span class="trace">${safeText}</span>` : "";
+        return `<div class="cell">${trace}</div>`;
+      }).join("");
+
+      const win = window.open("", "_blank", "width=900,height=700");
+      if (!win) return;
+      win.document.write(`<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hangul Name Practice Sheet</title>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:24px;font-family: "Nanum Myeongjo", serif;color:#1b1b1b;}
+    h1{margin:0 0 6px;font-size:22px;}
+    .name{font-size:40px;margin:6px 0 18px;font-weight:700;letter-spacing:.06em;}
+    .grid{display:grid;grid-template-columns:repeat(${cols}, minmax(0,1fr));gap:8px;}
+    .cell{aspect-ratio:1/1;border:1px solid #cfc9bf;position:relative;}
+    .cell::before,.cell::after{
+      content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:#e9e4dc;
+      transform:translateX(-50%);
+    }
+    .cell::after{left:0;right:0;top:50%;height:1px;width:auto;transform:translateY(-50%);}
+    .trace{
+      position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+      font-size:24px;color:rgba(0,0,0,.12);letter-spacing:.06em;
+    }
+    footer{margin-top:18px;font-size:11px;color:#8a8177;}
+    @media print{
+      body{margin:16mm;}
+      .print-btn{display:none;}
+    }
+  </style>
+</head>
+<body>
+  <button class="print-btn" onclick="window.print()">Print</button>
+  <h1>Hangul Name Practice Sheet</h1>
+  <div class="name">${safeText}</div>
+  <div class="grid">${cells}</div>
+  <footer>Generated by Hangul Name Studio</footer>
+</body>
+</html>`);
+      win.document.close();
+      win.focus();
+      setTimeout(() => win.print(), 400);
+    }
+
+    practiceToggle?.addEventListener("click", () => {
+      if (!practicePanel) return;
+      const open = practicePanel.hidden;
+      practicePanel.hidden = !open;
+      practiceToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) {
+        updatePracticeUI(hangulDisplayEl?.textContent || "");
+      }
+    });
+
+    printPracticeBtn?.addEventListener("click", () => {
+      openPracticeSheetPrintWindow(hangulDisplayEl?.textContent || "");
     });
 
     nameInput.focus();
