@@ -142,11 +142,20 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
 .btn.danger{border-color:#ffd1cc;background:linear-gradient(180deg,#ff453a,#ff3b30);color:#fff;}
 
 .results{display:grid;gap:10px;margin-top:14px;}
+.result-layout{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:28px;
+  align-items:start;
+}
+.result-left{min-width:0;}
+.result-right{min-width:0;}
+.result-right #idCard{margin-left:0;margin-right:0;}
 .hangul-banner{
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:14px 12px 4px;
+  padding:10px 12px 4px;
 }
 .hangul-large{
   font-family: "궁서체", "Gungsuh", "GungsuhChe", "궁서", "Nanum Myeongjo", serif;
@@ -157,6 +166,15 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
   text-align:center;
   line-height:1.15;
   word-break: keep-all;
+}
+@media (min-width: 900px){
+  .result-layout{
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap:28px;
+    justify-content:start;
+  }
+  .result-left{padding-top:6px;}
+  .result-right{flex-shrink:0;}
 }
 .result{
   border:1px solid var(--border);background:#fff;border-radius:16px;padding:12px 12px;
