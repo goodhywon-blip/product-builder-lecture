@@ -1,0 +1,6156 @@
+{
+  "aaliyah": {
+    "name": "Aaliyah",
+    "recommended": "알리야",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "aaron": {
+    "name": "Aaron",
+    "recommended": "아론",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "abdul": {
+    "name": "Abdul",
+    "recommended": "압둘",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "abel": {
+    "name": "Abel",
+    "recommended": "에이블",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "abelardo": {
+    "name": "Abelardo",
+    "recommended": "아벨라르도",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "abigail": {
+    "name": "Abigail",
+    "recommended": "애비게일",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "abraham": {
+    "name": "Abraham",
+    "recommended": "에이브러햄",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "abram": {
+    "name": "Abram",
+    "recommended": "에이브럼",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ace": {
+    "name": "Ace",
+    "recommended": "에이스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ada": {
+    "name": "Ada",
+    "recommended": "에이다",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "adam": {
+    "name": "Adam",
+    "recommended": "애덤",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "addison": {
+    "name": "Addison",
+    "recommended": "애디슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "adelaide": {
+    "name": "Adelaide",
+    "recommended": "애들레이드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "adele": {
+    "name": "Adele",
+    "recommended": "아델",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "adeline": {
+    "name": "Adeline",
+    "recommended": "애들라인",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "adelyn": {
+    "name": "Adelyn",
+    "recommended": "애들린",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "adolfo": {
+    "name": "Adolfo",
+    "recommended": "아돌포",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "adonis": {
+    "name": "Adonis",
+    "recommended": "아도니스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "adrian": {
+    "name": "Adrian",
+    "recommended": "에이드리언",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "adriana": {
+    "name": "Adriana",
+    "recommended": "애드리아나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ahmed": {
+    "name": "Ahmed",
+    "recommended": "아흐메드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "aidan": {
+    "name": "Aidan",
+    "recommended": "에이든",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "aiden": {
+    "name": "Aiden",
+    "recommended": "에이든",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "aileen": {
+    "name": "Aileen",
+    "recommended": "에일린",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ainsley": {
+    "name": "Ainsley",
+    "recommended": "에인슬리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alan": {
+    "name": "Alan",
+    "recommended": "앨런",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alana": {
+    "name": "Alana",
+    "recommended": "알라나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alani": {
+    "name": "Alani",
+    "recommended": "알라니",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alayna": {
+    "name": "Alayna",
+    "recommended": "알레이나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "albert": {
+    "name": "Albert",
+    "recommended": "앨버트",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alden": {
+    "name": "Alden",
+    "recommended": "올든",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "aldo": {
+    "name": "Aldo",
+    "recommended": "알도",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "aleah": {
+    "name": "Aleah",
+    "recommended": "알레아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alec": {
+    "name": "Alec",
+    "recommended": "알렉",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alejandro": {
+    "name": "Alejandro",
+    "recommended": "알레한드로",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alessandra": {
+    "name": "Alessandra",
+    "recommended": "알레산드라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alessia": {
+    "name": "Alessia",
+    "recommended": "알레시아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alex": {
+    "name": "Alex",
+    "recommended": "알렉스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "alexa": {
+    "name": "Alexa",
+    "recommended": "알렉사",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alexander": {
+    "name": "Alexander",
+    "recommended": "알렉산더",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alexandra": {
+    "name": "Alexandra",
+    "recommended": "알렉산드라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alexis": {
+    "name": "Alexis",
+    "recommended": "알렉시스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alfonso": {
+    "name": "Alfonso",
+    "recommended": "알폰소",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alfred": {
+    "name": "Alfred",
+    "recommended": "앨프리드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alice": {
+    "name": "Alice",
+    "recommended": "앨리스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alicia": {
+    "name": "Alicia",
+    "recommended": "앨리샤",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alina": {
+    "name": "Alina",
+    "recommended": "알리나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alison": {
+    "name": "Alison",
+    "recommended": "앨리슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alivia": {
+    "name": "Alivia",
+    "recommended": "올리비아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "allison": {
+    "name": "Allison",
+    "recommended": "앨리슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alma": {
+    "name": "Alma",
+    "recommended": "알마",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alonzo": {
+    "name": "Alonzo",
+    "recommended": "알론조",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alora": {
+    "name": "Alora",
+    "recommended": "알로라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "alyssa": {
+    "name": "Alyssa",
+    "recommended": "얼리사",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "amanda": {
+    "name": "Amanda",
+    "recommended": "아만다",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "amara": {
+    "name": "Amara",
+    "recommended": "아마라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "amari": {
+    "name": "Amari",
+    "recommended": "아마리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "amaya": {
+    "name": "Amaya",
+    "recommended": "아마야",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "amelia": {
+    "name": "Amelia",
+    "recommended": "아멜리아",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "amir": {
+    "name": "Amir",
+    "recommended": "아미르",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "amira": {
+    "name": "Amira",
+    "recommended": "아미라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "amy": {
+    "name": "Amy",
+    "recommended": "에이미",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ana": {
+    "name": "Ana",
+    "recommended": "아나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "anais": {
+    "name": "Anais",
+    "recommended": "아나이스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "anastasia": {
+    "name": "Anastasia",
+    "recommended": "아나스타시아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "andrea": {
+    "name": "Andrea",
+    "recommended": "안드레아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "andres": {
+    "name": "Andres",
+    "recommended": "안드레스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "andrew": {
+    "name": "Andrew",
+    "recommended": "앤드루",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "andy": {
+    "name": "Andy",
+    "recommended": "앤디",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "angel": {
+    "name": "Angel",
+    "recommended": "엔젤",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "angela": {
+    "name": "Angela",
+    "recommended": "앤절라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "angelina": {
+    "name": "Angelina",
+    "recommended": "앤젤리나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "angelo": {
+    "name": "Angelo",
+    "recommended": "안젤로",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "anna": {
+    "name": "Anna",
+    "recommended": "애나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "annabelle": {
+    "name": "Annabelle",
+    "recommended": "애나벨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "annie": {
+    "name": "Annie",
+    "recommended": "애니",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "anthony": {
+    "name": "Anthony",
+    "recommended": "앤서니",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "antonio": {
+    "name": "Antonio",
+    "recommended": "안토니오",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "anya": {
+    "name": "Anya",
+    "recommended": "안야",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "apollo": {
+    "name": "Apollo",
+    "recommended": "아폴로",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "arabella": {
+    "name": "Arabella",
+    "recommended": "아라벨라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "archer": {
+    "name": "Archer",
+    "recommended": "아처",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ares": {
+    "name": "Ares",
+    "recommended": "아레스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ari": {
+    "name": "Ari",
+    "recommended": "아리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "aria": {
+    "name": "Aria",
+    "recommended": "아리아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ariana": {
+    "name": "Ariana",
+    "recommended": "아리아나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ariel": {
+    "name": "Ariel",
+    "recommended": "아리엘",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "ariella": {
+    "name": "Ariella",
+    "recommended": "아리엘라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ariyah": {
+    "name": "Ariyah",
+    "recommended": "아리야",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "armando": {
+    "name": "Armando",
+    "recommended": "아르만도",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "aron": {
+    "name": "Aron",
+    "recommended": "아론",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "arthur": {
+    "name": "Arthur",
+    "recommended": "아서",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "arturo": {
+    "name": "Arturo",
+    "recommended": "아르투로",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "asher": {
+    "name": "Asher",
+    "recommended": "애셔",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ashley": {
+    "name": "Ashley",
+    "recommended": "애슐리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ashton": {
+    "name": "Ashton",
+    "recommended": "애슈턴",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "aspen": {
+    "name": "Aspen",
+    "recommended": "아스펜",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "athena": {
+    "name": "Athena",
+    "recommended": "아테나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "aubree": {
+    "name": "Aubree",
+    "recommended": "오브리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "aubrey": {
+    "name": "Aubrey",
+    "recommended": "오브리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "audrey": {
+    "name": "Audrey",
+    "recommended": "오드리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "aurora": {
+    "name": "Aurora",
+    "recommended": "오로라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "austin": {
+    "name": "Austin",
+    "recommended": "오스틴",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "autumn": {
+    "name": "Autumn",
+    "recommended": "오텀",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ava": {
+    "name": "Ava",
+    "recommended": "에이바",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "avery": {
+    "name": "Avery",
+    "recommended": "에이버리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "axel": {
+    "name": "Axel",
+    "recommended": "악셀",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "bailey": {
+    "name": "Bailey",
+    "recommended": "베일리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "baker": {
+    "name": "Baker",
+    "recommended": "베이커",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "barry": {
+    "name": "Barry",
+    "recommended": "배리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "beatrice": {
+    "name": "Beatrice",
+    "recommended": "비어트리스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "beau": {
+    "name": "Beau",
+    "recommended": "보",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "bella": {
+    "name": "Bella",
+    "recommended": "벨라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ben": {
+    "name": "Ben",
+    "recommended": "벤",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "benjamin": {
+    "name": "Benjamin",
+    "recommended": "벤저민",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "bennett": {
+    "name": "Bennett",
+    "recommended": "베넷",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "benson": {
+    "name": "Benson",
+    "recommended": "벤슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "billie": {
+    "name": "Billie",
+    "recommended": "빌리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "blaine": {
+    "name": "Blaine",
+    "recommended": "블레인",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "blair": {
+    "name": "Blair",
+    "recommended": "블레어",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "blake": {
+    "name": "Blake",
+    "recommended": "블레이크",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "blakely": {
+    "name": "Blakely",
+    "recommended": "블레이클리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "bobby": {
+    "name": "Bobby",
+    "recommended": "바비",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "bonnie": {
+    "name": "Bonnie",
+    "recommended": "보니",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "boone": {
+    "name": "Boone",
+    "recommended": "분",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "boston": {
+    "name": "Boston",
+    "recommended": "보스턴",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "bradley": {
+    "name": "Bradley",
+    "recommended": "브래들리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "brady": {
+    "name": "Brady",
+    "recommended": "브래디",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "brandon": {
+    "name": "Brandon",
+    "recommended": "브랜던",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "brayden": {
+    "name": "Brayden",
+    "recommended": "브레이든",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "brent": {
+    "name": "Brent",
+    "recommended": "브렌트",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "brett": {
+    "name": "Brett",
+    "recommended": "브렛",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "brian": {
+    "name": "Brian",
+    "recommended": "브라이언",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "brianna": {
+    "name": "Brianna",
+    "recommended": "브리아나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "brielle": {
+    "name": "Brielle",
+    "recommended": "브리엘",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "briggs": {
+    "name": "Briggs",
+    "recommended": "브릭스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "brody": {
+    "name": "Brody",
+    "recommended": "브로디",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "brook": {
+    "name": "Brook",
+    "recommended": "브룩",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "brooklyn": {
+    "name": "Brooklyn",
+    "recommended": "브루클린",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "bruce": {
+    "name": "Bruce",
+    "recommended": "브루스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "bruno": {
+    "name": "Bruno",
+    "recommended": "브루노",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "bryan": {
+    "name": "Bryan",
+    "recommended": "브라이언",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "bryce": {
+    "name": "Bryce",
+    "recommended": "브라이스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "byron": {
+    "name": "Byron",
+    "recommended": "바이런",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "cade": {
+    "name": "Cade",
+    "recommended": "케이드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "caiden": {
+    "name": "Caiden",
+    "recommended": "케이든",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "caleb": {
+    "name": "Caleb",
+    "recommended": "케일럽",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "callie": {
+    "name": "Callie",
+    "recommended": "캘리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "callum": {
+    "name": "Callum",
+    "recommended": "캘럼",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "calvin": {
+    "name": "Calvin",
+    "recommended": "캘빈",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "cameron": {
+    "name": "Cameron",
+    "recommended": "캐머런",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "camila": {
+    "name": "Camila",
+    "recommended": "카밀라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "camille": {
+    "name": "Camille",
+    "recommended": "카밀",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "cannon": {
+    "name": "Cannon",
+    "recommended": "캐넌",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "carla": {
+    "name": "Carla",
+    "recommended": "칼라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "carlos": {
+    "name": "Carlos",
+    "recommended": "카를로스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "carmen": {
+    "name": "Carmen",
+    "recommended": "카르멘",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "caroline": {
+    "name": "Caroline",
+    "recommended": "캐럴라인",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "carson": {
+    "name": "Carson",
+    "recommended": "카슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "carter": {
+    "name": "Carter",
+    "recommended": "카터",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "casey": {
+    "name": "Casey",
+    "recommended": "케이시",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "cassandra": {
+    "name": "Cassandra",
+    "recommended": "카산드라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "catalina": {
+    "name": "Catalina",
+    "recommended": "카탈리나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "catherine": {
+    "name": "Catherine",
+    "recommended": "캐서린",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "cayden": {
+    "name": "Cayden",
+    "recommended": "케이든",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "cecil": {
+    "name": "Cecil",
+    "recommended": "세실",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "cecilia": {
+    "name": "Cecilia",
+    "recommended": "세실리아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "cedric": {
+    "name": "Cedric",
+    "recommended": "세드릭",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "celia": {
+    "name": "Celia",
+    "recommended": "실리아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "chance": {
+    "name": "Chance",
+    "recommended": "챈스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "charlee": {
+    "name": "Charlee",
+    "recommended": "찰리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "charles": {
+    "name": "Charles",
+    "recommended": "찰스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "charlie": {
+    "name": "Charlie",
+    "recommended": "찰리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "charlotte": {
+    "name": "Charlotte",
+    "recommended": "샬럿",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "chase": {
+    "name": "Chase",
+    "recommended": "체이스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "chloe": {
+    "name": "Chloe",
+    "recommended": "클로이",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "note": "Final -e is silent in English usage."
+  },
+  "christian": {
+    "name": "Christian",
+    "recommended": "크리스천",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "christopher": {
+    "name": "Christopher",
+    "recommended": "크리스토퍼",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "claire": {
+    "name": "Claire",
+    "recommended": "클레어",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "clara": {
+    "name": "Clara",
+    "recommended": "클라라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "clark": {
+    "name": "Clark",
+    "recommended": "클라크",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "cody": {
+    "name": "Cody",
+    "recommended": "코디",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "cohen": {
+    "name": "Cohen",
+    "recommended": "코언",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "cole": {
+    "name": "Cole",
+    "recommended": "콜",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "colin": {
+    "name": "Colin",
+    "recommended": "콜린",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "connor": {
+    "name": "Connor",
+    "recommended": "코너",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "cooper": {
+    "name": "Cooper",
+    "recommended": "쿠퍼",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "cora": {
+    "name": "Cora",
+    "recommended": "코라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "corbin": {
+    "name": "Corbin",
+    "recommended": "코빈",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "corey": {
+    "name": "Corey",
+    "recommended": "코리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "crew": {
+    "name": "Crew",
+    "recommended": "크루",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "cruz": {
+    "name": "Cruz",
+    "recommended": "크루스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "curtis": {
+    "name": "Curtis",
+    "recommended": "커티스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "cyrus": {
+    "name": "Cyrus",
+    "recommended": "사이러스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "dahlia": {
+    "name": "Dahlia",
+    "recommended": "달리아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "daisy": {
+    "name": "Daisy",
+    "recommended": "데이지",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "dakota": {
+    "name": "Dakota",
+    "recommended": "다코타",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "dallas": {
+    "name": "Dallas",
+    "recommended": "댈러스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "damian": {
+    "name": "Damian",
+    "recommended": "데이미언",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "damon": {
+    "name": "Damon",
+    "recommended": "데이먼",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "dane": {
+    "name": "Dane",
+    "recommended": "데인",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "daniel": {
+    "name": "Daniel",
+    "recommended": "대니얼",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "daniela": {
+    "name": "Daniela",
+    "recommended": "다니엘라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "dante": {
+    "name": "Dante",
+    "recommended": "단테",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "daphne": {
+    "name": "Daphne",
+    "recommended": "다프네",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "darius": {
+    "name": "Darius",
+    "recommended": "다리어스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "darren": {
+    "name": "Darren",
+    "recommended": "대런",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "david": {
+    "name": "David",
+    "recommended": "데이비드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "dawson": {
+    "name": "Dawson",
+    "recommended": "도슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "dean": {
+    "name": "Dean",
+    "recommended": "딘",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "declan": {
+    "name": "Declan",
+    "recommended": "데클런",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "delilah": {
+    "name": "Delilah",
+    "recommended": "딜라일라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "demi": {
+    "name": "Demi",
+    "recommended": "데미",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "dennis": {
+    "name": "Dennis",
+    "recommended": "데니스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "derek": {
+    "name": "Derek",
+    "recommended": "데릭",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "desmond": {
+    "name": "Desmond",
+    "recommended": "데즈먼드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "diana": {
+    "name": "Diana",
+    "recommended": "다이애나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "diego": {
+    "name": "Diego",
+    "recommended": "디에고",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "dominic": {
+    "name": "Dominic",
+    "recommended": "도미닉",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "donovan": {
+    "name": "Donovan",
+    "recommended": "도너번",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "douglas": {
+    "name": "Douglas",
+    "recommended": "더글러스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "drake": {
+    "name": "Drake",
+    "recommended": "드레이크",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "drew": {
+    "name": "Drew",
+    "recommended": "드루",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "duke": {
+    "name": "Duke",
+    "recommended": "듀크",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "dustin": {
+    "name": "Dustin",
+    "recommended": "더스틴",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "dylan": {
+    "name": "Dylan",
+    "recommended": "딜런",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "easton": {
+    "name": "Easton",
+    "recommended": "이스턴",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "eden": {
+    "name": "Eden",
+    "recommended": "에덴",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "edgar": {
+    "name": "Edgar",
+    "recommended": "에드거",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "edward": {
+    "name": "Edward",
+    "recommended": "에드워드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "edwin": {
+    "name": "Edwin",
+    "recommended": "에드윈",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "eleanor": {
+    "name": "Eleanor",
+    "recommended": "엘리너",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "elena": {
+    "name": "Elena",
+    "recommended": "엘레나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "eliana": {
+    "name": "Eliana",
+    "recommended": "엘리아나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "elias": {
+    "name": "Elias",
+    "recommended": "일라이어스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "elijah": {
+    "name": "Elijah",
+    "recommended": "일라이자",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "elisa": {
+    "name": "Elisa",
+    "recommended": "엘리사",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "elisabeth": {
+    "name": "Elisabeth",
+    "recommended": "엘리자베스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "elise": {
+    "name": "Elise",
+    "recommended": "엘리즈",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "elizabeth": {
+    "name": "Elizabeth",
+    "recommended": "엘리자베스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ella": {
+    "name": "Ella",
+    "recommended": "엘라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "elle": {
+    "name": "Elle",
+    "recommended": "엘",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ellie": {
+    "name": "Ellie",
+    "recommended": "엘리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "elliot": {
+    "name": "Elliot",
+    "recommended": "엘리엇",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "ellis": {
+    "name": "Ellis",
+    "recommended": "엘리스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "elsie": {
+    "name": "Elsie",
+    "recommended": "엘시",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "emanuel": {
+    "name": "Emanuel",
+    "recommended": "에마누엘",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "emerson": {
+    "name": "Emerson",
+    "recommended": "에머슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "emery": {
+    "name": "Emery",
+    "recommended": "에머리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "emilia": {
+    "name": "Emilia",
+    "recommended": "에밀리아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "emilio": {
+    "name": "Emilio",
+    "recommended": "에밀리오",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "emily": {
+    "name": "Emily",
+    "recommended": "에밀리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "emma": {
+    "name": "Emma",
+    "recommended": "엠마",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "emmett": {
+    "name": "Emmett",
+    "recommended": "에밋",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "emmy": {
+    "name": "Emmy",
+    "recommended": "에미",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "eric": {
+    "name": "Eric",
+    "recommended": "에릭",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "erick": {
+    "name": "Erick",
+    "recommended": "에릭",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "erik": {
+    "name": "Erik",
+    "recommended": "에릭",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ernest": {
+    "name": "Ernest",
+    "recommended": "어니스트",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "esteban": {
+    "name": "Esteban",
+    "recommended": "에스테반",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "estella": {
+    "name": "Estella",
+    "recommended": "에스텔라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "esther": {
+    "name": "Esther",
+    "recommended": "에스더",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ethan": {
+    "name": "Ethan",
+    "recommended": "이선",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "eugene": {
+    "name": "Eugene",
+    "recommended": "유진",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "eva": {
+    "name": "Eva",
+    "recommended": "에바",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "evan": {
+    "name": "Evan",
+    "recommended": "에번",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "evangeline": {
+    "name": "Evangeline",
+    "recommended": "에반젤린",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "evelyn": {
+    "name": "Evelyn",
+    "recommended": "에벌린",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "everett": {
+    "name": "Everett",
+    "recommended": "에버렛",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "everly": {
+    "name": "Everly",
+    "recommended": "에벌리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ezekiel": {
+    "name": "Ezekiel",
+    "recommended": "이지키얼",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "fabian": {
+    "name": "Fabian",
+    "recommended": "파비안",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "faith": {
+    "name": "Faith",
+    "recommended": "페이스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "fatima": {
+    "name": "Fatima",
+    "recommended": "파티마",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "felicity": {
+    "name": "Felicity",
+    "recommended": "펠리시티",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "felix": {
+    "name": "Felix",
+    "recommended": "펠릭스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "fernando": {
+    "name": "Fernando",
+    "recommended": "페르난도",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "finley": {
+    "name": "Finley",
+    "recommended": "핀리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "finn": {
+    "name": "Finn",
+    "recommended": "핀",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "fiona": {
+    "name": "Fiona",
+    "recommended": "피오나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ford": {
+    "name": "Ford",
+    "recommended": "포드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "forrest": {
+    "name": "Forrest",
+    "recommended": "포리스트",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "francesca": {
+    "name": "Francesca",
+    "recommended": "프란체스카",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "francis": {
+    "name": "Francis",
+    "recommended": "프랜시스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "franco": {
+    "name": "Franco",
+    "recommended": "프랑코",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "frank": {
+    "name": "Frank",
+    "recommended": "프랭크",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "frankie": {
+    "name": "Frankie",
+    "recommended": "프랭키",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "frederick": {
+    "name": "Frederick",
+    "recommended": "프레더릭",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "freya": {
+    "name": "Freya",
+    "recommended": "프레이아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "gabriel": {
+    "name": "Gabriel",
+    "recommended": "가브리엘",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "gabriella": {
+    "name": "Gabriella",
+    "recommended": "가브리엘라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "gael": {
+    "name": "Gael",
+    "recommended": "가엘",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "garrett": {
+    "name": "Garrett",
+    "recommended": "개럿",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "gavin": {
+    "name": "Gavin",
+    "recommended": "개빈",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "gemma": {
+    "name": "Gemma",
+    "recommended": "젬마",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "genesis": {
+    "name": "Genesis",
+    "recommended": "제네시스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "genevieve": {
+    "name": "Genevieve",
+    "recommended": "제너비브",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "george": {
+    "name": "George",
+    "recommended": "조지",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "note": "Common English usage, not a literal letter-by-letter mapping."
+  },
+  "georgia": {
+    "name": "Georgia",
+    "recommended": "조지아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "gia": {
+    "name": "Gia",
+    "recommended": "지아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "gianna": {
+    "name": "Gianna",
+    "recommended": "지아나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "gideon": {
+    "name": "Gideon",
+    "recommended": "기디언",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "giovanni": {
+    "name": "Giovanni",
+    "recommended": "조반니",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "giselle": {
+    "name": "Giselle",
+    "recommended": "지젤",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "gordon": {
+    "name": "Gordon",
+    "recommended": "고든",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "grace": {
+    "name": "Grace",
+    "recommended": "그레이스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "graham": {
+    "name": "Graham",
+    "recommended": "그레이엄",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "grant": {
+    "name": "Grant",
+    "recommended": "그랜트",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "grayson": {
+    "name": "Grayson",
+    "recommended": "그레이슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "gregory": {
+    "name": "Gregory",
+    "recommended": "그레고리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "gunnar": {
+    "name": "Gunnar",
+    "recommended": "거너",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "hadley": {
+    "name": "Hadley",
+    "recommended": "해들리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "hailey": {
+    "name": "Hailey",
+    "recommended": "헤일리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "hallie": {
+    "name": "Hallie",
+    "recommended": "핼리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "hannah": {
+    "name": "Hannah",
+    "recommended": "해나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "harley": {
+    "name": "Harley",
+    "recommended": "할리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "harmony": {
+    "name": "Harmony",
+    "recommended": "하모니",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "harold": {
+    "name": "Harold",
+    "recommended": "해럴드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "harper": {
+    "name": "Harper",
+    "recommended": "하퍼",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "harrison": {
+    "name": "Harrison",
+    "recommended": "해리슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "harry": {
+    "name": "Harry",
+    "recommended": "해리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "hayden": {
+    "name": "Hayden",
+    "recommended": "헤이든",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "hazel": {
+    "name": "Hazel",
+    "recommended": "헤이즐",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "heaven": {
+    "name": "Heaven",
+    "recommended": "헤븐",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "hector": {
+    "name": "Hector",
+    "recommended": "헥터",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "heidi": {
+    "name": "Heidi",
+    "recommended": "하이디",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "helena": {
+    "name": "Helena",
+    "recommended": "헬레나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "henry": {
+    "name": "Henry",
+    "recommended": "헨리",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "holden": {
+    "name": "Holden",
+    "recommended": "홀든",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "hope": {
+    "name": "Hope",
+    "recommended": "호프",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "howard": {
+    "name": "Howard",
+    "recommended": "하워드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "hudson": {
+    "name": "Hudson",
+    "recommended": "허드슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "hugo": {
+    "name": "Hugo",
+    "recommended": "휴고",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "hunter": {
+    "name": "Hunter",
+    "recommended": "헌터",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ian": {
+    "name": "Ian",
+    "recommended": "이언",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "iker": {
+    "name": "Iker",
+    "recommended": "이케르",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "iris": {
+    "name": "Iris",
+    "recommended": "아이리스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "isaac": {
+    "name": "Isaac",
+    "recommended": "아이작",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "isabel": {
+    "name": "Isabel",
+    "recommended": "이사벨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "isabella": {
+    "name": "Isabella",
+    "recommended": "이사벨라",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "isabelle": {
+    "name": "Isabelle",
+    "recommended": "이자벨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "isaiah": {
+    "name": "Isaiah",
+    "recommended": "아이제이아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "israel": {
+    "name": "Israel",
+    "recommended": "이스라엘",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ivan": {
+    "name": "Ivan",
+    "recommended": "이반",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ivy": {
+    "name": "Ivy",
+    "recommended": "아이비",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jace": {
+    "name": "Jace",
+    "recommended": "제이스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jack": {
+    "name": "Jack",
+    "recommended": "잭",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jackson": {
+    "name": "Jackson",
+    "recommended": "잭슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jacob": {
+    "name": "Jacob",
+    "recommended": "제이콥",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jacqueline": {
+    "name": "Jacqueline",
+    "recommended": "재클린",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jade": {
+    "name": "Jade",
+    "recommended": "제이드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jaime": {
+    "name": "Jaime",
+    "recommended": "하이메",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "james": {
+    "name": "James",
+    "recommended": "제임스",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jamie": {
+    "name": "Jamie",
+    "recommended": "제이미",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jane": {
+    "name": "Jane",
+    "recommended": "제인",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jared": {
+    "name": "Jared",
+    "recommended": "재러드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jasmine": {
+    "name": "Jasmine",
+    "recommended": "재스민",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jason": {
+    "name": "Jason",
+    "recommended": "제이슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jasper": {
+    "name": "Jasper",
+    "recommended": "재스퍼",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "javier": {
+    "name": "Javier",
+    "recommended": "하비에르",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jaxon": {
+    "name": "Jaxon",
+    "recommended": "잭슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jayden": {
+    "name": "Jayden",
+    "recommended": "제이든",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "jeffrey": {
+    "name": "Jeffrey",
+    "recommended": "제프리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jennifer": {
+    "name": "Jennifer",
+    "recommended": "제니퍼",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jensen": {
+    "name": "Jensen",
+    "recommended": "젠슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jeremiah": {
+    "name": "Jeremiah",
+    "recommended": "제레마이아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jeremy": {
+    "name": "Jeremy",
+    "recommended": "제러미",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jesse": {
+    "name": "Jesse",
+    "recommended": "제시",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "jessica": {
+    "name": "Jessica",
+    "recommended": "제시카",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "joanna": {
+    "name": "Joanna",
+    "recommended": "조애나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "joaquin": {
+    "name": "Joaquin",
+    "recommended": "호아킨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "note": "Spanish-origin pronunciation; Korean form follows common Spanish-based reading."
+  },
+  "jocelyn": {
+    "name": "Jocelyn",
+    "recommended": "조슬린",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "joel": {
+    "name": "Joel",
+    "recommended": "조엘",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "john": {
+    "name": "John",
+    "recommended": "존",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jonah": {
+    "name": "Jonah",
+    "recommended": "조나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jonas": {
+    "name": "Jonas",
+    "recommended": "조너스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jonathan": {
+    "name": "Jonathan",
+    "recommended": "조너선",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jordan": {
+    "name": "Jordan",
+    "recommended": "조던",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "jorge": {
+    "name": "Jorge",
+    "recommended": "호르헤",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jose": {
+    "name": "Jose",
+    "recommended": "호세",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "note": "Can vary by language; default chosen for common Spanish-based reading."
+  },
+  "joseph": {
+    "name": "Joseph",
+    "recommended": "조셉",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "josephine": {
+    "name": "Josephine",
+    "recommended": "조세핀",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "joshua": {
+    "name": "Joshua",
+    "recommended": "조슈아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "josiah": {
+    "name": "Josiah",
+    "recommended": "조사이어",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "josie": {
+    "name": "Josie",
+    "recommended": "조지",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "journey": {
+    "name": "Journey",
+    "recommended": "저니",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "judah": {
+    "name": "Judah",
+    "recommended": "주다",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jude": {
+    "name": "Jude",
+    "recommended": "주드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "jules": {
+    "name": "Jules",
+    "recommended": "줄스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "julia": {
+    "name": "Julia",
+    "recommended": "줄리아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "julian": {
+    "name": "Julian",
+    "recommended": "줄리언",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "juliana": {
+    "name": "Juliana",
+    "recommended": "줄리아나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "juliet": {
+    "name": "Juliet",
+    "recommended": "줄리엣",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "juliette": {
+    "name": "Juliette",
+    "recommended": "줄리엣",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "june": {
+    "name": "June",
+    "recommended": "준",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "juniper": {
+    "name": "Juniper",
+    "recommended": "주니퍼",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "justin": {
+    "name": "Justin",
+    "recommended": "저스틴",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kaden": {
+    "name": "Kaden",
+    "recommended": "케이든",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kai": {
+    "name": "Kai",
+    "recommended": "카이",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "kairo": {
+    "name": "Kairo",
+    "recommended": "카이로",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kaitlyn": {
+    "name": "Kaitlyn",
+    "recommended": "케이틀린",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kalani": {
+    "name": "Kalani",
+    "recommended": "칼라니",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kali": {
+    "name": "Kali",
+    "recommended": "칼리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kane": {
+    "name": "Kane",
+    "recommended": "케인",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kara": {
+    "name": "Kara",
+    "recommended": "카라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "karter": {
+    "name": "Karter",
+    "recommended": "카터",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kash": {
+    "name": "Kash",
+    "recommended": "캐시",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "katherine": {
+    "name": "Katherine",
+    "recommended": "캐서린",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kayden": {
+    "name": "Kayden",
+    "recommended": "케이든",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kayla": {
+    "name": "Kayla",
+    "recommended": "케일라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "keegan": {
+    "name": "Keegan",
+    "recommended": "키건",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "keira": {
+    "name": "Keira",
+    "recommended": "키이라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kelsey": {
+    "name": "Kelsey",
+    "recommended": "켈시",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kendall": {
+    "name": "Kendall",
+    "recommended": "켄달",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kendrick": {
+    "name": "Kendrick",
+    "recommended": "켄드릭",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kennedy": {
+    "name": "Kennedy",
+    "recommended": "케네디",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "kenneth": {
+    "name": "Kenneth",
+    "recommended": "케네스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kevin": {
+    "name": "Kevin",
+    "recommended": "케빈",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kiara": {
+    "name": "Kiara",
+    "recommended": "키아라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kimberly": {
+    "name": "Kimberly",
+    "recommended": "킴벌리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "king": {
+    "name": "King",
+    "recommended": "킹",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kingston": {
+    "name": "Kingston",
+    "recommended": "킹스턴",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kinsley": {
+    "name": "Kinsley",
+    "recommended": "킨슬리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "knox": {
+    "name": "Knox",
+    "recommended": "녹스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kobe": {
+    "name": "Kobe",
+    "recommended": "코비",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kyle": {
+    "name": "Kyle",
+    "recommended": "카일",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "kyler": {
+    "name": "Kyler",
+    "recommended": "카일러",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "laila": {
+    "name": "Laila",
+    "recommended": "라일라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "landon": {
+    "name": "Landon",
+    "recommended": "랜던",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "lane": {
+    "name": "Lane",
+    "recommended": "레인",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "laura": {
+    "name": "Laura",
+    "recommended": "로라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "laurel": {
+    "name": "Laurel",
+    "recommended": "로럴",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "lauren": {
+    "name": "Lauren",
+    "recommended": "로런",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "lawrence": {
+    "name": "Lawrence",
+    "recommended": "로런스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "layla": {
+    "name": "Layla",
+    "recommended": "레일라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "leah": {
+    "name": "Leah",
+    "recommended": "리아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "lena": {
+    "name": "Lena",
+    "recommended": "레나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "leon": {
+    "name": "Leon",
+    "recommended": "리언",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "leona": {
+    "name": "Leona",
+    "recommended": "리오나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "leonardo": {
+    "name": "Leonardo",
+    "recommended": "레오나르도",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "leroy": {
+    "name": "Leroy",
+    "recommended": "리로이",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "lila": {
+    "name": "Lila",
+    "recommended": "라일라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "liliana": {
+    "name": "Liliana",
+    "recommended": "릴리아나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "lillian": {
+    "name": "Lillian",
+    "recommended": "릴리언",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "lily": {
+    "name": "Lily",
+    "recommended": "릴리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "logan": {
+    "name": "Logan",
+    "recommended": "로건",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "lola": {
+    "name": "Lola",
+    "recommended": "롤라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "london": {
+    "name": "London",
+    "recommended": "런던",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "lorenzo": {
+    "name": "Lorenzo",
+    "recommended": "로렌조",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "louie": {
+    "name": "Louie",
+    "recommended": "루이",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "luca": {
+    "name": "Luca",
+    "recommended": "루카",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "lucas": {
+    "name": "Lucas",
+    "recommended": "루카스",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "lucia": {
+    "name": "Lucia",
+    "recommended": "루시아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "lucy": {
+    "name": "Lucy",
+    "recommended": "루시",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "luis": {
+    "name": "Luis",
+    "recommended": "루이스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "luke": {
+    "name": "Luke",
+    "recommended": "루크",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "luna": {
+    "name": "Luna",
+    "recommended": "루나",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "lydia": {
+    "name": "Lydia",
+    "recommended": "리디아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "lyra": {
+    "name": "Lyra",
+    "recommended": "라이라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "mabel": {
+    "name": "Mabel",
+    "recommended": "메이블",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "mackenzie": {
+    "name": "Mackenzie",
+    "recommended": "매켄지",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "macy": {
+    "name": "Macy",
+    "recommended": "메이시",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "maddox": {
+    "name": "Maddox",
+    "recommended": "매덕스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "madeline": {
+    "name": "Madeline",
+    "recommended": "매들린",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "madelyn": {
+    "name": "Madelyn",
+    "recommended": "매들린",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "madison": {
+    "name": "Madison",
+    "recommended": "매디슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "maeve": {
+    "name": "Maeve",
+    "recommended": "메이브",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "magnolia": {
+    "name": "Magnolia",
+    "recommended": "매그놀리아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "makai": {
+    "name": "Makai",
+    "recommended": "마카이",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "malachi": {
+    "name": "Malachi",
+    "recommended": "말라카이",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "malcolm": {
+    "name": "Malcolm",
+    "recommended": "말컴",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "manuel": {
+    "name": "Manuel",
+    "recommended": "마누엘",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "marcus": {
+    "name": "Marcus",
+    "recommended": "마커스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "margaret": {
+    "name": "Margaret",
+    "recommended": "마거릿",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "margot": {
+    "name": "Margot",
+    "recommended": "마고",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "maria": {
+    "name": "Maria",
+    "recommended": "마리아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "mariah": {
+    "name": "Mariah",
+    "recommended": "머라이어",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "mariana": {
+    "name": "Mariana",
+    "recommended": "마리아나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "marie": {
+    "name": "Marie",
+    "recommended": "마리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "mark": {
+    "name": "Mark",
+    "recommended": "마크",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "marley": {
+    "name": "Marley",
+    "recommended": "말리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "marlowe": {
+    "name": "Marlowe",
+    "recommended": "말로",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "martin": {
+    "name": "Martin",
+    "recommended": "마틴",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "mason": {
+    "name": "Mason",
+    "recommended": "메이슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "mateo": {
+    "name": "Mateo",
+    "recommended": "마테오",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "matias": {
+    "name": "Matias",
+    "recommended": "마티아스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "matilda": {
+    "name": "Matilda",
+    "recommended": "마틸다",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "matthew": {
+    "name": "Matthew",
+    "recommended": "매튜",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "mauricio": {
+    "name": "Mauricio",
+    "recommended": "마우리시오",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "maverick": {
+    "name": "Maverick",
+    "recommended": "매버릭",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "max": {
+    "name": "Max",
+    "recommended": "맥스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "maxwell": {
+    "name": "Maxwell",
+    "recommended": "맥스웰",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "maya": {
+    "name": "Maya",
+    "recommended": "마야",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "mckenna": {
+    "name": "Mckenna",
+    "recommended": "매케나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "melanie": {
+    "name": "Melanie",
+    "recommended": "멜라니",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "melody": {
+    "name": "Melody",
+    "recommended": "멜로디",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "melvin": {
+    "name": "Melvin",
+    "recommended": "멜빈",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "messiah": {
+    "name": "Messiah",
+    "recommended": "메시아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "mia": {
+    "name": "Mia",
+    "recommended": "미아",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "micah": {
+    "name": "Micah",
+    "recommended": "마이카",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "michael": {
+    "name": "Michael",
+    "recommended": "마이클",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "miguel": {
+    "name": "Miguel",
+    "recommended": "미겔",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "mila": {
+    "name": "Mila",
+    "recommended": "밀라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "miles": {
+    "name": "Miles",
+    "recommended": "마일스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "millie": {
+    "name": "Millie",
+    "recommended": "밀리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "milo": {
+    "name": "Milo",
+    "recommended": "마일로",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "miriam": {
+    "name": "Miriam",
+    "recommended": "미리엄",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "mohamed": {
+    "name": "Mohamed",
+    "recommended": "모하메드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "molly": {
+    "name": "Molly",
+    "recommended": "몰리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "morgan": {
+    "name": "Morgan",
+    "recommended": "모건",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "moses": {
+    "name": "Moses",
+    "recommended": "모지스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "muhammad": {
+    "name": "Muhammad",
+    "recommended": "무함마드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "naomi": {
+    "name": "Naomi",
+    "recommended": "나오미",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "nash": {
+    "name": "Nash",
+    "recommended": "내시",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "natalia": {
+    "name": "Natalia",
+    "recommended": "나탈리아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "natalie": {
+    "name": "Natalie",
+    "recommended": "나탈리",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "nathan": {
+    "name": "Nathan",
+    "recommended": "네이선",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "nathaniel": {
+    "name": "Nathaniel",
+    "recommended": "네이선리얼",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "nevaeh": {
+    "name": "Nevaeh",
+    "recommended": "너베이아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "nicholas": {
+    "name": "Nicholas",
+    "recommended": "니컬러스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "nico": {
+    "name": "Nico",
+    "recommended": "니코",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "nikolas": {
+    "name": "Nikolas",
+    "recommended": "니콜라스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "nina": {
+    "name": "Nina",
+    "recommended": "니나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "noah": {
+    "name": "Noah",
+    "recommended": "노아",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "noel": {
+    "name": "Noel",
+    "recommended": "노엘",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "noelle": {
+    "name": "Noelle",
+    "recommended": "노엘",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "nolan": {
+    "name": "Nolan",
+    "recommended": "놀런",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "nora": {
+    "name": "Nora",
+    "recommended": "노라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "nova": {
+    "name": "Nova",
+    "recommended": "노바",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "oakley": {
+    "name": "Oakley",
+    "recommended": "오클리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "oliver": {
+    "name": "Oliver",
+    "recommended": "올리버",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "olivia": {
+    "name": "Olivia",
+    "recommended": "올리비아",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ophelia": {
+    "name": "Ophelia",
+    "recommended": "오필리아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "orion": {
+    "name": "Orion",
+    "recommended": "오리온",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "oscar": {
+    "name": "Oscar",
+    "recommended": "오스카",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "otto": {
+    "name": "Otto",
+    "recommended": "오토",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "owen": {
+    "name": "Owen",
+    "recommended": "오언",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "paige": {
+    "name": "Paige",
+    "recommended": "페이지",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "paisley": {
+    "name": "Paisley",
+    "recommended": "페이즐리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "palmer": {
+    "name": "Palmer",
+    "recommended": "팔머",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "parker": {
+    "name": "Parker",
+    "recommended": "파커",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "patrick": {
+    "name": "Patrick",
+    "recommended": "패트릭",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "paul": {
+    "name": "Paul",
+    "recommended": "폴",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "penelope": {
+    "name": "Penelope",
+    "recommended": "페넬로피",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "peter": {
+    "name": "Peter",
+    "recommended": "피터",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "peyton": {
+    "name": "Peyton",
+    "recommended": "페이턴",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "phoebe": {
+    "name": "Phoebe",
+    "recommended": "피비",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "note": "Greek-origin via English; initial ph pronounced like f."
+  },
+  "phoenix": {
+    "name": "Phoenix",
+    "recommended": "피닉스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "pierce": {
+    "name": "Pierce",
+    "recommended": "피어스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "piper": {
+    "name": "Piper",
+    "recommended": "파이퍼",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "porter": {
+    "name": "Porter",
+    "recommended": "포터",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "preston": {
+    "name": "Preston",
+    "recommended": "프레스턴",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "prince": {
+    "name": "Prince",
+    "recommended": "프린스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "quentin": {
+    "name": "Quentin",
+    "recommended": "퀜틴",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "quinn": {
+    "name": "Quinn",
+    "recommended": "퀸",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "rachel": {
+    "name": "Rachel",
+    "recommended": "레이철",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "raelynn": {
+    "name": "Raelynn",
+    "recommended": "레이린",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "rafael": {
+    "name": "Rafael",
+    "recommended": "라파엘",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "randy": {
+    "name": "Randy",
+    "recommended": "랜디",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "raymond": {
+    "name": "Raymond",
+    "recommended": "레이먼드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "reagan": {
+    "name": "Reagan",
+    "recommended": "리건",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "rebecca": {
+    "name": "Rebecca",
+    "recommended": "리베카",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "reese": {
+    "name": "Reese",
+    "recommended": "리스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "reid": {
+    "name": "Reid",
+    "recommended": "리드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "remi": {
+    "name": "Remi",
+    "recommended": "레미",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "remy": {
+    "name": "Remy",
+    "recommended": "레미",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "rhett": {
+    "name": "Rhett",
+    "recommended": "렛",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ricardo": {
+    "name": "Ricardo",
+    "recommended": "리카르도",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "richard": {
+    "name": "Richard",
+    "recommended": "리처드",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "riley": {
+    "name": "Riley",
+    "recommended": "라일리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "river": {
+    "name": "River",
+    "recommended": "리버",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "robert": {
+    "name": "Robert",
+    "recommended": "로버트",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "robin": {
+    "name": "Robin",
+    "recommended": "로빈",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "roman": {
+    "name": "Roman",
+    "recommended": "로먼",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "rosalie": {
+    "name": "Rosalie",
+    "recommended": "로절리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "rose": {
+    "name": "Rose",
+    "recommended": "로즈",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "rosie": {
+    "name": "Rosie",
+    "recommended": "로지",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "rowan": {
+    "name": "Rowan",
+    "recommended": "로언",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "roy": {
+    "name": "Roy",
+    "recommended": "로이",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ruby": {
+    "name": "Ruby",
+    "recommended": "루비",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "russell": {
+    "name": "Russell",
+    "recommended": "러셀",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "ryan": {
+    "name": "Ryan",
+    "recommended": "라이언",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "sadie": {
+    "name": "Sadie",
+    "recommended": "세이디",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "sage": {
+    "name": "Sage",
+    "recommended": "세이지",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "saint": {
+    "name": "Saint",
+    "recommended": "세인트",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "salvador": {
+    "name": "Salvador",
+    "recommended": "살바도르",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "sam": {
+    "name": "Sam",
+    "recommended": "샘",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "samantha": {
+    "name": "Samantha",
+    "recommended": "사만다",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "samson": {
+    "name": "Samson",
+    "recommended": "샘슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "samuel": {
+    "name": "Samuel",
+    "recommended": "새뮤얼",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "santiago": {
+    "name": "Santiago",
+    "recommended": "산티아고",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "sarah": {
+    "name": "Sarah",
+    "recommended": "세라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "savannah": {
+    "name": "Savannah",
+    "recommended": "서배나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "sawyer": {
+    "name": "Sawyer",
+    "recommended": "소여",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "scarlett": {
+    "name": "Scarlett",
+    "recommended": "스칼렛",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "scott": {
+    "name": "Scott",
+    "recommended": "스콧",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "sean": {
+    "name": "Sean",
+    "recommended": "션",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "note": "Irish-origin spelling; recommended Korean form follows common English usage."
+  },
+  "sebastian": {
+    "name": "Sebastian",
+    "recommended": "세바스찬",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "selena": {
+    "name": "Selena",
+    "recommended": "셀레나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "serena": {
+    "name": "Serena",
+    "recommended": "서리나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "sergio": {
+    "name": "Sergio",
+    "recommended": "세르히오",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "shane": {
+    "name": "Shane",
+    "recommended": "셰인",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "shawn": {
+    "name": "Shawn",
+    "recommended": "숀",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "shiloh": {
+    "name": "Shiloh",
+    "recommended": "샤일로",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "sienna": {
+    "name": "Sienna",
+    "recommended": "시에나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "silas": {
+    "name": "Silas",
+    "recommended": "사일러스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "simon": {
+    "name": "Simon",
+    "recommended": "사이먼",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "siobhan": {
+    "name": "Siobhan",
+    "recommended": "셔본",
+    "alternatives": [
+      "시오번"
+    ],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "irish",
+    "sourceTag": "starter_curated_v1",
+    "note": "Irish-origin pronunciation; highly irregular from spelling."
+  },
+  "skyler": {
+    "name": "Skyler",
+    "recommended": "스카일러",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "sloane": {
+    "name": "Sloane",
+    "recommended": "슬론",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "sofia": {
+    "name": "Sofia",
+    "recommended": "소피아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "sophia": {
+    "name": "Sophia",
+    "recommended": "소피아",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "sophie": {
+    "name": "Sophie",
+    "recommended": "소피",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "soren": {
+    "name": "Soren",
+    "recommended": "소렌",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "spencer": {
+    "name": "Spencer",
+    "recommended": "스펜서",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "stella": {
+    "name": "Stella",
+    "recommended": "스텔라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "sterling": {
+    "name": "Sterling",
+    "recommended": "스털링",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "stetson": {
+    "name": "Stetson",
+    "recommended": "스테슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "steven": {
+    "name": "Steven",
+    "recommended": "스티븐",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "sullivan": {
+    "name": "Sullivan",
+    "recommended": "설리번",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "summer": {
+    "name": "Summer",
+    "recommended": "서머",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "sydney": {
+    "name": "Sydney",
+    "recommended": "시드니",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "talia": {
+    "name": "Talia",
+    "recommended": "탈리아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "tanner": {
+    "name": "Tanner",
+    "recommended": "태너",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "tate": {
+    "name": "Tate",
+    "recommended": "테이트",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "tatum": {
+    "name": "Tatum",
+    "recommended": "테이텀",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "taylor": {
+    "name": "Taylor",
+    "recommended": "테일러",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "terry": {
+    "name": "Terry",
+    "recommended": "테리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "thea": {
+    "name": "Thea",
+    "recommended": "테아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "theodore": {
+    "name": "Theodore",
+    "recommended": "시어도어",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "thiago": {
+    "name": "Thiago",
+    "recommended": "치아고",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "thomas": {
+    "name": "Thomas",
+    "recommended": "토머스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "timothy": {
+    "name": "Timothy",
+    "recommended": "티머시",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "tobias": {
+    "name": "Tobias",
+    "recommended": "토바이어스",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "toby": {
+    "name": "Toby",
+    "recommended": "토비",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "trevor": {
+    "name": "Trevor",
+    "recommended": "트레버",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "tristan": {
+    "name": "Tristan",
+    "recommended": "트리스턴",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "troy": {
+    "name": "Troy",
+    "recommended": "트로이",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "tucker": {
+    "name": "Tucker",
+    "recommended": "터커",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "tyler": {
+    "name": "Tyler",
+    "recommended": "타일러",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "tags": [
+      "also_unisex"
+    ]
+  },
+  "tyson": {
+    "name": "Tyson",
+    "recommended": "타이슨",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "valentina": {
+    "name": "Valentina",
+    "recommended": "발렌티나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "valerie": {
+    "name": "Valerie",
+    "recommended": "밸러리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "vanessa": {
+    "name": "Vanessa",
+    "recommended": "버네사",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "victor": {
+    "name": "Victor",
+    "recommended": "빅터",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "victoria": {
+    "name": "Victoria",
+    "recommended": "빅토리아",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "vincent": {
+    "name": "Vincent",
+    "recommended": "빈센트",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "violet": {
+    "name": "Violet",
+    "recommended": "바이올렛",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "vivian": {
+    "name": "Vivian",
+    "recommended": "비비언",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "walker": {
+    "name": "Walker",
+    "recommended": "워커",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "walter": {
+    "name": "Walter",
+    "recommended": "월터",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "warren": {
+    "name": "Warren",
+    "recommended": "워런",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "waylon": {
+    "name": "Waylon",
+    "recommended": "웨일런",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "wesley": {
+    "name": "Wesley",
+    "recommended": "웨슬리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "weston": {
+    "name": "Weston",
+    "recommended": "웨스턴",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "william": {
+    "name": "William",
+    "recommended": "윌리엄",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "willow": {
+    "name": "Willow",
+    "recommended": "윌로",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "winter": {
+    "name": "Winter",
+    "recommended": "윈터",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "unisex",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "wren": {
+    "name": "Wren",
+    "recommended": "렌",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "wyatt": {
+    "name": "Wyatt",
+    "recommended": "와이어트",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "xander": {
+    "name": "Xander",
+    "recommended": "잰더",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "xavier": {
+    "name": "Xavier",
+    "recommended": "제이비어",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1",
+    "note": "Can vary by language/region; default chosen for common English usage."
+  },
+  "ximena": {
+    "name": "Ximena",
+    "recommended": "히메나",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "yara": {
+    "name": "Yara",
+    "recommended": "야라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "zachary": {
+    "name": "Zachary",
+    "recommended": "재커리",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "zane": {
+    "name": "Zane",
+    "recommended": "제인",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "zara": {
+    "name": "Zara",
+    "recommended": "자라",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "zion": {
+    "name": "Zion",
+    "recommended": "자이언",
+    "alternatives": [],
+    "confidence": "medium",
+    "gender": "male",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "zoe": {
+    "name": "Zoe",
+    "recommended": "조이",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  },
+  "zoey": {
+    "name": "Zoey",
+    "recommended": "조이",
+    "alternatives": [],
+    "confidence": "high",
+    "gender": "female",
+    "originHint": "english_or_common_global",
+    "sourceTag": "starter_curated_v1"
+  }
+}

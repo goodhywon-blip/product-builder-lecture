@@ -74,6 +74,8 @@
                   <div class="hangul-banner" aria-label="Hangul display">
                     <div id="hangulDisplay" class="hangul-large">—</div>
                   </div>
+                  <div id="conversionMeta" class="conversion-meta"></div>
+                  <div id="alternativeList" class="alt-list"></div>
                   <div class="practice-cta">
                     <button id="practiceToggle" class="btn ghost" type="button" aria-expanded="false" aria-controls="practicePanel">
                       🖊 Practice writing
@@ -193,6 +195,7 @@
       collection, query, where, orderBy, limit, getDocs, runTransaction, enableIndexedDbPersistence
     } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
     import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { createNameConverter, CHO, JUNG, JONG } from "./nameConversion.mjs";
 
     // ------------------------------
     // Firebase config (replace with your project values)
@@ -353,6 +356,28 @@
       ["zoe", ["조이"]]
     ]);
 
+    const fallbackDictionary = Object.fromEntries(
+      Array.from(BUILTIN_DICT.entries()).map(([key, options]) => [
+        key,
+        {
+          name: key,
+          recommended: options[0],
+          alternatives: options.slice(1),
+          confidence: "medium",
+          sourceTag: "legacy_builtin_seed"
+        }
+      ])
+    );
+
+    const converterReady = fetch("./hangul_name_dictionary_starter_v1.json")
+      .then((res) => (res.ok ? res.json() : {}))
+      .catch(() => ({}))
+      .then((starterDictionary) => createNameConverter({
+        dictionary: starterDictionary,
+        fallbackDictionary,
+        maxCandidates: 3
+      }));
+
     // ------------------------------
     // DOM
     // ------------------------------
@@ -363,6 +388,8 @@
     const communityList = $("#communityList");
     const hangulNameEl = $("#hangulName");
     const hangulDisplayEl = $("#hangulDisplay");
+    const conversionMetaEl = $("#conversionMeta");
+    const alternativeListEl = $("#alternativeList");
     const englishNameEl = $("#englishName");
     const saveIdBtn = $("#saveIdBtn");
     const practiceToggle = $("#practiceToggle");
@@ -531,215 +558,6 @@
     function normalizeHangulValue(s) {
       return (s || "").trim().replace(/\s+/g, " ").trim();
     }
-
-
-    // ------------------------------
-    // Rule-based fallback
-    // ------------------------------
-    const CHO  = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"];
-    const JUNG = ["ㅏ","ㅐ","ㅑ","ㅒ","ㅓ","ㅔ","ㅕ","ㅖ","ㅗ","ㅘ","ㅙ","ㅚ","ㅛ","ㅜ","ㅝ","ㅞ","ㅟ","ㅠ","ㅡ","ㅢ","ㅣ"];
-    const JONG = ["", "ㄱ","ㄲ","ㄳ","ㄴ","ㄵ","ㄶ","ㄷ","ㄹ","ㄺ","ㄻ","ㄼ","ㄽ","ㄾ","ㄿ","ㅀ","ㅁ","ㅂ","ㅄ","ㅅ","ㅆ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"];
-    const choIndex  = Object.fromEntries(CHO.map((c,i)=>[c,i]));
-    const jungIndex = Object.fromEntries(JUNG.map((c,i)=>[c,i]));
-    const jongIndex = Object.fromEntries(JONG.map((c,i)=>[c,i]));
-
-    function composeSyllable(cho, jung, jong="") {
-      if (!(cho in choIndex)) cho = "ㅇ";
-      if (!(jung in jungIndex)) jung = "ㅏ";
-      if (!(jong in jongIndex)) jong = "";
-      const base = 0xAC00;
-      const code = base + (choIndex[cho] * 21 * 28) + (jungIndex[jung] * 28) + jongIndex[jong];
-      return String.fromCharCode(code);
-    }
-
-    const VOWELS = [
-      ["eigh","에이"], ["igh","아이"],
-      ["eau","오"], ["ieu","유"],
-      ["ai","에이"], ["ay","에이"],
-      ["air","에어"], ["ear","이어"],
-      ["are","에어"], ["ere","이어"],
-      ["eer","이어"], ["ier","이어"],
-      ["er","어"], ["ir","어"], ["ur","어"],
-      ["ar","아"], ["or","오"],
-      ["ea","이"], ["ee","이"], ["ie","이"], ["ei","이"],
-      ["ew","유"], ["ui","위"], ["ue","유"], ["eu","유"],
-      ["oo","우"], ["ow","아우"], ["ou","아우"],
-      ["au","오"], ["aw","오"],
-      ["oi","오이"], ["oy","오이"],
-      ["oa","오"], ["oe","오"],
-      ["a","아"], ["e","에"], ["i","이"], ["o","오"], ["u","우"], ["y","이"]
-    ];
-
-    const CONS = [
-      ["tch","ㅊ"], ["dge","ㅈ"], ["dg","ㅈ"],
-      ["ch","ㅊ"], ["sh","ㅅ"], ["ph","ㅍ"],
-      ["th","ㅌ"], ["ck","ㅋ"], ["ng","ㅇ"], ["qu","ㅋ"], ["wh","ㅎ"],
-      ["kn","ㄴ"], ["wr","ㄹ"], ["gn","ㄴ"], ["ps","ㅅ"], ["x","ㅋㅅ"],
-      ["c","ㅋ"], ["g","ㄱ"], ["k","ㅋ"], ["j","ㅈ"], ["q","ㅋ"],
-      ["r","ㄹ"], ["l","ㄹ"], ["m","ㅁ"], ["n","ㄴ"], ["b","ㅂ"], ["p","ㅍ"],
-      ["d","ㄷ"], ["t","ㅌ"], ["f","ㅍ"], ["v","ㅂ"], ["h","ㅎ"], ["s","ㅅ"], ["z","ㅈ"], ["w","ㅇ"],
-    ];
-
-    function tokenize(word) {
-      let s = word.toLowerCase();
-      const out = [];
-      let i = 0;
-      const isVowelLetter = (ch) => "aeiouy".includes(ch || "");
-      while (i < s.length) {
-        const ch = s[i];
-        if (ch === "'" || ch === "-") { i++; continue; }
-
-        if (s.startsWith("gh", i) && i > 0 && isVowelLetter(s[i - 1]) && !isVowelLetter(s[i + 2])) {
-          i += 2; continue; // silent "gh" in words like "night"
-        }
-
-        if (s[i] === "c" && (s[i+1] === "e" || s[i+1] === "i" || s[i+1] === "y")) {
-          out.push({type:"C", val:"ㅅ"}); i += 1; continue;
-        }
-
-        let matched = false;
-
-        for (const [pat, val] of VOWELS) {
-          if (s.startsWith(pat, i)) { out.push({type:"V", val}); i += pat.length; matched = true; break; }
-        }
-        if (matched) continue;
-
-        for (const [pat, val] of CONS) {
-          if (s.startsWith(pat, i)) { out.push({type:"C", val, raw: pat}); i += pat.length; matched = true; break; }
-        }
-        if (matched) continue;
-
-        i++;
-      }
-      return out;
-    }
-
-    function pickJung(vowelSyllables) {
-      const map = [
-        ["아","ㅏ"], ["애","ㅐ"], ["야","ㅑ"], ["예","ㅖ"], ["에","ㅔ"],
-        ["어","ㅓ"], ["여","ㅕ"],
-        ["오","ㅗ"], ["와","ㅘ"], ["왜","ㅙ"], ["외","ㅚ"],
-        ["우","ㅜ"], ["워","ㅝ"], ["웨","ㅞ"], ["위","ㅟ"],
-        ["유","ㅠ"], ["으","ㅡ"], ["의","ㅢ"], ["이","ㅣ"],
-      ];
-      for (const [k,v] of map) if (vowelSyllables.startsWith(k)) return v;
-      return "ㅏ";
-    }
-
-    function splitHangulSyllables(s) {
-      const out = [];
-      for (const ch of (s || "")) out.push(ch);
-      return out.length ? out : [s];
-    }
-
-    function toJong(consonantJamo) {
-      const last = consonantJamo.slice(-1);
-      if (JONG.includes(last)) return last;
-      const close = {"ㅍ":"ㅂ","ㅋ":"ㄱ","ㅊ":"ㅈ","ㅌ":"ㄷ","ㅆ":"ㅅ"};
-      return (close[last] && JONG.includes(close[last])) ? close[last] : "";
-    }
-
-    function toCho(consonantJamo) {
-      const first = consonantJamo[0];
-      if (CHO.includes(first)) return first;
-      const close = {"ㅍ":"ㅂ","ㅋ":"ㄱ","ㅊ":"ㅈ","ㅌ":"ㄷ","ㅆ":"ㅅ"};
-      return (close[first] && CHO.includes(close[first])) ? close[first] : "ㅇ";
-    }
-
-    const SUFFIX_MAP = [
-      ["tious","셔스"],
-      ["cious","셔스"],
-      ["tion","션"],
-      ["sion","션"],
-      ["cion","션"],
-      ["tial","셜"],
-      ["cial","셜"],
-      ["ture","처"],
-      ["sure","셔"],
-      ["tia","시아"],
-      ["cia","시아"],
-      ["sia","시아"],
-      ["tio","시오"],
-      ["cio","시오"],
-      ["sio","시오"],
-      ["ment","먼트"],
-      ["ness","니스"],
-      ["able","에이블"],
-      ["ible","이블"],
-      ["son","슨"],
-      ["sen","슨"],
-      ["ton","턴"],
-      ["man","맨"],
-      ["men","맨"],
-      ["lynne","린"],
-      ["line","라인"],
-      ["lyn","린"],
-      ["ette","에트"]
-    ];
-
-    function splitSuffix(word) {
-      for (const [suf, hangul] of SUFFIX_MAP) {
-        if (word.length > suf.length && word.endsWith(suf)) {
-          return { base: word.slice(0, -suf.length), suffix: hangul };
-        }
-      }
-      return { base: word, suffix: "" };
-    }
-
-    function ruleBasedHangul(word) {
-      const { base, suffix } = splitSuffix(word);
-      const tokens = tokenize(base);
-      if (!tokens.length) return suffix || "";
-      let res = "";
-      let i = 0;
-      while (i < tokens.length) {
-        let cho = "ㅇ";
-        if (tokens[i]?.type === "C") { cho = toCho(tokens[i].val); i++; }
-        if (tokens[i]?.type !== "V") break;
-        const vowelSylls = splitHangulSyllables(tokens[i].val);
-        i++;
-
-        let pendingFinal = false;
-        let finalCon = null;
-        if (tokens[i]?.type === "C" && tokens[i+1]?.type !== "V") {
-          pendingFinal = true;
-          finalCon = tokens[i];
-          i++;
-        }
-
-        const firstJung = pickJung(vowelSylls[0]);
-        if (vowelSylls.length === 1) {
-          let jong = "";
-          if (pendingFinal) {
-            if (finalCon?.raw === "x") {
-              jong = "ㄱ";
-              res += composeSyllable(cho, firstJung, jong) + "스";
-              continue;
-            }
-            jong = toJong(finalCon.val);
-          }
-          res += composeSyllable(cho, firstJung, jong);
-          continue;
-        }
-
-        res += composeSyllable(cho, firstJung, "");
-        for (let s = 1; s < vowelSylls.length; s++) {
-          const isLast = s === vowelSylls.length - 1;
-          let jong = "";
-          if (isLast && pendingFinal) {
-            if (finalCon?.raw === "x") {
-              jong = "ㄱ";
-              res += composeSyllable("ㅇ", pickJung(vowelSylls[s]), jong) + "스";
-              break;
-            }
-            jong = toJong(finalCon.val);
-          }
-          res += composeSyllable("ㅇ", pickJung(vowelSylls[s]), jong);
-        }
-      }
-      return res + suffix;
-    }
-
     // ------------------------------
     // Firestore helpers
     // ------------------------------
@@ -912,87 +730,104 @@
       await fetchCommunitySuggestions(nameKey);
     }
 
-    // ------------------------------
-    // Lookup order: local > canonical > built-in > rule
-    // ------------------------------
-    async function lookupOneWord(wordLower) {
-      const canonical = await getCanonical(wordLower);
-      if (canonical?.hangulBest) {
-        const alts = Array.isArray(canonical.alts) ? canonical.alts : [];
-        return { options: [canonical.hangulBest, ...alts].filter(Boolean).slice(0,3), source: "canonical" };
+    function applyCanonicalBoost(conversionResult, canonical) {
+      if (!canonical?.hangulBest) return conversionResult;
+      const canonicalCandidates = [canonical.hangulBest, ...(Array.isArray(canonical.alts) ? canonical.alts : [])]
+        .map((hangul, idx) => ({
+          hangul,
+          score: 1 - idx * 0.02,
+          reason: idx === 0 ? "Community canonical recommendation" : "Community canonical alternative",
+          isRecommended: idx === 0
+        }));
+      const merged = [...canonicalCandidates, ...conversionResult.candidates];
+      const unique = [];
+      const seen = new Set();
+      merged.forEach((candidate) => {
+        if (!candidate?.hangul || seen.has(candidate.hangul)) return;
+        seen.add(candidate.hangul);
+        unique.push(candidate);
+      });
+      const ranked = unique
+        .sort((a, b) => b.score - a.score || a.hangul.localeCompare(b.hangul, "ko"))
+        .slice(0, 3)
+        .map((candidate, idx) => ({ ...candidate, isRecommended: idx === 0 }));
+      return {
+        ...conversionResult,
+        candidates: ranked,
+        confidence: "high",
+        matchedBy: conversionResult.matchedBy === "rule" ? "hybrid" : conversionResult.matchedBy
+      };
+    }
+
+    function renderConversionMeta(result) {
+      if (!conversionMetaEl) return;
+      const sourceLabel = result.matchedBy === "dictionary"
+        ? "Dictionary"
+        : result.matchedBy === "hybrid"
+          ? "Hybrid"
+          : "Rule fallback";
+      conversionMetaEl.innerHTML = `
+        <span class="mini-badge">Confidence: ${result.confidence}</span>
+        <span class="mini-badge">Matched by: ${sourceLabel}</span>
+      `;
+    }
+
+    function renderAlternativeList(candidates) {
+      if (!alternativeListEl) return;
+      const alternatives = candidates.slice(1);
+      if (!alternatives.length) {
+        alternativeListEl.innerHTML = "";
+        return;
       }
-
-      if (BUILTIN_DICT.has(wordLower)) return { options: BUILTIN_DICT.get(wordLower), source: "builtin" };
-
-      const base = ruleBasedHangul(wordLower);
-      let thVariant = "";
-      if (wordLower.includes("th")) thVariant = ruleBasedHangul(wordLower.replaceAll("th", "s"));
-      const opts = [base, thVariant].filter(Boolean);
-      return { options: [...new Set(opts)].slice(0, 3), source: "rule" };
+      alternativeListEl.innerHTML = alternatives
+        .map((candidate) => `<div class="alt-item">${escapeHtml(candidate.hangul)}</div>`)
+        .join("");
     }
 
-    function sourceLabel(src){
-      if (src === "canonical") return "Canonical";
-      if (src === "builtin") return "Built-in dictionary";
-      return "Rule-based fallback";
-    }
-
-    async function renderResults(rawInput, wordResults, combinedOptions, combinedSource) {
-      if (!combinedOptions.length) {
+    async function renderResults(rawInput, conversionResult) {
+      const primary = conversionResult.candidates[0]?.hangul || "";
+      if (!primary) {
         setCardValues("—", rawInput || "English Name");
+        if (conversionMetaEl) conversionMetaEl.innerHTML = "";
+        if (alternativeListEl) alternativeListEl.innerHTML = "";
         setPracticeVisibility(false);
         return;
       }
 
-      const primary = combinedOptions[0];
       setCardValues(primary, rawInput);
+      renderConversionMeta(conversionResult);
+      renderAlternativeList(conversionResult.candidates);
       setPracticeVisibility(true);
     }
 
     async function convert() {
       const raw = nameInput.value.trim();
-      if (!raw) { setCardValues("—", "English Name"); setPracticeVisibility(false); return; }
-
-      const cleaned = raw
-        .replace(/[^a-zA-Z\s'-]/g, "")
-        .replace(/\s+/g, " ")
-        .trim();
-
-      if (!cleaned) { setCardValues("—", raw); setPracticeVisibility(false); return; }
+      if (!raw) {
+        setCardValues("—", "English Name");
+        if (conversionMetaEl) conversionMetaEl.innerHTML = "";
+        if (alternativeListEl) alternativeListEl.innerHTML = "";
+        setPracticeVisibility(false);
+        return;
+      }
 
       resetPracticePanel();
 
-      const words = cleaned.split(" ").map(w => w.trim()).filter(Boolean);
-      const wordResults = [];
-      for (const w of words) {
-        const key = normalizeEnglishKey(w);
-        const res = await lookupOneWord(key);
-        wordResults.push({ word: w, key, options: res.options, source: res.source });
-      }
+      const converter = await converterReady;
+      let conversionResult = converter.convert(raw, { normalizeSeparators: true });
+      const normalizedKey = normalizeEnglishKey(raw);
+      const canonical = normalizedKey ? await getCanonical(normalizedKey) : null;
+      conversionResult = applyCanonicalBoost(conversionResult, canonical);
 
-      const combined = [];
-      for (let i = 0; i < 3; i++) {
-        const parts = wordResults.map(wr => wr.options[i] || wr.options[0]).filter(Boolean);
-        if (parts.length) combined.push(parts.join(" "));
-      }
-      const combinedOptions = [...new Set(combined)].slice(0, 3);
+      await renderResults(raw, conversionResult);
 
-      const anyCanonical = wordResults.some(w => w.source === "canonical");
-      const allBuiltin = wordResults.every(w => w.source === "builtin");
-      const combinedSource = anyCanonical ? "canonical" : (allBuiltin ? "builtin" : "rule");
-
-      await renderResults(raw, wordResults, combinedOptions, combinedSource);
-
-      lastNameKey = normalizeEnglishKey(raw);
-      lastRecommended = combinedOptions[0] || "";
-      lastSource = combinedSource;
+      lastNameKey = normalizedKey;
+      lastRecommended = conversionResult.candidates[0]?.hangul || "";
+      lastSource = conversionResult.matchedBy === "rule" ? "rule" : "builtin";
       suggestKey.value = lastNameKey;
       suggestHangul.value = lastRecommended;
 
-      const firstKey = wordResults[0]?.key || "";
-      if (firstKey) {
-        fetchCommunitySuggestions(firstKey).catch(() => {});
-      }
+      const firstKey = normalizedKey.split(" ").filter(Boolean)[0] || "";
+      if (firstKey) fetchCommunitySuggestions(firstKey).catch(() => {});
     }
 
     $("#convertBtn").addEventListener("click", convert);
