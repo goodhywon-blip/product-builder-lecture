@@ -116,16 +116,23 @@
                     </button>
                   </div>
                   <div id="practicePanel" class="practice-panel" hidden>
-                    <div class="practice-block">
-                      <div class="practice-title">Syllable breakdown</div>
-                      <div id="syllableList" class="syllable-list"></div>
+                    <div class="practice-hero">
+                      <div class="practice-title">Practice your Hangul name</div>
+                      <div id="practiceNameDisplay" class="practice-name">—</div>
+                      <div id="practiceHint" class="practice-hint">Trace first, then write on your own.</div>
                     </div>
-                    <div class="practice-block">
-                      <div class="practice-title">How to write</div>
-                      <div id="jamoGuideList" class="jamo-guide"></div>
+                    <div class="practice-grid">
+                      <div class="practice-block">
+                        <div class="practice-title">Syllable breakdown</div>
+                        <div id="syllableList" class="syllable-list"></div>
+                      </div>
+                      <div class="practice-block">
+                        <div class="practice-title">Stroke tips</div>
+                        <div id="jamoGuideList" class="jamo-guide"></div>
+                      </div>
                     </div>
                     <div class="practice-actions">
-                      <button id="printPracticeBtn" class="btn" type="button">🖨 Print practice sheet</button>
+                      <button id="printPracticeBtn" class="btn primary" type="button">🖨 Print worksheet</button>
                     </div>
                   </div>
                 </div>
@@ -488,6 +495,8 @@
     const surpriseBtn = $("#surpriseBtn");
     const practiceToggle = $("#practiceToggle");
     const practicePanel = $("#practicePanel");
+    const practiceNameDisplay = $("#practiceNameDisplay");
+    const practiceHint = $("#practiceHint");
     const syllableList = $("#syllableList");
     const jamoGuideList = $("#jamoGuideList");
     const printPracticeBtn = $("#printPracticeBtn");
@@ -546,6 +555,8 @@
     function resetPracticePanel() {
       if (practicePanel) practicePanel.hidden = true;
       if (practiceToggle) practiceToggle.setAttribute("aria-expanded", "false");
+      if (practiceNameDisplay) practiceNameDisplay.textContent = "—";
+      if (practiceHint) practiceHint.textContent = "Trace first, then write on your own.";
       if (syllableList) syllableList.innerHTML = "";
       if (jamoGuideList) jamoGuideList.innerHTML = "";
     }
@@ -1205,6 +1216,8 @@
 
       const chars = Array.from(hangulText.replace(/\s+/g, ""));
       const jamoSet = new Set();
+      if (practiceNameDisplay) practiceNameDisplay.textContent = hangulText;
+      if (practiceHint) practiceHint.textContent = "Start with traced boxes, then continue in blank boxes.";
       syllableList.innerHTML = "";
       jamoGuideList.innerHTML = "";
 
@@ -1227,9 +1240,10 @@
         const steps = getJamoGuide(jamo);
         const row = document.createElement("div");
         row.className = "jamo-row";
+        const shortSteps = steps.slice(0, 2).join(" → ");
         row.innerHTML = `
           <div><span class="label">${jamo}</span></div>
-          <div class="steps">${steps.map((s, i) => `${i + 1}) ${s}`).join("  ")}</div>
+          <div class="steps">${escapeHtml(shortSteps)}</div>
         `;
         jamoGuideList.appendChild(row);
       });
@@ -1238,16 +1252,17 @@
     function openPracticeSheetPrintWindow(hangulText) {
       const safeText = (hangulText || "").trim();
       if (!safeText || safeText === "—") return;
-      const traceCount = 8;
-      const rows = 4;
-      const cols = 6;
-      const total = rows * cols;
-      const cells = Array.from({ length: total }, (_, i) => {
-        const trace = i < traceCount ? `<span class="trace">${safeText}</span>` : "";
-        return `<div class="cell">${trace}</div>`;
-      }).join("");
+      const englishName = (nameInput?.value || "").trim() || "English Name";
+      const syllables = Array.from(safeText.replace(/\s+/g, ""));
 
-      const win = window.open("", "_blank", "width=900,height=700");
+      const traceRows = 2;
+      const blankRows = 3;
+      const cols = 6;
+      const traceCells = Array.from({ length: traceRows * cols }, () => `<div class="cell"><span class="trace">${safeText}</span></div>`).join("");
+      const blankCells = Array.from({ length: blankRows * cols }, () => `<div class="cell"></div>`).join("");
+      const syllableSummary = syllables.map((s) => `<span class="sy-chip">${s}</span>`).join("");
+
+      const win = window.open("", "_blank", "width=960,height=760");
       if (!win) return;
       win.document.write(`<!doctype html>
 <html lang="en">
@@ -1257,38 +1272,70 @@
   <title>Hangul Name Practice Sheet</title>
   <style>
     *{box-sizing:border-box}
-    body{margin:24px;font-family: "Nanum Myeongjo", serif;color:#1b1b1b;}
-    h1{margin:0 0 6px;font-size:22px;}
-    .name{font-size:40px;margin:6px 0 18px;font-weight:700;letter-spacing:.06em;}
-    .grid{display:grid;grid-template-columns:repeat(${cols}, minmax(0,1fr));gap:8px;}
-    .cell{aspect-ratio:1/1;border:1px solid #cfc9bf;position:relative;}
-    .cell::before,.cell::after{
-      content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:#e9e4dc;
-      transform:translateX(-50%);
-    }
-    .cell::after{left:0;right:0;top:50%;height:1px;width:auto;transform:translateY(-50%);}
-    .trace{
-      position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-      font-size:24px;color:rgba(0,0,0,.12);letter-spacing:.06em;
-    }
-    footer{margin-top:18px;font-size:11px;color:#8a8177;}
-    @media print{
-      body{margin:16mm;}
-      .print-btn{display:none;}
-    }
+    @page{size:A4 portrait;margin:14mm;}
+    body{margin:0;font-family:"Nanum Myeongjo", serif;color:#1f1f1f;background:#fff;}
+    .sheet{min-height:100vh;display:flex;flex-direction:column;gap:12px;}
+    .head{border-bottom:1px solid #d9d2c7;padding-bottom:8px;}
+    .title{margin:0;font-size:26px;letter-spacing:-.01em;}
+    .sub{margin:4px 0 0;font-size:12px;color:#5f5a52;}
+    .name-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;font-size:12px;color:#5f5a52;}
+    .hero-name{border:1px solid #ded7cc;border-radius:14px;padding:12px;background:#faf8f4;text-align:center;}
+    .hero-name .ko{font-size:48px;letter-spacing:.08em;color:#2f2419;font-weight:700;}
+    .hero-name .en{font-size:13px;letter-spacing:.16em;color:#6c5e4a;margin-top:2px;}
+    .section{border:1px solid #e3ddd2;border-radius:12px;padding:10px;}
+    .sec-title{margin:0 0 8px;font-size:13px;color:#5f5a52;letter-spacing:.03em;text-transform:uppercase;}
+    .grid{display:grid;grid-template-columns:repeat(${cols},1fr);gap:7px;}
+    .cell{aspect-ratio:1/1;border:1px solid #cfc9bf;position:relative;border-radius:6px;background:#fff;}
+    .cell::before,.cell::after{content:"";position:absolute;background:#ece7de;}
+    .cell::before{left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%);}
+    .cell::after{top:50%;left:0;right:0;height:1px;transform:translateY(-50%);}
+    .trace{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:23px;color:rgba(28,24,20,.12);letter-spacing:.06em;}
+    .support{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+    .chips{display:flex;gap:6px;flex-wrap:wrap;}
+    .sy-chip{border:1px solid #d9d2c7;border-radius:999px;padding:4px 9px;font-size:14px;color:#3a2f23;background:#faf8f4;}
+    .hint{font-size:12px;color:#6d665d;}
+    footer{margin-top:auto;padding-top:4px;font-size:11px;color:#8b8378;text-align:right;}
+    .print-btn{position:fixed;top:10px;right:10px;border:1px solid #d3ccbf;background:#fff;border-radius:10px;padding:6px 10px;cursor:pointer;}
+    @media print{.print-btn{display:none;}}
   </style>
 </head>
 <body>
   <button class="print-btn" onclick="window.print()">Print</button>
-  <h1>Hangul Name Practice Sheet</h1>
-  <div class="name">${safeText}</div>
-  <div class="grid">${cells}</div>
-  <footer>Generated by Hangul Name Studio</footer>
+  <main class="sheet">
+    <header class="head">
+      <h1 class="title">Hangul Name Practice Sheet</h1>
+      <p class="sub">Learn to write your name in Korean</p>
+      <div class="name-row">
+        <span>English Name: <strong>${englishName}</strong></span>
+        <span>Hangul Name: <strong>${safeText}</strong></span>
+      </div>
+    </header>
+    <section class="hero-name">
+      <div class="ko">${safeText}</div>
+      <div class="en">${englishName.toUpperCase()}</div>
+    </section>
+    <section class="section">
+      <h2 class="sec-title">Trace Practice</h2>
+      <div class="grid">${traceCells}</div>
+    </section>
+    <section class="section">
+      <h2 class="sec-title">Free Practice</h2>
+      <div class="grid">${blankCells}</div>
+    </section>
+    <section class="section support">
+      <div>
+        <h2 class="sec-title" style="margin-bottom:6px;">Syllable Breakdown</h2>
+        <div class="chips">${syllableSummary}</div>
+      </div>
+      <div class="hint">Tip: trace lightly, then write each syllable from memory.</div>
+    </section>
+    <footer>Hangul Name Studio</footer>
+  </main>
 </body>
 </html>`);
       win.document.close();
       win.focus();
-      setTimeout(() => win.print(), 400);
+      setTimeout(() => win.print(), 350);
     }
 
     practiceToggle?.addEventListener("click", () => {
