@@ -886,9 +886,13 @@
     }
 
     function applyCanonicalBoost(conversionResult, canonical) {
-      if (conversionResult.matchedBy === "dictionary") return conversionResult;
       if (!canonical?.hangulBest) return conversionResult;
-      const merged = [canonical.hangulBest, ...(Array.isArray(canonical.alts) ? canonical.alts : []), conversionResult.recommended, ...conversionResult.alternatives]
+      const merged = [
+        canonical.hangulBest,
+        ...(Array.isArray(canonical.alts) ? canonical.alts : []),
+        conversionResult.recommended,
+        ...conversionResult.alternatives
+      ]
         .filter(Boolean);
       const unique = [];
       const seen = new Set();
@@ -902,7 +906,8 @@
         recommended: unique[0] || conversionResult.recommended,
         alternatives: unique.slice(1, 3),
         confidence: "high",
-        matchedBy: "hybrid"
+        matchedBy: "hybrid",
+        note: "Admin-reviewed canonical spelling applied."
       };
     }
 
