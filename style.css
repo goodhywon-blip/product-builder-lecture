@@ -44,6 +44,15 @@ body::before{
 header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px;}
 
 .brand{display:flex;align-items:center;gap:12px;min-width:240px;}
+.brand-home-link{
+  text-decoration:none;
+  color:inherit;
+}
+.brand-home-link:focus-visible{
+  outline:2px solid #0a84ff;
+  outline-offset:3px;
+  border-radius:10px;
+}
 .mark{
   width:40px;height:40px;border-radius:12px;
   background:#ffffff;
