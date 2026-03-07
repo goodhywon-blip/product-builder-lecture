@@ -140,20 +140,22 @@
                   <div class="alt-title">Name card output</div>
                   <div
                     id="idCard"
-                    class="relative mx-auto w-full max-w-[640px] aspect-[85.6/54] rounded-2xl overflow-hidden shadow-lg border border-black/10 font-['Noto_Serif_KR']"
+                    class="id-card card-classic"
+                    data-style="classic"
                   >
                     <img
-                      src="assets/honorary_id_bg.png"
-                      alt="Honorary ID background"
-                      class="absolute inset-0 w-full h-full object-cover"
+                      id="cardBgImage"
+                      src="assets/cards/classic-template.jpg"
+                      alt="Classic card template"
+                      class="id-card-bg"
                     />
-                    <div class="absolute inset-0 bg-black/5"></div>
-
-                    <div class="relative h-full p-5 sm:p-6 text-[#3b2f20]">
-                      <div class="absolute left-[8%] bottom-[18%] right-[8%] text-[#3b2f20]">
-                        <div id="hangulName" class="text-2xl sm:text-3xl font-bold mt-1">—</div>
-                        <div id="englishName" class="text-xs sm:text-sm tracking-wide opacity-80">English Name</div>
+                    <div class="id-card-tone"></div>
+                    <div class="id-card-content">
+                      <div class="id-card-text">
+                        <div id="hangulName" class="id-hangul">—</div>
+                        <div id="englishName" class="id-english">English Name</div>
                       </div>
+                      <div class="id-brand">Hangul Name Studio</div>
                     </div>
                   </div>
 
@@ -169,9 +171,11 @@
                     <span class="alt-title">Card style</span>
                     <select id="cardStyleSelect" class="card-style-select">
                       <option value="classic">Classic</option>
-                      <option value="modern" disabled>Modern (coming soon)</option>
+                      <option value="frame">Frame</option>
+                      <option value="dark">Dark</option>
                     </select>
                   </div>
+                  <div id="cardStyleNote" class="card-style-note">Soft ivory style for timeless everyday use.</div>
                 </div>
               </div>
             </div>
@@ -248,6 +252,7 @@
     } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
     import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
     import { createNameConverter, CHO, JUNG, JONG } from "./nameConversion.mjs";
+    import { CARD_STYLES, CARD_STYLE_ORDER, getCardStyle } from "./cardStyles.mjs";
     import {
       createCanonicalResult,
       selectDisplayedHangul,
@@ -480,6 +485,8 @@
     const confidenceNoteEl = $("#confidenceNote");
     const resultReasonEl = $("#resultReason");
     const alternativeListEl = $("#alternativeList");
+    const idCardEl = $("#idCard");
+    const cardBgImageEl = $("#cardBgImage");
     const englishNameEl = $("#englishName");
     const saveIdBtn = $("#saveIdBtn");
     const shareResultBtn = $("#shareResultBtn");
@@ -491,6 +498,7 @@
     const recentWrap = $("#recentWrap");
     const recentList = $("#recentList");
     const cardStyleSelect = $("#cardStyleSelect");
+    const cardStyleNote = $("#cardStyleNote");
     const resultActions = $("#resultActions");
     const surpriseBtn = $("#surpriseBtn");
     const practiceToggle = $("#practiceToggle");
@@ -541,6 +549,37 @@
       if (hangulNameEl) hangulNameEl.textContent = hangul || "—";
       if (hangulDisplayEl) hangulDisplayEl.textContent = hangul || "—";
       if (englishNameEl) englishNameEl.textContent = english || "English Name";
+      if (idCardEl) {
+        const hangulLen = Array.from((hangul || "").replace(/\s+/g, "")).length;
+        const englishLen = (english || "").length;
+        idCardEl.dataset.hangulLen = String(hangulLen);
+        idCardEl.dataset.englishLen = String(englishLen);
+        idCardEl.dataset.hangulLong = hangulLen >= 6 ? "true" : "false";
+        idCardEl.dataset.englishLong = englishLen >= 12 ? "true" : "false";
+      }
+    }
+
+    function applyCardStyle(styleId) {
+      const style = getCardStyle(styleId);
+      selectedCardStyle = style.id;
+      if (idCardEl) {
+        idCardEl.dataset.style = style.id;
+        idCardEl.classList.remove("card-classic", "card-frame", "card-dark");
+        idCardEl.classList.add(`card-${style.id}`);
+      }
+      if (cardBgImageEl) {
+        cardBgImageEl.src = style.backgroundImage;
+        cardBgImageEl.alt = `${style.label} card template`;
+      }
+      if (idCardEl && style.vars) {
+        Object.entries(style.vars).forEach(([key, value]) => {
+          idCardEl.style.setProperty(key, value);
+        });
+      }
+      if (cardStyleSelect && cardStyleSelect.value !== style.id) {
+        cardStyleSelect.value = style.id;
+      }
+      if (cardStyleNote) cardStyleNote.textContent = style.note;
     }
 
     function setPracticeVisibility(show) {
@@ -600,6 +639,7 @@
     let lastSuggestionTs = 0;
     let canonicalCache = new Map();
     let activeConversion = null;
+    let selectedCardStyle = "classic";
     const RECENT_NAMES_KEY = "hns_recent_names_v1";
 
     onAuthStateChanged(auth, (user) => {
@@ -695,6 +735,14 @@
       const next = pushRecentName(getRecentNames(), name, 8);
       saveRecentNames(next);
       renderRecentNames();
+    }
+
+    function initializeCardStylePicker() {
+      if (!cardStyleSelect) return;
+      cardStyleSelect.innerHTML = CARD_STYLE_ORDER
+        .map((styleId) => `<option value="${styleId}">${escapeHtml(CARD_STYLES[styleId].label)}</option>`)
+        .join("");
+      applyCardStyle("classic");
     }
 
     const clearBtn = $("#clearBtn");
@@ -1064,10 +1112,7 @@
         if (!practicePanel.hidden) updatePracticeUI(getActiveHangul());
       });
       cardStyleSelect?.addEventListener("change", () => {
-        if (cardStyleSelect.value !== "classic") {
-          showToast("More card styles coming soon");
-          cardStyleSelect.value = "classic";
-        }
+        applyCardStyle(cardStyleSelect.value);
       });
     }
 
@@ -1352,6 +1397,7 @@
       openPracticeSheetPrintWindow(getActiveHangul());
     });
 
+    initializeCardStylePicker();
     bindResultActions();
     setResultActionsVisibility(false);
     renderRecentNames();

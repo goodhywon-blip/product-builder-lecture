@@ -230,6 +230,86 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
 }
 .result-segment:first-child{border-top:none;padding-top:0;}
 .result-segment #idCard{margin-left:0;margin-right:0;}
+.id-card{
+  position:relative;
+  width:100%;
+  max-width:640px;
+  margin:0 auto;
+  aspect-ratio:85.6/54;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid rgba(11,13,18,.14);
+  box-shadow:0 14px 30px rgba(11,13,18,.18);
+  --card-text-left: 10%;
+  --card-text-right: 10%;
+  --card-text-bottom: 16%;
+  --card-text-align: left;
+  --card-hangul-size: clamp(26px, 4.6vw, 36px);
+  --card-hangul-color: #3b2f20;
+  --card-english-size: clamp(11px, 1.7vw, 14px);
+  --card-english-color: #5f4c34;
+  --card-brand-left: 10%;
+  --card-brand-top: 10%;
+  --card-brand-color: #6f5a41;
+  --card-tone: linear-gradient(180deg, rgba(0,0,0,.01), rgba(0,0,0,.07));
+}
+.id-card-bg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.id-card-tone{
+  position:absolute;
+  inset:0;
+  background:var(--card-tone);
+}
+.id-card-content{
+  position:relative;
+  height:100%;
+}
+.id-card-text{
+  position:absolute;
+  left:var(--card-text-left);
+  right:var(--card-text-right);
+  bottom:var(--card-text-bottom);
+  text-align:var(--card-text-align);
+}
+.id-hangul{
+  font-family:"Noto Serif KR","Nanum Myeongjo",serif;
+  font-weight:700;
+  font-size:var(--card-hangul-size);
+  letter-spacing:.05em;
+  line-height:1.1;
+  word-break:keep-all;
+  color:var(--card-hangul-color);
+}
+.id-english{
+  margin-top:4px;
+  font-size:var(--card-english-size);
+  letter-spacing:.14em;
+  opacity:.9;
+  color:var(--card-english-color);
+}
+.id-brand{
+  position:absolute;
+  left:var(--card-brand-left);
+  top:var(--card-brand-top);
+  font-size:11px;
+  letter-spacing:.08em;
+  opacity:.78;
+  text-transform:uppercase;
+  color:var(--card-brand-color);
+}
+.card-dark .id-brand{opacity:.85;}
+.card-frame .id-brand{transform:translateX(-50%);}
+.id-card[data-hangul-long="true"] .id-hangul{
+  font-size:clamp(22px, 4vw, 30px);
+}
+.id-card[data-english-long="true"] .id-english{
+  font-size:clamp(10px, 1.5vw, 12px);
+}
 .hangul-banner{
   display:flex;
   align-items:center;
@@ -331,6 +411,12 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
   padding:8px 10px;
   background:#fff;
   color:var(--ink);
+}
+.card-style-note{
+  margin-top:6px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.5;
 }
 @media (max-width: 640px){
   .hero .headline{font-size:32px;}
