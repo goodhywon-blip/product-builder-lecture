@@ -52,8 +52,17 @@
     </nav>
 
     <section class="hero reveal delay-2">
-      <h2 class="headline">Write your name in Hangul</h2>
-      <p class="subhead">Clean conversion. Community-checked.</p>
+      <!-- Copy options for future swaps:
+           1) Create your Hangul name card
+           2) Turn your English name into elegant Hangul
+           3) Get a natural Hangul spelling, then save or share it -->
+      <h2 class="headline">Create your Hangul name card</h2>
+      <p class="subhead">Get a natural Hangul spelling, preview it on a clean card, then save or share in one tap.</p>
+      <div class="hero-hints">
+        <span class="mini-badge">Dictionary-backed</span>
+        <span class="mini-badge">Pronunciation-aware fallback</span>
+        <span class="mini-badge">Community-refined</span>
+      </div>
     </section>
 
     <section id="tool" class="grid">
@@ -65,6 +74,7 @@
               <input id="nameInput" placeholder="e.g., Jacob / Jason / Michael" autocomplete="off" />
             </div>
             <button class="btn primary" id="convertBtn">Convert</button>
+            <button class="btn ghost" id="surpriseBtn" type="button">Surprise me</button>
           </div>
 
           <div class="results" id="results">
@@ -74,7 +84,9 @@
                   <div class="hangul-banner" aria-label="Hangul display">
                     <div id="hangulDisplay" class="hangul-large">—</div>
                   </div>
+                  <div id="recommendationTag" class="result-label" hidden>Recommended spelling</div>
                   <div id="conversionMeta" class="conversion-meta"></div>
+                  <div id="confidenceNote" class="confidence-note"></div>
                   <div id="alternativeList" class="alt-list"></div>
                   <div class="practice-cta">
                     <button id="practiceToggle" class="btn ghost" type="button" aria-expanded="false" aria-controls="practicePanel">
@@ -115,10 +127,11 @@
                     </div>
                   </div>
 
-                  <div class="mt-3 flex flex-wrap gap-2 items-center">
-                    <button id="saveIdBtn" class="px-4 py-2 rounded-lg bg-emerald-700 text-white text-sm hover:bg-emerald-800">
-                      Save ID Card
-                    </button>
+                  <div id="resultActions" class="result-actions" hidden>
+                    <button id="saveIdBtn" class="btn primary" type="button">Download name card</button>
+                    <button id="shareResultBtn" class="btn" type="button">Share result</button>
+                    <button id="copyResultBtn" class="btn" type="button">Copy Hangul</button>
+                    <button id="copyLinkBtn" class="btn ghost" type="button">Copy share link</button>
                   </div>
                 </div>
               </div>
@@ -130,10 +143,10 @@
 
     <section id="community" class="section reveal delay-2">
       <div class="section-head">
-        <h3>Community</h3>
-        <span>Reviewed</span>
+        <h3>Community refinement</h3>
+        <span>Quality layer</span>
       </div>
-      <p class="text">Suggestions open in a light modal to keep the page clean.</p>
+      <p class="text">Help fine-tune spellings when needed. The main experience stays focused on creating and sharing your result card.</p>
       <div class="row" style="margin-top:10px;">
         <button class="btn ghost" id="communityOpenBtn">Open community</button>
       </div>
@@ -416,10 +429,17 @@
     const communityList = $("#communityList");
     const hangulNameEl = $("#hangulName");
     const hangulDisplayEl = $("#hangulDisplay");
+    const recommendationTagEl = $("#recommendationTag");
     const conversionMetaEl = $("#conversionMeta");
+    const confidenceNoteEl = $("#confidenceNote");
     const alternativeListEl = $("#alternativeList");
     const englishNameEl = $("#englishName");
     const saveIdBtn = $("#saveIdBtn");
+    const shareResultBtn = $("#shareResultBtn");
+    const copyResultBtn = $("#copyResultBtn");
+    const copyLinkBtn = $("#copyLinkBtn");
+    const resultActions = $("#resultActions");
+    const surpriseBtn = $("#surpriseBtn");
     const practiceToggle = $("#practiceToggle");
     const practicePanel = $("#practicePanel");
     const syllableList = $("#syllableList");
@@ -543,10 +563,10 @@
       setTimeout(() => toast.classList.remove("show"), 900);
     }
 
-    async function copyText(t) {
+    async function copyText(t, msg = "Copied!") {
       try {
         await navigator.clipboard.writeText(t);
-        showToast("Copied!");
+        showToast(msg);
       } catch {
         const ta = document.createElement("textarea");
         ta.value = t;
@@ -554,8 +574,28 @@
         ta.select();
         document.execCommand("copy");
         document.body.removeChild(ta);
-        showToast("Copied!");
+        showToast(msg);
       }
+    }
+
+    function setResultActionsVisibility(show) {
+      if (!resultActions) return;
+      resultActions.hidden = !show;
+    }
+
+    function setRecommendationVisibility(show) {
+      if (!recommendationTagEl) return;
+      recommendationTagEl.hidden = !show;
+    }
+
+    function clearResultPresentation(rawInput) {
+      setCardValues("—", rawInput || "English Name");
+      if (conversionMetaEl) conversionMetaEl.innerHTML = "";
+      if (alternativeListEl) alternativeListEl.innerHTML = "";
+      if (confidenceNoteEl) confidenceNoteEl.textContent = "";
+      setRecommendationVisibility(false);
+      setResultActionsVisibility(false);
+      setPracticeVisibility(false);
     }
 
     const clearBtn = $("#clearBtn");
@@ -781,6 +821,11 @@
 
     function renderConversionMeta(result) {
       if (!conversionMetaEl) return;
+      const trustLabel = result.matchedBy === "dictionary"
+        ? "Dictionary-backed recommendation"
+        : result.matchedBy === "hybrid"
+          ? "Dictionary + community refinement"
+          : "Pronunciation-based recommendation";
       const sourceLabel = result.matchedBy === "dictionary"
         ? "Dictionary"
         : result.matchedBy === "hybrid"
@@ -789,6 +834,7 @@
       conversionMetaEl.innerHTML = `
         <span class="mini-badge">Confidence: ${result.confidence}</span>
         <span class="mini-badge">Matched by: ${sourceLabel}</span>
+        <span class="mini-badge">${trustLabel}</span>
         ${result.note ? `<span class="mini-badge">${escapeHtml(result.note)}</span>` : ""}
       `;
     }
@@ -799,34 +845,104 @@
         alternativeListEl.innerHTML = "";
         return;
       }
-      alternativeListEl.innerHTML = alternatives
-        .map((hangul) => `<div class="alt-item">${escapeHtml(hangul)}</div>`)
-        .join("");
+      alternativeListEl.innerHTML = `
+        <div class="alt-title">Alternatives</div>
+        ${alternatives.map((hangul) => `<div class="alt-item">${escapeHtml(hangul)}</div>`).join("")}
+      `;
+    }
+
+    function renderConfidenceNote(result) {
+      if (!confidenceNoteEl) return;
+      if (result.confidence === "low") {
+        confidenceNoteEl.textContent = "Low confidence: this name may have multiple natural spellings. Check alternatives or community refinement.";
+        confidenceNoteEl.classList.add("warn");
+        return;
+      }
+      confidenceNoteEl.classList.remove("warn");
+      confidenceNoteEl.textContent = result.matchedBy === "dictionary"
+        ? "Recommended spelling is stable for most Korean readers."
+        : "Recommended spelling is estimated from pronunciation patterns.";
+    }
+
+    function getShareUrl() {
+      const url = new URL(window.location.href);
+      const name = (nameInput?.value || "").trim();
+      if (name) url.searchParams.set("name", name);
+      return url.toString();
+    }
+
+    function syncShareUrl() {
+      const url = new URL(window.location.href);
+      const name = (nameInput?.value || "").trim();
+      if (name) url.searchParams.set("name", name);
+      else url.searchParams.delete("name");
+      window.history.replaceState({}, "", url);
+    }
+
+    async function handleShareResult() {
+      const english = (nameInput?.value || "").trim();
+      const hangul = (hangulDisplayEl?.textContent || "").trim();
+      if (!hangul || hangul === "—") return;
+      const text = `${english} → ${hangul} · Hangul Name Studio`;
+      const url = getShareUrl();
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: "My Hangul name card", text, url });
+          return;
+        } catch {}
+      }
+      await copyText(`${text}\n${url}`);
+      showToast("Share text copied");
+    }
+
+    function runSurpriseName() {
+      const samples = ["Jacob", "Chloe", "Sean", "Ethan", "Daniel", "Xavier", "Zoey", "Siobhan", "Joaquin", "Olivia"];
+      const pick = samples[Math.floor(Math.random() * samples.length)];
+      nameInput.value = pick;
+      convert();
+    }
+
+    async function hydrateFromShareLink() {
+      const params = new URLSearchParams(window.location.search);
+      const sharedName = (params.get("name") || "").trim();
+      if (!sharedName) return;
+      nameInput.value = sharedName;
+      await convert();
+    }
+
+    function bindResultActions() {
+      copyResultBtn?.addEventListener("click", async () => {
+        const hangul = (hangulDisplayEl?.textContent || "").trim();
+        if (!hangul || hangul === "—") return;
+        await copyText(hangul);
+      });
+      copyLinkBtn?.addEventListener("click", async () => {
+        await copyText(getShareUrl(), "Share link copied");
+      });
+      shareResultBtn?.addEventListener("click", handleShareResult);
+      surpriseBtn?.addEventListener("click", runSurpriseName);
     }
 
     async function renderResults(rawInput, conversionResult) {
       const primary = conversionResult.recommended || "";
       if (!primary) {
-        setCardValues("—", rawInput || "English Name");
-        if (conversionMetaEl) conversionMetaEl.innerHTML = "";
-        if (alternativeListEl) alternativeListEl.innerHTML = "";
-        setPracticeVisibility(false);
+        clearResultPresentation(rawInput || "English Name");
         return;
       }
 
       setCardValues(primary, rawInput);
+      setRecommendationVisibility(true);
       renderConversionMeta(conversionResult);
+      renderConfidenceNote(conversionResult);
       renderAlternativeList(conversionResult.alternatives || []);
+      setResultActionsVisibility(true);
       setPracticeVisibility(true);
     }
 
     async function convert() {
       const raw = nameInput.value.trim();
       if (!raw) {
-        setCardValues("—", "English Name");
-        if (conversionMetaEl) conversionMetaEl.innerHTML = "";
-        if (alternativeListEl) alternativeListEl.innerHTML = "";
-        setPracticeVisibility(false);
+        clearResultPresentation("English Name");
         return;
       }
 
@@ -845,6 +961,7 @@
       lastSource = conversionResult.matchedBy === "rule" ? "rule" : "builtin";
       suggestKey.value = lastNameKey;
       suggestHangul.value = lastRecommended;
+      syncShareUrl();
 
       const firstKey = normalizedKey.split(" ").filter(Boolean)[0] || "";
       if (firstKey) fetchCommunitySuggestions(firstKey).catch(() => {});
@@ -1041,6 +1158,9 @@
       openPracticeSheetPrintWindow(hangulDisplayEl?.textContent || "");
     });
 
+    bindResultActions();
+    setResultActionsVisibility(false);
+    hydrateFromShareLink().catch(() => {});
     nameInput.focus();
   </script>
 </body>
