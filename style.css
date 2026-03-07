@@ -233,23 +233,29 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
 .id-card{
   position:relative;
   width:100%;
-  max-width:640px;
+  max-width:var(--card-max-width, 640px);
   margin:0 auto;
-  aspect-ratio:85.6/54;
+  aspect-ratio:var(--card-aspect-ratio, 85.6 / 54);
   border-radius:18px;
   overflow:hidden;
   border:1px solid rgba(11,13,18,.14);
   box-shadow:0 14px 30px rgba(11,13,18,.18);
+  --card-max-width: 640px;
+  --card-aspect-ratio: 85.6 / 54;
   --card-text-left: 10%;
   --card-text-right: 10%;
   --card-text-bottom: 16%;
+  --card-text-top: auto;
+  --card-text-transform: none;
   --card-text-align: left;
+  --card-text-max-width: none;
   --card-hangul-size: clamp(26px, 4.6vw, 36px);
   --card-hangul-color: #3b2f20;
   --card-english-size: clamp(11px, 1.7vw, 14px);
   --card-english-color: #5f4c34;
   --card-brand-left: 10%;
   --card-brand-top: 10%;
+  --card-brand-transform: none;
   --card-brand-color: #6f5a41;
   --card-tone: linear-gradient(180deg, rgba(0,0,0,.01), rgba(0,0,0,.07));
 }
@@ -273,8 +279,13 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
   position:absolute;
   left:var(--card-text-left);
   right:var(--card-text-right);
+  top:var(--card-text-top);
   bottom:var(--card-text-bottom);
+  transform:var(--card-text-transform);
   text-align:var(--card-text-align);
+  max-width:var(--card-text-max-width);
+  margin-left:auto;
+  margin-right:auto;
 }
 .id-hangul{
   font-family:"Noto Serif KR","Nanum Myeongjo",serif;
@@ -296,6 +307,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
   position:absolute;
   left:var(--card-brand-left);
   top:var(--card-brand-top);
+  transform:var(--card-brand-transform);
   font-size:11px;
   letter-spacing:.08em;
   opacity:.78;
@@ -303,12 +315,22 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
   color:var(--card-brand-color);
 }
 .card-dark .id-brand{opacity:.85;}
-.card-legacy .id-brand{opacity:.8;}
-.card-frame .id-brand{transform:translateX(-50%);}
-.id-card[data-hangul-long="true"] .id-hangul{
+.card-honorary .id-brand{opacity:.8;}
+.card-classic[data-hangul-long="true"] .id-hangul,
+.card-frame[data-hangul-long="true"] .id-hangul,
+.card-dark[data-hangul-long="true"] .id-hangul{
+  font-size:clamp(26px, 6.6vw, 36px);
+}
+.card-honorary[data-hangul-long="true"] .id-hangul{
   font-size:clamp(22px, 4vw, 30px);
 }
-.id-card[data-english-long="true"] .id-english{
+.card-classic[data-english-long="true"] .id-english,
+.card-frame[data-english-long="true"] .id-english,
+.card-dark[data-english-long="true"] .id-english{
+  font-size:clamp(10px, 2.2vw, 12px);
+  letter-spacing:.09em;
+}
+.card-honorary[data-english-long="true"] .id-english{
   font-size:clamp(10px, 1.5vw, 12px);
 }
 .hangul-banner{
