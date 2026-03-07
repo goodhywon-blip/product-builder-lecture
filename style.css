@@ -161,6 +161,11 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
 }
 
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:stretch;margin-top:16px;}
+.recent-wrap{margin-top:10px;}
+.recent-list{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-start;}
+.recent-chip{
+  cursor:pointer;
+}
 
 .field{
   flex:1 1 320px;border:1px solid var(--border);border-radius:14px;
@@ -259,6 +264,12 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
 .confidence-note.warn{
   color:#8a5a00;
 }
+.result-reason{
+  margin-top:6px;
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+}
 .alt-list{
   display:flex;
   justify-content:center;
@@ -281,6 +292,12 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
   font-size:13px;
   color:var(--muted);
   font-family: "Nanum Myeongjo", "궁서체", "Gungsuh", serif;
+  cursor:pointer;
+}
+.alt-item.selected{
+  border-color:#cfe3fb;
+  color:#285e9b;
+  background:#eef6ff;
 }
 .result-actions{
   margin-top:12px;
@@ -292,10 +309,25 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
 .result-actions .btn.primary{
   box-shadow: 0 8px 18px rgba(10,132,255,.2);
 }
+.card-style-row{
+  margin-top:10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.card-style-select{
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:8px 10px;
+  background:#fff;
+  color:var(--ink);
+}
 @media (max-width: 640px){
   .hero .headline{font-size:32px;}
   .hero-cta-row .btn{flex:1 1 auto;justify-content:center;}
   .result-actions .btn{flex:1 1 calc(50% - 8px);justify-content:center;}
+  .card-style-row{flex-direction:column;align-items:flex-start;}
 }
 .practice-cta{display:flex;justify-content:center;margin-top:6px;}
 .practice-panel{

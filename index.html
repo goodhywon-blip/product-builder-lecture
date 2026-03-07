@@ -52,10 +52,14 @@
     </nav>
 
     <section class="hero reveal delay-2">
-      <!-- Copy options for future swaps:
-           1) Create your Hangul name card
-           2) Turn your English name into elegant Hangul
-           3) Get a natural Hangul spelling, then save or share it -->
+      <!-- K-culture leaning options:
+           1) See how your name feels in Hangul
+           2) A Korean name-card moment for your own name
+           3) Discover your name in elegant Korean script
+           Shareable/fun leaning options:
+           1) Make a Hangul card for you and your friends
+           2) Try your name in Hangul, then pass it on
+           3) Convert once, share everywhere -->
       <div class="hero-layout">
         <div>
           <h2 class="headline">Create your Hangul name card</h2>
@@ -89,6 +93,10 @@
             <button class="btn primary" id="convertBtn">Convert</button>
             <button class="btn ghost" id="surpriseBtn" type="button">Surprise me</button>
           </div>
+          <div id="recentWrap" class="recent-wrap" hidden>
+            <div class="alt-title">Recently tried</div>
+            <div id="recentList" class="recent-list"></div>
+          </div>
 
           <div class="results" id="results">
             <div id="resultBox" class="mt-4">
@@ -100,6 +108,7 @@
                   <div id="recommendationTag" class="result-label" hidden>Recommended spelling</div>
                   <div id="conversionMeta" class="conversion-meta"></div>
                   <div id="confidenceNote" class="confidence-note"></div>
+                  <div id="resultReason" class="result-reason"></div>
                   <div id="alternativeList" class="alt-list"></div>
                   <div class="practice-cta">
                     <button id="practiceToggle" class="btn ghost" type="button" aria-expanded="false" aria-controls="practicePanel">
@@ -148,6 +157,13 @@
                     <button id="copyLinkBtn" class="btn ghost" type="button">Copy share link</button>
                     <button id="friendNameBtn" class="btn ghost" type="button">Make one for a friend</button>
                     <button id="tryAnotherBtn" class="btn ghost" type="button">Try another name</button>
+                  </div>
+                  <div class="card-style-row">
+                    <span class="alt-title">Card style</span>
+                    <select id="cardStyleSelect" class="card-style-select">
+                      <option value="classic">Classic</option>
+                      <option value="modern" disabled>Modern (coming soon)</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -225,6 +241,13 @@
     } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
     import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
     import { createNameConverter, CHO, JUNG, JONG } from "./nameConversion.mjs";
+    import {
+      createCanonicalResult,
+      selectDisplayedHangul,
+      getDisplayedHangul,
+      buildSurfacePayload,
+      pushRecentName
+    } from "./resultState.mjs";
 
     // ------------------------------
     // Firebase config (replace with your project values)
@@ -448,6 +471,7 @@
     const recommendationTagEl = $("#recommendationTag");
     const conversionMetaEl = $("#conversionMeta");
     const confidenceNoteEl = $("#confidenceNote");
+    const resultReasonEl = $("#resultReason");
     const alternativeListEl = $("#alternativeList");
     const englishNameEl = $("#englishName");
     const saveIdBtn = $("#saveIdBtn");
@@ -457,6 +481,9 @@
     const friendNameBtn = $("#friendNameBtn");
     const tryAnotherBtn = $("#tryAnotherBtn");
     const heroSampleBtn = $("#heroSampleBtn");
+    const recentWrap = $("#recentWrap");
+    const recentList = $("#recentList");
+    const cardStyleSelect = $("#cardStyleSelect");
     const resultActions = $("#resultActions");
     const surpriseBtn = $("#surpriseBtn");
     const practiceToggle = $("#practiceToggle");
@@ -561,6 +588,8 @@
     let lastSource = "";
     let lastSuggestionTs = 0;
     let canonicalCache = new Map();
+    let activeConversion = null;
+    const RECENT_NAMES_KEY = "hns_recent_names_v1";
 
     onAuthStateChanged(auth, (user) => {
       currentUser = user;
@@ -608,21 +637,60 @@
     }
 
     function clearResultPresentation(rawInput) {
+      activeConversion = null;
       setCardValues("—", rawInput || "English Name");
       if (conversionMetaEl) conversionMetaEl.innerHTML = "";
       if (alternativeListEl) alternativeListEl.innerHTML = "";
       if (confidenceNoteEl) confidenceNoteEl.textContent = "";
+      if (resultReasonEl) resultReasonEl.textContent = "";
       setRecommendationVisibility(false);
       setResultActionsVisibility(false);
       setPracticeVisibility(false);
+    }
+
+    function getActiveHangul() {
+      return getDisplayedHangul(activeConversion);
+    }
+
+    function getRecentNames() {
+      try {
+        return JSON.parse(localStorage.getItem(RECENT_NAMES_KEY) || "[]");
+      } catch {
+        return [];
+      }
+    }
+
+    function saveRecentNames(names) {
+      try {
+        localStorage.setItem(RECENT_NAMES_KEY, JSON.stringify(names));
+      } catch {}
+    }
+
+    function renderRecentNames() {
+      if (!recentWrap || !recentList) return;
+      const names = getRecentNames();
+      if (!names.length) {
+        recentWrap.hidden = true;
+        recentList.innerHTML = "";
+        return;
+      }
+      recentWrap.hidden = false;
+      recentList.innerHTML = names
+        .map((name) => `<button class=\"mini-badge recent-chip\" data-recent=\"${escapeHtml(name)}\">${escapeHtml(name)}</button>`)
+        .join("");
+    }
+
+    function rememberName(name) {
+      const next = pushRecentName(getRecentNames(), name, 8);
+      saveRecentNames(next);
+      renderRecentNames();
     }
 
     const clearBtn = $("#clearBtn");
     if (clearBtn) {
       clearBtn.addEventListener("click", () => {
         nameInput.value = "";
-        setCardValues("—", "English Name");
-        setPracticeVisibility(false);
+        clearResultPresentation("English Name");
         communityList.innerHTML = "";
         suggestKey.value = "";
         suggestHangul.value = "";
@@ -864,9 +932,10 @@
         alternativeListEl.innerHTML = "";
         return;
       }
+      const selected = getActiveHangul();
       alternativeListEl.innerHTML = `
         <div class="alt-title">Alternatives</div>
-        ${alternatives.map((hangul) => `<div class="alt-item">${escapeHtml(hangul)}</div>`).join("")}
+        ${alternatives.map((hangul) => `<button class="alt-item ${selected === hangul ? "selected" : ""}" type="button" data-alt-hangul="${escapeHtml(hangul)}">${escapeHtml(hangul)}</button>`).join("")}
       `;
     }
 
@@ -900,7 +969,7 @@
 
     async function handleShareResult() {
       const english = (nameInput?.value || "").trim();
-      const hangul = (hangulDisplayEl?.textContent || "").trim();
+      const hangul = getActiveHangul();
       if (!hangul || hangul === "—") return;
       const text = `${english} → ${hangul} · Hangul Name Studio`;
       const url = getShareUrl();
@@ -946,7 +1015,7 @@
 
     function bindResultActions() {
       copyResultBtn?.addEventListener("click", async () => {
-        const hangul = (hangulDisplayEl?.textContent || "").trim();
+        const hangul = getActiveHangul();
         if (!hangul || hangul === "—") return;
         await copyText(hangul);
       });
@@ -961,6 +1030,29 @@
       });
       friendNameBtn?.addEventListener("click", suggestFriendName);
       tryAnotherBtn?.addEventListener("click", resetForAnotherName);
+      recentList?.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-recent]");
+        if (!btn) return;
+        const recentName = btn.getAttribute("data-recent") || "";
+        if (!recentName) return;
+        nameInput.value = recentName;
+        convert();
+      });
+      alternativeListEl?.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-alt-hangul]");
+        if (!btn || !activeConversion) return;
+        const selectedHangul = btn.getAttribute("data-alt-hangul") || "";
+        activeConversion = selectDisplayedHangul(activeConversion, selectedHangul);
+        setCardValues(getActiveHangul(), activeConversion.input);
+        renderAlternativeList(activeConversion.alternatives || []);
+        if (!practicePanel.hidden) updatePracticeUI(getActiveHangul());
+      });
+      cardStyleSelect?.addEventListener("change", () => {
+        if (cardStyleSelect.value !== "classic") {
+          showToast("More card styles coming soon");
+          cardStyleSelect.value = "classic";
+        }
+      });
     }
 
     async function renderResults(rawInput, conversionResult) {
@@ -970,11 +1062,20 @@
         return;
       }
 
-      setCardValues(primary, rawInput);
+      activeConversion = createCanonicalResult(rawInput, conversionResult);
+      const surfaces = buildSurfacePayload(activeConversion);
+      setCardValues(surfaces.idCard, rawInput);
       setRecommendationVisibility(true);
-      renderConversionMeta(conversionResult);
-      renderConfidenceNote(conversionResult);
-      renderAlternativeList(conversionResult.alternatives || []);
+      renderConversionMeta(activeConversion);
+      renderConfidenceNote(activeConversion);
+      if (resultReasonEl) {
+        resultReasonEl.textContent = activeConversion.reason
+          ? activeConversion.reason
+          : (activeConversion.matchedBy === "dictionary"
+              ? "Natural Korean spelling selected from curated dictionary."
+              : "Generated from pronunciation-aware rules.");
+      }
+      renderAlternativeList(activeConversion.alternatives || []);
       setResultActionsVisibility(true);
       setPracticeVisibility(true);
     }
@@ -995,10 +1096,11 @@
       conversionResult = applyCanonicalBoost(conversionResult, canonical);
 
       await renderResults(raw, conversionResult);
+      rememberName(raw);
 
       lastNameKey = normalizedKey;
-      lastRecommended = conversionResult.recommended || "";
-      lastSource = conversionResult.matchedBy === "rule" ? "rule" : "builtin";
+      lastRecommended = activeConversion?.recommended || conversionResult.recommended || "";
+      lastSource = activeConversion?.matchedBy === "rule" ? "rule" : "builtin";
       suggestKey.value = lastNameKey;
       suggestHangul.value = lastRecommended;
       syncShareUrl();
@@ -1190,16 +1292,17 @@
       practicePanel.hidden = !open;
       practiceToggle.setAttribute("aria-expanded", open ? "true" : "false");
       if (open) {
-        updatePracticeUI(hangulDisplayEl?.textContent || "");
+        updatePracticeUI(getActiveHangul());
       }
     });
 
     printPracticeBtn?.addEventListener("click", () => {
-      openPracticeSheetPrintWindow(hangulDisplayEl?.textContent || "");
+      openPracticeSheetPrintWindow(getActiveHangul());
     });
 
     bindResultActions();
     setResultActionsVisibility(false);
+    renderRecentNames();
     hydrateFromShareLink().catch(() => {});
     nameInput.focus();
   </script>
