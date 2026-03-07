@@ -85,6 +85,44 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
   background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.75));
   box-shadow: var(--shadow);
 }
+.hero-layout{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+  align-items:center;
+}
+.hero-cta-row{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+.hero-card-preview{
+  border:1px solid rgba(59,47,32,.18);
+  border-radius:18px;
+  padding:14px;
+  background:linear-gradient(145deg, rgba(255,255,255,.92), rgba(244,237,225,.9));
+  box-shadow:0 10px 24px rgba(59,47,32,.12);
+  text-align:center;
+}
+.hero-card-ko{
+  font-family: "Nanum Myeongjo", "궁서체", "Gungsuh", serif;
+  font-size: clamp(30px, 5vw, 44px);
+  color:#2f2419;
+  font-weight:800;
+  letter-spacing:.08em;
+}
+.hero-card-en{
+  margin-top:2px;
+  font-size:12px;
+  letter-spacing:.18em;
+  color:#6a5a45;
+}
+.hero-card-foot{
+  margin-top:8px;
+  font-size:11px;
+  color:var(--muted);
+}
 .hero .headline{
   font-size:36px;
   letter-spacing:-.02em;
@@ -96,6 +134,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
 @media (min-width: 900px){
   .hero{grid-template-columns: 1fr; padding:20px 22px;}
   .hero .headline{font-size:40px;}
+  .hero-layout{grid-template-columns:1.2fr .8fr;}
 }
 
 .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:start;}
@@ -252,6 +291,11 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
 }
 .result-actions .btn.primary{
   box-shadow: 0 8px 18px rgba(10,132,255,.2);
+}
+@media (max-width: 640px){
+  .hero .headline{font-size:32px;}
+  .hero-cta-row .btn{flex:1 1 auto;justify-content:center;}
+  .result-actions .btn{flex:1 1 calc(50% - 8px);justify-content:center;}
 }
 .practice-cta{display:flex;justify-content:center;margin-top:6px;}
 .practice-panel{

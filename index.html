@@ -56,12 +56,25 @@
            1) Create your Hangul name card
            2) Turn your English name into elegant Hangul
            3) Get a natural Hangul spelling, then save or share it -->
-      <h2 class="headline">Create your Hangul name card</h2>
-      <p class="subhead">Get a natural Hangul spelling, preview it on a clean card, then save or share in one tap.</p>
-      <div class="hero-hints">
-        <span class="mini-badge">Dictionary-backed</span>
-        <span class="mini-badge">Pronunciation-aware fallback</span>
-        <span class="mini-badge">Community-refined</span>
+      <div class="hero-layout">
+        <div>
+          <h2 class="headline">Create your Hangul name card</h2>
+          <p class="subhead">See your name in natural Hangul, then save, share, or print it in seconds.</p>
+          <div class="hero-hints">
+            <span class="mini-badge">Dictionary-backed</span>
+            <span class="mini-badge">Pronunciation-aware fallback</span>
+            <span class="mini-badge">Community-refined</span>
+          </div>
+          <div class="hero-cta-row">
+            <a href="#tool" class="btn primary">Start with your name</a>
+            <button id="heroSampleBtn" class="btn ghost" type="button">Preview sample card</button>
+          </div>
+        </div>
+        <div class="hero-card-preview" aria-hidden="true">
+          <div class="hero-card-ko">한나</div>
+          <div class="hero-card-en">HANNAH</div>
+          <div class="hero-card-foot">Hangul Name Card Preview</div>
+        </div>
       </div>
     </section>
 
@@ -108,6 +121,7 @@
                   </div>
                 </div>
                 <div class="result-segment">
+                  <div class="alt-title">Name card output</div>
                   <div
                     id="idCard"
                     class="relative mx-auto w-full max-w-[640px] aspect-[85.6/54] rounded-2xl overflow-hidden shadow-lg border border-black/10 font-['Noto_Serif_KR']"
@@ -132,6 +146,8 @@
                     <button id="shareResultBtn" class="btn" type="button">Share result</button>
                     <button id="copyResultBtn" class="btn" type="button">Copy Hangul</button>
                     <button id="copyLinkBtn" class="btn ghost" type="button">Copy share link</button>
+                    <button id="friendNameBtn" class="btn ghost" type="button">Make one for a friend</button>
+                    <button id="tryAnotherBtn" class="btn ghost" type="button">Try another name</button>
                   </div>
                 </div>
               </div>
@@ -438,6 +454,9 @@
     const shareResultBtn = $("#shareResultBtn");
     const copyResultBtn = $("#copyResultBtn");
     const copyLinkBtn = $("#copyLinkBtn");
+    const friendNameBtn = $("#friendNameBtn");
+    const tryAnotherBtn = $("#tryAnotherBtn");
+    const heroSampleBtn = $("#heroSampleBtn");
     const resultActions = $("#resultActions");
     const surpriseBtn = $("#surpriseBtn");
     const practiceToggle = $("#practiceToggle");
@@ -902,6 +921,21 @@
       convert();
     }
 
+    function suggestFriendName() {
+      const ideas = ["Mina", "Lucas", "Hannah", "Nathaniel", "Amelia", "Leo", "Sora", "Eleanor"];
+      const current = normalizeEnglishKey(nameInput.value);
+      const next = ideas.find((name) => normalizeEnglishKey(name) !== current) || ideas[0];
+      nameInput.value = next;
+      convert();
+      showToast("Try a friend's name");
+    }
+
+    function resetForAnotherName() {
+      nameInput.value = "";
+      clearResultPresentation("English Name");
+      nameInput.focus();
+    }
+
     async function hydrateFromShareLink() {
       const params = new URLSearchParams(window.location.search);
       const sharedName = (params.get("name") || "").trim();
@@ -921,6 +955,12 @@
       });
       shareResultBtn?.addEventListener("click", handleShareResult);
       surpriseBtn?.addEventListener("click", runSurpriseName);
+      heroSampleBtn?.addEventListener("click", () => {
+        nameInput.value = "Hannah";
+        convert();
+      });
+      friendNameBtn?.addEventListener("click", suggestFriendName);
+      tryAnotherBtn?.addEventListener("click", resetForAnotherName);
     }
 
     async function renderResults(rawInput, conversionResult) {
