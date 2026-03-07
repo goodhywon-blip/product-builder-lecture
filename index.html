@@ -171,6 +171,7 @@
                     <span class="alt-title">Card style</span>
                     <select id="cardStyleSelect" class="card-style-select">
                       <option value="classic">Classic</option>
+                      <option value="legacy">Heritage</option>
                       <option value="frame">Frame</option>
                       <option value="dark">Dark</option>
                     </select>
@@ -564,7 +565,7 @@
       selectedCardStyle = style.id;
       if (idCardEl) {
         idCardEl.dataset.style = style.id;
-        idCardEl.classList.remove("card-classic", "card-frame", "card-dark");
+        idCardEl.classList.remove("card-classic", "card-legacy", "card-frame", "card-dark");
         idCardEl.classList.add(`card-${style.id}`);
       }
       if (cardBgImageEl) {

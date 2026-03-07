@@ -1,4 +1,24 @@
 export const CARD_STYLES = {
+  legacy: {
+    id: "legacy",
+    label: "Heritage",
+    note: "Original honorary ID design with ornate Korean motif.",
+    backgroundImage: "assets/honorary_id_bg.png",
+    vars: {
+      "--card-text-left": "8%",
+      "--card-text-right": "8%",
+      "--card-text-bottom": "18%",
+      "--card-text-align": "left",
+      "--card-hangul-size": "clamp(24px, 4.2vw, 33px)",
+      "--card-hangul-color": "#3b2f20",
+      "--card-english-size": "clamp(10px, 1.6vw, 13px)",
+      "--card-english-color": "#5f4c34",
+      "--card-brand-left": "8%",
+      "--card-brand-top": "10%",
+      "--card-brand-color": "#5f4c34",
+      "--card-tone": "linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.08))"
+    }
+  },
   classic: {
     id: "classic",
     label: "Classic",
@@ -61,7 +81,7 @@ export const CARD_STYLES = {
   }
 };
 
-export const CARD_STYLE_ORDER = ["classic", "frame", "dark"];
+export const CARD_STYLE_ORDER = ["classic", "legacy", "frame", "dark"];
 
 export function getCardStyle(styleId) {
   return CARD_STYLES[styleId] || CARD_STYLES.classic;

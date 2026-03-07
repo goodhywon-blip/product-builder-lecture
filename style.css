@@ -303,6 +303,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px;ma
   color:var(--card-brand-color);
 }
 .card-dark .id-brand{opacity:.85;}
+.card-legacy .id-brand{opacity:.8;}
 .card-frame .id-brand{transform:translateX(-50%);}
 .id-card[data-hangul-long="true"] .id-hangul{
   font-size:clamp(22px, 4vw, 30px);
