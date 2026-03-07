@@ -57,6 +57,10 @@ function cleanEnglishInput(input) {
     .trim();
 }
 
+function stripSurroundingPunctuation(input) {
+  return String(input || "").replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, "");
+}
+
 function normalizeConfidence(value) {
   return value === "high" || value === "medium" || value === "low" ? value : "medium";
 }
@@ -106,7 +110,8 @@ function toEntry(rawKey, rawEntry) {
     recommended,
     alternatives,
     confidence: normalizeConfidence(rawEntry.confidence),
-    sourceTag: String(rawEntry.sourceTag || "dictionary")
+    sourceTag: String(rawEntry.sourceTag || "dictionary"),
+    note: typeof rawEntry.note === "string" ? rawEntry.note.trim() : ""
   };
 }
 
@@ -400,6 +405,27 @@ function combineWordCandidates(wordResults, maxCandidates) {
   return deDupCandidates(combined, maxCandidates);
 }
 
+function resultFromCandidates({
+  input,
+  normalizedInput,
+  candidates,
+  confidence,
+  matchedBy,
+  note = ""
+}) {
+  const recommended = candidates[0]?.hangul || "";
+  const alternatives = candidates.slice(1).map((candidate) => candidate.hangul);
+  return {
+    input,
+    normalizedInput,
+    recommended,
+    alternatives,
+    confidence,
+    matchedBy,
+    note: note || undefined
+  };
+}
+
 export function createNameConverter(options = {}) {
   const {
     dictionary = {},
@@ -416,7 +442,8 @@ export function createNameConverter(options = {}) {
       return {
         matchedBy: "dictionary",
         confidence: primaryMatch.entry.confidence,
-        candidates: buildDictionaryCandidates(primaryMatch.entry, 0.99, `Starter dictionary ${primaryMatch.matchedBy} match`, maxCandidates)
+        note: primaryMatch.entry.note || "",
+        candidates: buildDictionaryCandidates(primaryMatch.entry, 0.99, `Curated dictionary ${primaryMatch.matchedBy} match`, maxCandidates)
       };
     }
 
@@ -425,6 +452,7 @@ export function createNameConverter(options = {}) {
       return {
         matchedBy: "dictionary",
         confidence: "medium",
+        note: secondaryMatch.entry.note || "",
         candidates: buildDictionaryCandidates(secondaryMatch.entry, 0.9, `Built-in dictionary ${secondaryMatch.matchedBy} match`, maxCandidates)
       };
     }
@@ -434,23 +462,26 @@ export function createNameConverter(options = {}) {
     return {
       matchedBy: "rule",
       confidence: estimateRuleConfidence(normalizedWord, ruleCandidates.length),
+      note: "",
       candidates: ruleCandidates
     };
   }
 
   function convert(input, lookupOptions = {}) {
-    const cleanedInput = cleanEnglishInput(input);
+    const punctStripped = stripSurroundingPunctuation(input);
+    const cleanedInput = cleanEnglishInput(punctStripped);
     const tokens = cleanedInput.split(" ").map((v) => v.trim()).filter(Boolean);
     const normalizedInput = normalizeLookupKey(cleanedInput, { normalizeSeparators: true, compact: false });
 
     if (!tokens.length) {
-      return {
+      return resultFromCandidates({
         input: String(input || ""),
         normalizedInput,
-        candidates: [],
         confidence: "low",
-        matchedBy: "rule"
-      };
+        matchedBy: "rule",
+        candidates: [],
+        note: "No valid letters detected in input."
+      });
     }
 
     const wordResults = tokens.map((token) => convertToken(token, {
@@ -458,13 +489,20 @@ export function createNameConverter(options = {}) {
     }));
 
     const combinedCandidates = combineWordCandidates(wordResults, maxCandidates);
-    return {
+    const matchedBy = classifyMatchedBy(wordResults);
+    const dictionaryNotes = wordResults
+      .map((result) => result.note || "")
+      .filter(Boolean);
+    const mergedNote = dictionaryNotes.length ? dictionaryNotes.join(" | ") : "";
+
+    return resultFromCandidates({
       input: String(input || ""),
       normalizedInput,
       candidates: combinedCandidates,
       confidence: combineConfidences(wordResults.map((w) => w.confidence)),
-      matchedBy: classifyMatchedBy(wordResults)
-    };
+      matchedBy,
+      note: mergedNote
+    });
   }
 
   return {

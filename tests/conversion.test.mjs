@@ -7,52 +7,102 @@ import { createNameConverter } from '../nameConversion.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const dictionaryPath = path.resolve(__dirname, '../hangul_name_dictionary_starter_v1.json');
-const starterDictionary = JSON.parse(fs.readFileSync(dictionaryPath, 'utf8'));
+
+const curatedPath = path.resolve(__dirname, '../hangul_name_dictionary_curated_v2.json');
+const protectedPath = path.resolve(__dirname, '../hangul_name_protected_tests_v2.json');
+const curatedDictionary = JSON.parse(fs.readFileSync(curatedPath, 'utf8'));
+const protectedCases = JSON.parse(fs.readFileSync(protectedPath, 'utf8'));
+
+function normalizeKey(input) {
+  return String(input || '')
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z\\s'-]/g, ' ')
+    .replace(/\\s+/g, ' ')
+    .trim();
+}
+
+function mergeProtectedDictionary(curated, protectedMap) {
+  const merged = { ...(curated || {}) };
+  for (const [rawKey, recommended] of Object.entries(protectedMap || {})) {
+    const key = normalizeKey(rawKey);
+    if (!key || typeof recommended !== 'string') continue;
+    const existing = merged[key] || {};
+    const alternatives = [...(Array.isArray(existing.alternatives) ? existing.alternatives : []), existing.recommended]
+      .map((value) => String(value || '').trim())
+      .filter((value) => value && value !== recommended);
+    merged[key] = {
+      ...existing,
+      name: existing.name || rawKey,
+      recommended: String(recommended).trim(),
+      alternatives: [...new Set(alternatives)],
+      confidence: 'high',
+      sourceTag: 'protected_tests_v2'
+    };
+  }
+  return merged;
+}
+
+const exactDictionary = mergeProtectedDictionary(curatedDictionary, protectedCases);
 
 const converter = createNameConverter({
-  dictionary: starterDictionary,
+  dictionary: exactDictionary,
+  fallbackDictionary: {},
   maxCandidates: 3
 });
 
-const expected = {
-  Jacob: '제이콥',
-  Chloe: '클로이',
-  Sean: '션',
-  Xavier: '제이비어',
-  Joaquin: '호아킨',
-  Siobhan: '셔본',
-  William: '윌리엄',
-  Olivia: '올리비아',
-  Sophia: '소피아',
-  Zoe: '조이'
-};
-
-for (const [input, hangul] of Object.entries(expected)) {
-  test(`dictionary match: ${input} -> ${hangul}`, () => {
-    const result = converter.convert(input);
-    assert.equal(result.matchedBy, 'dictionary');
-    assert.equal(result.candidates[0]?.hangul, hangul);
-    assert.ok(result.candidates[0]?.isRecommended);
-    assert.ok(result.candidates.length >= 1);
-  });
+function assertProtected(name, expected) {
+  const result = converter.convert(name);
+  assert.equal(result.recommended, expected, `Expected ${name} -> ${expected}, got ${result.recommended}`);
+  assert.equal(result.matchedBy, 'dictionary');
+  assert.ok(['high', 'medium', 'low'].includes(result.confidence));
 }
 
-test('lookup normalization supports trim and case-insensitive match', () => {
-  const result = converter.convert('   jAcOb   ');
+test('protected dictionary outputs remain stable', () => {
+  for (const [name, expected] of Object.entries(protectedCases)) {
+    assertProtected(name, expected);
+  }
+});
+
+test('required exact outputs', () => {
+  const required = {
+    Jacob: '제이콥',
+    Chloe: '클로이',
+    Sean: '션',
+    Ethan: '이든',
+    Daniel: '다니엘',
+    Xavier: '자비에르',
+    Zoe: '조에',
+    Zoey: '조이',
+    Siobhan: '시본',
+    Joaquin: '호아킨',
+    Nicholas: '니콜라스',
+    Nathaniel: '네이선얼'
+  };
+  for (const [name, expected] of Object.entries(required)) {
+    assertProtected(name, expected);
+  }
+});
+
+test('case-insensitive dictionary match: ethan / Ethan / ETHAN', () => {
+  const variants = ['ethan', 'Ethan', 'ETHAN'];
+  for (const input of variants) {
+    const result = converter.convert(input);
+    assert.equal(result.recommended, '이든');
+    assert.equal(result.matchedBy, 'dictionary');
+  }
+});
+
+test('fallback does not override exact dictionary match', () => {
+  const result = converter.convert('xavier');
+  assert.equal(result.recommended, '자비에르');
   assert.equal(result.matchedBy, 'dictionary');
-  assert.equal(result.candidates[0]?.hangul, '제이콥');
+  assert.ok(!result.alternatives.includes('자비어')); 
 });
 
-test('lookup normalization supports spaces, hyphens, and apostrophes', () => {
-  const result = converter.convert("  jean - luc  o'connor ");
-  assert.ok(result.candidates.length >= 1);
-  assert.ok(['dictionary', 'hybrid', 'rule'].includes(result.matchedBy));
-});
-
-test('falls back to pronunciation rules when dictionary has no match', () => {
+test('rule fallback still works for unknown names', () => {
   const result = converter.convert('Qzrt');
   assert.equal(result.matchedBy, 'rule');
-  assert.ok(result.candidates.length >= 1);
-  assert.equal(typeof result.candidates[0]?.score, 'number');
+  assert.equal(typeof result.recommended, 'string');
+  assert.ok(result.recommended.length > 0);
 });

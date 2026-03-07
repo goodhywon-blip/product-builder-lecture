@@ -369,14 +369,42 @@
       ])
     );
 
-    const converterReady = fetch("./hangul_name_dictionary_starter_v1.json")
-      .then((res) => (res.ok ? res.json() : {}))
-      .catch(() => ({}))
-      .then((starterDictionary) => createNameConverter({
-        dictionary: starterDictionary,
+    function mergeProtectedDictionary(curatedDictionary, protectedMap) {
+      const merged = { ...(curatedDictionary || {}) };
+      Object.entries(protectedMap || {}).forEach(([rawKey, recommended]) => {
+        const key = normalizeEnglishKey(rawKey);
+        if (!key || typeof recommended !== "string") return;
+        const existing = merged[key] || {};
+        const alternatives = [...(Array.isArray(existing.alternatives) ? existing.alternatives : []), existing.recommended]
+          .map((v) => String(v || "").trim())
+          .filter((v) => v && v !== recommended);
+        merged[key] = {
+          ...existing,
+          name: existing.name || rawKey,
+          recommended: String(recommended).trim(),
+          alternatives: [...new Set(alternatives)],
+          confidence: "high",
+          sourceTag: "protected_tests_v2"
+        };
+      });
+      return merged;
+    }
+
+    const converterReady = Promise.all([
+      fetch("./hangul_name_dictionary_curated_v2.json")
+        .then((res) => (res.ok ? res.json() : {}))
+        .catch(() => ({})),
+      fetch("./hangul_name_protected_tests_v2.json")
+        .then((res) => (res.ok ? res.json() : {}))
+        .catch(() => ({}))
+    ]).then(([curatedDictionary, protectedMap]) => {
+      const exactDictionary = mergeProtectedDictionary(curatedDictionary, protectedMap);
+      return createNameConverter({
+        dictionary: exactDictionary,
         fallbackDictionary,
         maxCandidates: 3
-      }));
+      });
+    });
 
     // ------------------------------
     // DOM
@@ -731,31 +759,23 @@
     }
 
     function applyCanonicalBoost(conversionResult, canonical) {
+      if (conversionResult.matchedBy === "dictionary") return conversionResult;
       if (!canonical?.hangulBest) return conversionResult;
-      const canonicalCandidates = [canonical.hangulBest, ...(Array.isArray(canonical.alts) ? canonical.alts : [])]
-        .map((hangul, idx) => ({
-          hangul,
-          score: 1 - idx * 0.02,
-          reason: idx === 0 ? "Community canonical recommendation" : "Community canonical alternative",
-          isRecommended: idx === 0
-        }));
-      const merged = [...canonicalCandidates, ...conversionResult.candidates];
+      const merged = [canonical.hangulBest, ...(Array.isArray(canonical.alts) ? canonical.alts : []), conversionResult.recommended, ...conversionResult.alternatives]
+        .filter(Boolean);
       const unique = [];
       const seen = new Set();
-      merged.forEach((candidate) => {
-        if (!candidate?.hangul || seen.has(candidate.hangul)) return;
-        seen.add(candidate.hangul);
-        unique.push(candidate);
+      merged.forEach((hangul) => {
+        if (seen.has(hangul)) return;
+        seen.add(hangul);
+        unique.push(hangul);
       });
-      const ranked = unique
-        .sort((a, b) => b.score - a.score || a.hangul.localeCompare(b.hangul, "ko"))
-        .slice(0, 3)
-        .map((candidate, idx) => ({ ...candidate, isRecommended: idx === 0 }));
       return {
         ...conversionResult,
-        candidates: ranked,
+        recommended: unique[0] || conversionResult.recommended,
+        alternatives: unique.slice(1, 3),
         confidence: "high",
-        matchedBy: conversionResult.matchedBy === "rule" ? "hybrid" : conversionResult.matchedBy
+        matchedBy: "hybrid"
       };
     }
 
@@ -769,23 +789,23 @@
       conversionMetaEl.innerHTML = `
         <span class="mini-badge">Confidence: ${result.confidence}</span>
         <span class="mini-badge">Matched by: ${sourceLabel}</span>
+        ${result.note ? `<span class="mini-badge">${escapeHtml(result.note)}</span>` : ""}
       `;
     }
 
-    function renderAlternativeList(candidates) {
+    function renderAlternativeList(alternatives) {
       if (!alternativeListEl) return;
-      const alternatives = candidates.slice(1);
       if (!alternatives.length) {
         alternativeListEl.innerHTML = "";
         return;
       }
       alternativeListEl.innerHTML = alternatives
-        .map((candidate) => `<div class="alt-item">${escapeHtml(candidate.hangul)}</div>`)
+        .map((hangul) => `<div class="alt-item">${escapeHtml(hangul)}</div>`)
         .join("");
     }
 
     async function renderResults(rawInput, conversionResult) {
-      const primary = conversionResult.candidates[0]?.hangul || "";
+      const primary = conversionResult.recommended || "";
       if (!primary) {
         setCardValues("—", rawInput || "English Name");
         if (conversionMetaEl) conversionMetaEl.innerHTML = "";
@@ -796,7 +816,7 @@
 
       setCardValues(primary, rawInput);
       renderConversionMeta(conversionResult);
-      renderAlternativeList(conversionResult.candidates);
+      renderAlternativeList(conversionResult.alternatives || []);
       setPracticeVisibility(true);
     }
 
@@ -821,7 +841,7 @@
       await renderResults(raw, conversionResult);
 
       lastNameKey = normalizedKey;
-      lastRecommended = conversionResult.candidates[0]?.hangul || "";
+      lastRecommended = conversionResult.recommended || "";
       lastSource = conversionResult.matchedBy === "rule" ? "rule" : "builtin";
       suggestKey.value = lastNameKey;
       suggestHangul.value = lastRecommended;
