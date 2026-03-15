@@ -580,10 +580,29 @@ details.section[open] > summary.section-head{border-bottom:1px solid var(--borde
 .section-head h3{margin:0;font-size:16px;letter-spacing:-.01em;}
 .section-head span{color:var(--muted);font-size:12px;}
 .text{color:var(--muted);font-size:13px;line-height:1.65;margin:6px 0 0;}
+.section h4{
+  margin:0 0 6px 0;
+  font-size:14px;
+  letter-spacing:-.01em;
+}
+.section ul{
+  margin:8px 0 0 18px;
+  padding:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.65;
+}
+.section li{margin:4px 0;}
+.section p a{
+  color:#275f9a;
+  text-decoration:none;
+}
+.section p a:hover{text-decoration:underline;}
 
 .card-grid{display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:12px;margin-top:10px;}
 @media (max-width: 900px){.card-grid{grid-template-columns:1fr;}}
 .mini-card{border:1px solid var(--border);border-radius:16px;padding:12px;background:#f9fafc;}
+.mini-card .text{margin-top:0;}
 
 .table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px;}
 .table th,.table td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;}

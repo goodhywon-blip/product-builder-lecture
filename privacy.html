@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="google-adsense-account" content="ca-pub-7713287823701747">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Privacy policy for Hangul Name Studio." />
+  <meta name="description" content="Privacy policy for Hangul Name Studio, including what data is processed for conversion, analytics, community suggestions, and ad delivery." />
   <title>Privacy Policy | Hangul Name Studio</title>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7713287823701747" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style.css" />
@@ -12,7 +12,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3970CRW71"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} \
+    function gtag(){dataLayer.push(arguments);}
     gtag("js", new Date());
     gtag("config", "G-Y3970CRW71");
   </script>
@@ -27,49 +27,105 @@
 <body>
   <main class="wrap">
     <header class="reveal">
-      <div class="brand">
+      <a class="brand brand-home-link" href="index.html" aria-label="Go to Hangul Name Studio home">
         <div class="mark" aria-hidden="true"><img src="assets/taegeuk.png" alt="" /></div>
         <div>
           <h1>Hangul Name Studio</h1>
           <p>English name → natural Hangul spelling</p>
         </div>
-      </div>
+      </a>
     </header>
 
     <nav class="nav reveal delay-1" aria-label="Site">
       <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
+      <a href="contact.html">Contact</a>
     </nav>
 
     <section class="hero reveal delay-2">
       <h2 class="page-title">Privacy Policy</h2>
-      <p class="page-sub">Last updated: 2026-02-22</p>
+      <p class="page-sub">Last updated: 2026-03-15</p>
     </section>
 
     <section class="section reveal delay-3">
-      <h3>Summary</h3>
-      <p>We use Firebase to store community suggestions and moderation data. No personal profiles are collected.</p>
+      <div class="section-head">
+        <h3>Overview</h3>
+        <span>Short version</span>
+      </div>
+      <p class="text">
+        Hangul Name Studio is designed to work with minimal personal data. Most conversion logic runs in the browser. We only store limited operational data needed for community suggestions, abuse prevention, and service quality.
+      </p>
+    </section>
 
-      <h3>Data stored</h3>
+    <section class="section reveal delay-4">
+      <div class="section-head">
+        <h3>Data we process</h3>
+        <span>Community and operations</span>
+      </div>
       <ul>
-        <li>Submitted suggestions and timestamps</li>
-        <li>Anonymous votes and reports</li>
-        <li>Moderation actions</li>
+        <li>Community suggestion records (name key, proposed Hangul spelling, timestamps)</li>
+        <li>Anonymous votes and reports on suggestions</li>
+        <li>Moderation metadata for approved or rejected entries</li>
+        <li>Basic analytics events and diagnostics for site performance and reliability</li>
       </ul>
+      <p class="text">
+        We do not require account creation for normal use of the converter and do not ask for sensitive identity documents.
+      </p>
+    </section>
 
-      <h3>Authentication</h3>
-      <p>Anonymous sign-in protects the service. Admins use Google sign-in for review.</p>
+    <section class="section reveal delay-4">
+      <div class="section-head">
+        <h3>Authentication and storage</h3>
+        <span>Security controls</span>
+      </div>
+      <p class="text">
+        Firebase Anonymous Authentication is used to reduce spam and protect community actions. Administrators use authenticated review access for moderation. Community-related data is stored in Firestore.
+      </p>
+      <p class="text">
+        Browser local storage may keep recent names and current UI state on your own device to improve usability.
+      </p>
+    </section>
 
-      <h3>Advertising</h3>
-      <p>Google may serve ads and use cookies or similar technologies for delivery and measurement.</p>
+    <section class="section reveal delay-4">
+      <div class="section-head">
+        <h3>Advertising and analytics</h3>
+        <span>Third-party services</span>
+      </div>
+      <p class="text">
+        This site may display Google AdSense ads. Google and its partners may use cookies or similar technologies for ad delivery, personalization, and measurement according to their policies.
+      </p>
+      <p class="text">
+        We also use analytics tools to understand traffic patterns, detect errors, and improve product quality.
+      </p>
+    </section>
 
-      <h3>Contact</h3>
-      <p>Questions: goodhywon@gmail.com</p>
+    <section class="section reveal delay-4">
+      <div class="section-head">
+        <h3>Your choices</h3>
+        <span>Control and requests</span>
+      </div>
+      <ul>
+        <li>You can use the converter without submitting community suggestions.</li>
+        <li>You can clear browser-stored local data in your browser settings at any time.</li>
+        <li>You can contact us to request review of submitted suggestion data.</li>
+      </ul>
+    </section>
+
+    <section class="section reveal delay-4">
+      <div class="section-head">
+        <h3>Contact</h3>
+        <span>Privacy questions</span>
+      </div>
+      <p class="text">For privacy-related inquiries, email: <a href="mailto:goodhywon@gmail.com">goodhywon@gmail.com</a></p>
     </section>
 
     <footer class="reveal delay-5">
-      © <span id="year"></span> Hangul Name Studio · <a href="terms.html">Terms</a> · <a href="contact.html">Contact</a>
+      © <span id="year"></span> Hangul Name Studio ·
+      <a href="index.html">Home</a> · <a href="about.html">About</a> · <a href="faq.html">FAQ</a> ·
+      <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="contact.html">Contact</a>
     </footer>
   </main>
   <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
